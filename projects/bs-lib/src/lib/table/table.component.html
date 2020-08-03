@@ -1,0 +1,17 @@
+<table [id]="config.id" class="table {{config.className}}" [class.table-striped]="config.striped"
+       [class.table-bordered]="config.bordered" [class.table-sm]="config.small" [class.table-hover]="config.hover">
+  <thead>
+  <tr>
+    <th *ngFor="let col of config.columns">{{col.name}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let obj of data; index as rowNum">
+    <td *ngFor="let col of config.columns; index as colNum" id="{{config.id}}Row{{rowNum}}Col{{colNum}}">
+      {{resolveValue(obj, col.data, getElement(config.id + 'Row' + rowNum + 'Col' + colNum))}}
+    </td>
+  </tr>
+  </tbody>
+</table>
+<pagination *ngIf="config.pagination" [totalItems]="totalItems" [itemsPerPage]="config.pagination.itemsPerPage"
+            [maxSize]="config.pagination.maxPageLinks" (pageChanged)="config.pagination.onPageChange($event.page)"></pagination>
