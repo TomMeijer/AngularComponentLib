@@ -1,0 +1,10 @@
+<div class="card">
+  <div *ngIf="headerText || headerIcon" class="card-header"><i *ngIf="headerIcon" [class]="headerIcon"></i>{{headerText}}</div>
+  <div class="card-body">
+    <ng-content></ng-content>
+  </div>
+  <div *ngIf="footerText || footerIcon; else custFooter" class="card-footer"><i *ngIf="footerIcon" [class]="footerIcon"></i>{{footerText}}</div>
+  <ng-template #custFooter>
+    <ng-content select=".card-footer"></ng-content>
+  </ng-template>
+</div>

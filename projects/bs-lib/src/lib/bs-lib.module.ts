@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
-import { BsLibComponent } from './bs-lib.component';
 import { TableComponent } from './table/table.component';
 import {CommonModule} from "@angular/common";
 import {PaginationModule} from "ngx-bootstrap/pagination";
+import { CardComponent } from './card/card.component';
 
 @NgModule({
-  declarations: [BsLibComponent, TableComponent],
+  declarations: [TableComponent, CardComponent],
   imports: [
     CommonModule,
     PaginationModule
   ],
-  exports: [BsLibComponent]
+  exports: []
 })
 export class BsLibModule { }
