@@ -22,6 +22,10 @@ export class CardComponent implements OnInit {
   public footerIcon: string;
   @Input()
   public actions: TmCardAction[];
+  @Input()
+  public imgTopSrc: string;
+  @Input()
+  public imgBottomSrc: string;
 
   constructor() { }
 

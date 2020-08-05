@@ -17,12 +17,14 @@
       </ng-template>
     </div>
   </div>
+  <img *ngIf="imgTopSrc" class="card-img-top" [src]="imgTopSrc" alt="Not found">
   <ng-template #custHeader>
     <ng-content select=".card-header"></ng-content>
   </ng-template>
   <div class="card-body">
     <ng-content></ng-content>
   </div>
+  <img *ngIf="imgBottomSrc" class="card-img-bottom" [src]="imgBottomSrc" alt="Not found">
   <div *ngIf="footerText || footerIcon; else custFooter" class="card-footer"><i *ngIf="footerIcon" class="footer-icon {{footerIcon}}"></i>{{footerText}}</div>
   <ng-template #custFooter>
     <ng-content select=".card-footer"></ng-content>
