@@ -1,4 +1,4 @@
-export interface PaginationConfig {
+export interface TmPaginationConfig {
 
   itemsPerPage?: number;
   maxPageLinks?: number;

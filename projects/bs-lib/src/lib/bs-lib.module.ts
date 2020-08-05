@@ -3,13 +3,21 @@ import { TableComponent } from './table/table.component';
 import {CommonModule} from "@angular/common";
 import {PaginationModule} from "ngx-bootstrap/pagination";
 import { CardComponent } from './card/card.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
-  declarations: [TableComponent, CardComponent],
+  declarations: [
+    TableComponent,
+    CardComponent
+  ],
   imports: [
     CommonModule,
-    PaginationModule
+    PaginationModule.forRoot(),
+    RouterModule
   ],
-  exports: []
+  exports: [
+    TableComponent,
+    CardComponent
+  ]
 })
 export class BsLibModule { }

@@ -1,29 +1,35 @@
 import {TableComponent} from "../../projects/bs-lib/src/lib/table/table.component";
 import {formatDate} from "@angular/common";
 import {PaginationModule} from "ngx-bootstrap/pagination";
-import {TableConfig} from "../../projects/bs-lib/src/lib/table/config/table-config";
 import {StoryFnAngularReturnType} from "@storybook/angular/dist/client/preview/types";
+import {TmColumn} from "../../projects/bs-lib/src/lib/table/config/tm-column";
+import {TmPaginationConfig} from "../../projects/bs-lib/src/lib/table/config/tm-pagination-config";
 
 export default {
   title: 'Table',
   component: TableComponent,
 };
 
-let tableConfig: TableConfig = {
-  id: 'table1',
-  columns: [
-    {name: 'Username', data: 'username'},
-    {name: 'Date registered', data: (obj) => formatDate(obj.registerDate, 'dd-MM-yyyy', 'en-US')},
-    {name: 'Role', data: 'role.name'},
-    {name: 'Status', data: renderStatus},
-    {data: (obj, td) => td.innerHTML = `<a href="#/users/${obj.id}"><i class="fa fa-pencil"></i></a>`}
-  ],
-  pagination: {
-    itemsPerPage: 2,
-    maxPageLinks: 5,
-    onPageChange: page => window.alert('Page changed to: ' + page)
-  }
+let columns: TmColumn[] = [
+  {name: 'Username', data: 'username'},
+  {name: 'Date registered', data: (obj) => formatDate(obj.registerDate, 'dd-MM-yyyy', 'en-US')},
+  {name: 'Role', data: 'role.name'},
+  {name: 'Status', data: renderStatus},
+  {data: (obj, td) => td.innerHTML = `<a href="#"><i class="fas fa-pencil-alt"></i></a>`}
+];
+
+let pagination: TmPaginationConfig = {
+  itemsPerPage: 2,
+  maxPageLinks: 5,
+  onPageChange: page => window.alert('Page changed to: ' + page)
 };
+
+function renderStatus(obj: any, td: HTMLElement): string {
+  if (obj.status === 'Busy') {
+    td.parentElement.classList.add('text-danger');
+  }
+  return obj.status;
+}
 
 let tableData = [
   {
@@ -70,15 +76,11 @@ export const Basic = (): StoryFnAngularReturnType => ({
     imports: [PaginationModule.forRoot()],
   },
   props: {
-    config: tableConfig,
+    id: 'table1',
+    striped: true,
+    columns: columns,
+    pagination: pagination,
     data: tableData,
     totalItems: 4
   },
 });
-
-function renderStatus(obj: any, td: HTMLElement): string {
-  if (obj.status === 'Busy') {
-    td.parentElement.classList.add('text-danger');
-  }
-  return obj.status;
-}

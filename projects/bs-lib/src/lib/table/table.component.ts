@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TableConfig} from "./config/table-config";
+import {TmColumn} from "./config/tm-column";
+import {TmPaginationConfig} from "./config/tm-pagination-config";
 
 @Component({
   selector: 'tm-table',
@@ -9,7 +10,21 @@ import {TableConfig} from "./config/table-config";
 export class TableComponent implements OnInit {
 
   @Input()
-  public config: TableConfig;
+  public id: string;
+  @Input()
+  public striped: boolean;
+  @Input()
+  public bordered: boolean;
+  @Input()
+  public small: boolean;
+  @Input()
+  public hover: boolean;
+  @Input()
+  public className: string;
+  @Input()
+  public columns: TmColumn[];
+  @Input()
+  public pagination: TmPaginationConfig;
   @Input()
   public data: any[];
   @Input()
