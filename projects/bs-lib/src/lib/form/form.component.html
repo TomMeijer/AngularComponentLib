@@ -1,0 +1,41 @@
+<form #tmForm="ngForm" (ngSubmit)="submitForm(tmForm)" class="{{className}}" [class.was-validated]="wasValidated">
+  <ng-container *ngFor="let input of inputs">
+    <ng-container [ngSwitch]="input.type">
+      <ng-container *ngSwitchCase="'checkbox'">
+        <div class="form-group form-check">
+          <label class="form-check-label">
+            <input type="checkbox" [name]="input.name" class="form-check-input" [(ngModel)]="model[input.name]"
+                   [required]="input.required" [checked]="model[input.name]" (change)="changeInput(input, $event)">{{input.label}}
+          </label>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'select'">
+        <div class="form-group">
+          <label *ngIf="input.label">{{input.label}} <i *ngIf="input.tooltip" class="tooltip-icon fas fa-question-circle" placement="top" [ngbTooltip]="input.tooltip"></i></label>
+          <select [name]="input.name" class="form-control" [(ngModel)]="model[input.name]" [required]="input.required"
+                  [class.form-control-sm]="small" (change)="changeInput(input, $event)">
+            <option></option>
+            <option *ngFor="let option of input.selectOptions" [value]="option.value">{{option.text}}</option>
+          </select>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'textarea'">
+        <div class="form-group">
+          <label *ngIf="input.label">{{input.label}} <i *ngIf="input.tooltip" class="fas fa-question-circle ml-1" placement="top" [ngbTooltip]="input.tooltip"></i></label>
+          <textarea [name]="input.name" class="form-control" [rows]="input.textareaRows" [(ngModel)]="model[input.name]" [required]="input.required"
+                    placeholder="{{input.placeholder}}" [maxlength]="input.maxLength" [class.form-control-sm]="small"
+                    (change)="changeInput(input, $event)"></textarea>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchDefault>
+        <div class="form-group">
+          <label *ngIf="input.label">{{input.label}} <i *ngIf="input.tooltip" class="fas fa-question-circle ml-1" placement="top" [ngbTooltip]="input.tooltip"></i></label>
+          <input [type]="input.type" [name]="input.name" class="form-control" [(ngModel)]="model[input.name]" [required]="input.required"
+                 placeholder="{{input.placeholder}}" [maxlength]="input.maxLength" [class.form-control-sm]="small"
+                 (change)="changeInput(input, $event)" [pattern]="input.pattern">
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+  <button type="submit" class="btn {{submitBtnClass ? submitBtnClass : 'btn-primary'}}">{{submitText ? submitText : 'Submit'}}</button>
+</form>

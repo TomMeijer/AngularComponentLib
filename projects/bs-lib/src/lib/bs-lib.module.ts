@@ -4,20 +4,27 @@ import {CommonModule} from "@angular/common";
 import {PaginationModule} from "ngx-bootstrap/pagination";
 import { CardComponent } from './card/card.component';
 import {RouterModule} from "@angular/router";
+import { FormComponent } from './form/form.component';
+import {FormsModule} from "@angular/forms";
+import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
     TableComponent,
-    CardComponent
+    CardComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,
     PaginationModule.forRoot(),
-    RouterModule
+    RouterModule,
+    FormsModule,
+    NgbTooltipModule
   ],
   exports: [
     TableComponent,
-    CardComponent
+    CardComponent,
+    FormComponent
   ]
 })
 export class BsLibModule { }
