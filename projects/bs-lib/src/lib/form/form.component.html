@@ -1,41 +1,60 @@
-<form #tmForm="ngForm" (ngSubmit)="submitForm(tmForm)" class="{{className}}" [class.was-validated]="wasValidated">
-  <ng-container *ngFor="let input of inputs">
-    <ng-container [ngSwitch]="input.type">
-      <ng-container *ngSwitchCase="'checkbox'">
-        <div class="form-group form-check">
-          <label class="form-check-label">
-            <input type="checkbox" [name]="input.name" class="form-check-input" [(ngModel)]="model[input.name]"
-                   [required]="input.required" [checked]="model[input.name]" (change)="changeInput(input, $event)">{{input.label}}
-          </label>
-        </div>
+<form #tmForm="ngForm" (ngSubmit)="submitForm(tmForm)" class="tm-form {{className}}" [class.was-validated]="wasValidated">
+  <div *ngFor="let group of inputGroups" class="form-row">
+    <div *ngFor="let input of group" class="col">
+      <ng-container [ngSwitch]="input.type">
+        <ng-container *ngSwitchCase="'checkbox'">
+          <div class="form-group form-check">
+            <label class="form-check-label">
+              <input type="checkbox" [name]="input.name" class="form-check-input" [(ngModel)]="model[input.name]"
+                     [required]="input.required" [checked]="model[input.name]" (change)="changeInput(input, $event)">
+              <span>{{input.label}}</span>
+              <span *ngIf="input.required">&nbsp;*</span>
+            </label>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'select'">
+          <div class="form-group">
+            <tm-label *ngIf="input.label" [text]="input.label" [required]="input.required" [tooltip]="input.tooltip"
+                      [tooltipIcon]="tooltipIcon"></tm-label>
+            <div [class.input-group]="input.prependIcon || input.prependText || input.appendIcon || input.appendText">
+              <tm-input-prepend *ngIf="input.prependIcon || input.prependText" class="input-group-prepend" [icon]="input.prependIcon"
+                                [text]="input.prependText"></tm-input-prepend>
+              <select [name]="input.name" class="form-control" [(ngModel)]="model[input.name]" [required]="input.required"
+                      [class.form-control-sm]="small" (change)="changeInput(input, $event)">
+                <option></option>
+                <option *ngFor="let option of input.selectOptions" [value]="option.value">{{option.text}}</option>
+              </select>
+              <tm-input-prepend *ngIf="input.appendIcon || input.appendText" class="input-group-append" [icon]="input.appendIcon"
+                                [text]="input.appendText"></tm-input-prepend>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'textarea'">
+          <div class="form-group">
+            <tm-label *ngIf="input.label" [text]="input.label" [required]="input.required" [tooltip]="input.tooltip"
+                      [tooltipIcon]="tooltipIcon"></tm-label>
+            <textarea [name]="input.name" class="form-control" [rows]="input.textareaRows" [(ngModel)]="model[input.name]"
+                      [required]="input.required" placeholder="{{input.placeholder}}" [maxlength]="input.maxLength" [class.form-control-sm]="small"
+                      (change)="changeInput(input, $event)"></textarea>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <div class="form-group">
+            <tm-label *ngIf="input.label" [text]="input.label" [required]="input.required" [tooltip]="input.tooltip"
+                      [tooltipIcon]="tooltipIcon"></tm-label>
+            <div [class.input-group]="input.prependIcon || input.prependText || input.appendIcon || input.appendText">
+              <tm-input-prepend *ngIf="input.prependIcon || input.prependText" class="input-group-prepend" [icon]="input.prependIcon"
+                                [text]="input.prependText"></tm-input-prepend>
+              <input [type]="input.type" [name]="input.name" class="form-control" [(ngModel)]="model[input.name]" [required]="input.required"
+                     placeholder="{{input.placeholder}}" [maxlength]="input.maxLength" [class.form-control-sm]="small"
+                     (change)="changeInput(input, $event)" [pattern]="input.pattern">
+              <tm-input-prepend *ngIf="input.appendIcon || input.appendText" class="input-group-append" [icon]="input.appendIcon"
+                                [text]="input.appendText"></tm-input-prepend>
+            </div>
+          </div>
+        </ng-container>
       </ng-container>
-      <ng-container *ngSwitchCase="'select'">
-        <div class="form-group">
-          <label *ngIf="input.label">{{input.label}} <i *ngIf="input.tooltip" class="tooltip-icon fas fa-question-circle" placement="top" [ngbTooltip]="input.tooltip"></i></label>
-          <select [name]="input.name" class="form-control" [(ngModel)]="model[input.name]" [required]="input.required"
-                  [class.form-control-sm]="small" (change)="changeInput(input, $event)">
-            <option></option>
-            <option *ngFor="let option of input.selectOptions" [value]="option.value">{{option.text}}</option>
-          </select>
-        </div>
-      </ng-container>
-      <ng-container *ngSwitchCase="'textarea'">
-        <div class="form-group">
-          <label *ngIf="input.label">{{input.label}} <i *ngIf="input.tooltip" class="fas fa-question-circle ml-1" placement="top" [ngbTooltip]="input.tooltip"></i></label>
-          <textarea [name]="input.name" class="form-control" [rows]="input.textareaRows" [(ngModel)]="model[input.name]" [required]="input.required"
-                    placeholder="{{input.placeholder}}" [maxlength]="input.maxLength" [class.form-control-sm]="small"
-                    (change)="changeInput(input, $event)"></textarea>
-        </div>
-      </ng-container>
-      <ng-container *ngSwitchDefault>
-        <div class="form-group">
-          <label *ngIf="input.label">{{input.label}} <i *ngIf="input.tooltip" class="fas fa-question-circle ml-1" placement="top" [ngbTooltip]="input.tooltip"></i></label>
-          <input [type]="input.type" [name]="input.name" class="form-control" [(ngModel)]="model[input.name]" [required]="input.required"
-                 placeholder="{{input.placeholder}}" [maxlength]="input.maxLength" [class.form-control-sm]="small"
-                 (change)="changeInput(input, $event)" [pattern]="input.pattern">
-        </div>
-      </ng-container>
-    </ng-container>
-  </ng-container>
+    </div>
+  </div>
   <button type="submit" class="btn {{submitBtnClass ? submitBtnClass : 'btn-primary'}}">{{submitText ? submitText : 'Submit'}}</button>
 </form>

@@ -3,7 +3,7 @@ import {formatDate} from "@angular/common";
 import {PaginationModule} from "ngx-bootstrap/pagination";
 import {StoryFnAngularReturnType} from "@storybook/angular/dist/client/preview/types";
 import {TmColumn} from "../../projects/bs-lib/src/lib/table/config/tm-column";
-import {TmPaginationConfig} from "../../projects/bs-lib/src/lib/table/config/tm-pagination-config";
+import {TmPagination} from "../../projects/bs-lib/src/lib/table/config/tm-pagination";
 
 export default {
   title: 'Table',
@@ -18,7 +18,7 @@ let columns: TmColumn[] = [
   {data: (obj, td) => td.innerHTML = `<a href="#"><i class="fas fa-pencil-alt"></i></a>`}
 ];
 
-let pagination: TmPaginationConfig = {
+let pagination: TmPagination = {
   itemsPerPage: 2,
   maxPageLinks: 5,
   onPageChange: page => window.alert('Page changed to: ' + page)

@@ -7,12 +7,16 @@ import {RouterModule} from "@angular/router";
 import { FormComponent } from './form/form.component';
 import {FormsModule} from "@angular/forms";
 import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
+import { LabelComponent } from './label/label.component';
+import { InputPrependComponent } from './input-prepend/input-prepend.component';
 
 @NgModule({
   declarations: [
     TableComponent,
     CardComponent,
-    FormComponent
+    FormComponent,
+    LabelComponent,
+    InputPrependComponent
   ],
   imports: [
     CommonModule,

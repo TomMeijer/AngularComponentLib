@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TmColumn} from "./config/tm-column";
-import {TmPaginationConfig} from "./config/tm-pagination-config";
+import {TmPagination} from "./config/tm-pagination";
 
 @Component({
   selector: 'tm-table',
@@ -24,7 +24,7 @@ export class TableComponent implements OnInit {
   @Input()
   public columns: TmColumn[];
   @Input()
-  public pagination: TmPaginationConfig;
+  public pagination: TmPagination;
   @Input()
   public data: any[];
   @Input()

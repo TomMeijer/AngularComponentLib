@@ -2,7 +2,7 @@ import {FormComponent} from "../../projects/bs-lib/src/lib/form/form.component";
 import {StoryFnAngularReturnType} from "@storybook/angular/dist/client/preview/types";
 import {TmInput} from "../../projects/bs-lib/src/lib/form/config/tm-input";
 import {NgForm} from "@angular/forms";
-import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
+import {BsLibModule} from "../../projects/bs-lib/src/lib/bs-lib.module";
 
 export default {
   title: 'Form',
@@ -16,29 +16,34 @@ let inputs: TmInput[] = [
     type: 'text',
     label: 'First name',
     name: 'firstName',
-    required: true
+    required: true,
+    prependIcon: 'fas fa-user',
+    group: '1'
   },
   {
     type: 'text',
     label: 'Last name',
     name: 'lastName',
-    maxLength: 25
+    group: '1'
   },
   {
     type: 'number',
     label: 'Age',
     name: 'age',
-    pattern: '^[1-9][0-9]*$'
+    pattern: '^[1-9][0-9]*$',
+    group: '2'
   },
   {
     type: 'select',
     label: 'Country',
     name: 'country',
+    required: true,
     selectOptions: [
       {text: 'Netherlands', value: 'NL'},
       {text: 'United States', value: 'US'}
     ],
-    tooltip: "Your country of birth"
+    tooltip: "Your country of birth",
+    group: '2'
   },
   {
     type: 'checkbox',
@@ -60,7 +65,7 @@ function submitForm(form: NgForm) {
 export const Basic = (): StoryFnAngularReturnType => ({
   component: FormComponent,
   moduleMetadata: {
-    imports: [NgbTooltipModule]
+    imports: [BsLibModule]
   },
   props: {
     className: 'my-form',

@@ -13,4 +13,9 @@ export interface TmInput {
   pattern?: string;
   textareaRows?: number;
   tooltip?: string;
+  prependText?: string;
+  prependIcon?: string;
+  appendText?: string;
+  appendIcon?: string;
+  group?: string
 }

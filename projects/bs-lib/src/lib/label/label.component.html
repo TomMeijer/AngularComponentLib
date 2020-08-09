@@ -1,0 +1,5 @@
+<label>
+  <span>{{text}}&nbsp;</span>
+  <span *ngIf="required">*&nbsp;</span>
+  <i *ngIf="tooltip" class="tooltip-icon {{tooltipIcon ? tooltipIcon : 'fas fa-question-circle'}}" placement="top" [ngbTooltip]="tooltip"></i>
+</label>
