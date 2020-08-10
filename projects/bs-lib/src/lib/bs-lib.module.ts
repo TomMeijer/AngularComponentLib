@@ -20,7 +20,7 @@ import { InputPrependComponent } from './input-prepend/input-prepend.component';
   ],
   imports: [
     CommonModule,
-    PaginationModule.forRoot(),
+    PaginationModule,
     RouterModule,
     FormsModule,
     NgbTooltipModule
