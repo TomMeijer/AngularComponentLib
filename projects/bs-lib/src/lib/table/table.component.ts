@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TmColumn} from "./config/tm-column";
 import {TmPagination} from "./config/tm-pagination";
 
@@ -29,6 +29,9 @@ export class TableComponent implements OnInit {
   public data: any[];
   @Input()
   public totalItems: number;
+
+  @Output()
+  public onRowClick: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 

@@ -21,7 +21,7 @@ let columns: TmColumn[] = [
 let pagination: TmPagination = {
   itemsPerPage: 2,
   maxPageLinks: 5,
-  onPageChange: page => window.alert('Page changed to: ' + page)
+  onPageChange: changePage
 };
 
 function renderStatus(obj: any, td: HTMLElement): string {
@@ -29,6 +29,10 @@ function renderStatus(obj: any, td: HTMLElement): string {
     td.parentElement.classList.add('text-danger');
   }
   return obj.status;
+}
+
+function changePage(page: number) {
+  window.alert('Page changed to: ' + page);
 }
 
 let tableData = [
@@ -81,6 +85,7 @@ export const Basic = (): StoryFnAngularReturnType => ({
     columns: columns,
     pagination: pagination,
     data: tableData,
-    totalItems: 4
+    totalItems: 4,
+    onRowClick: (obj) => {window.alert(JSON.stringify(obj))}
   },
 });

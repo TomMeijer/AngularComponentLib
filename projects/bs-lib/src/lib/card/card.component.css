@@ -5,8 +5,7 @@
 
 .card .card-header .header-subtext {
   font-size: 80%;
-  font-weight: 400;
-  color: #6c757d;
+  opacity: 0.8;
 }
 
 .card .card-header .card-actions .card-action {
