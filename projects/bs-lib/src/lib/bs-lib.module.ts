@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
 import { LabelComponent } from './label/label.component';
 import { InputPrependComponent } from './input-prepend/input-prepend.component';
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InputPrependComponent } from './input-prepend/input-prepend.component';
     PaginationModule,
     RouterModule,
     FormsModule,
-    NgbTooltipModule
+    NgbTooltipModule,
+    NgSelectModule
   ],
   exports: [
     TableComponent,

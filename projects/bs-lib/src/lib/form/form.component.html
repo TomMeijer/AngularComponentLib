@@ -22,8 +22,34 @@
               <select [name]="input.name" class="form-control" [(ngModel)]="model[input.name]" [required]="input.required"
                       [class.form-control-sm]="small" (change)="changeInput(input, $event)">
                 <option></option>
-                <option *ngFor="let option of input.selectOptions" [value]="option.value">{{option.text}}</option>
+                <option *ngFor="let item of input.select.items" [value]="input.select.bindValue ? item[input.select.bindValue] : item.value">
+                  {{input.select.bindLabel ? item[input.select.bindLabel] : item.label}}
+                </option>
               </select>
+              <tm-input-prepend *ngIf="input.appendIcon || input.appendText" class="input-group-append" [icon]="input.appendIcon"
+                                [text]="input.appendText"></tm-input-prepend>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'ngselect'">
+          <div class="form-group">
+            <tm-label *ngIf="input.label" [text]="input.label" [required]="input.required" [tooltip]="input.tooltip"
+                      [tooltipIcon]="tooltipIcon"></tm-label>
+            <div [ngClass]="{'input-group ng-select-input-group': input.prependIcon || input.prependText || input.appendIcon || input.appendText,
+              'ng-select-input-group-prepend': input.prependIcon || input.prependText, 'ng-select-input-group-append': input.appendIcon || input.appendText}">
+              <tm-input-prepend *ngIf="input.prependIcon || input.prependText" class="input-group-prepend" [icon]="input.prependIcon"
+                                [text]="input.prependText"></tm-input-prepend>
+              <ng-select [name]="input.name" class="tm-ng-select" [class.tm-ng-select-sm]="small" [items]="input.ngSelect.items"
+                         [(ngModel)]="model[input.name]" [bindLabel]="input.ngSelect.bindLabel" [bindValue]="input.ngSelect.bindValue"
+                         (change)="changeInput(input, $event)" [searchable]="input.ngSelect.searchable" [clearable]="input.ngSelect.clearable"
+                         [placeholder]="input.placeholder">
+                <ng-template *ngIf="input.ngSelect.labelTemplate" ng-label-tmp let-item="item">
+                  <div [innerHTML]="input.ngSelect.labelTemplate(item)"></div>
+                </ng-template>
+                <ng-template *ngIf="input.ngSelect.optionTemplate" ng-option-tmp let-item="item">
+                  <div [innerHTML]="input.ngSelect.optionTemplate(item)"></div>
+                </ng-template>
+              </ng-select>
               <tm-input-prepend *ngIf="input.appendIcon || input.appendText" class="input-group-append" [icon]="input.appendIcon"
                                 [text]="input.appendText"></tm-input-prepend>
             </div>

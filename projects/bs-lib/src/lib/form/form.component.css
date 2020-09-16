@@ -1,0 +1,27 @@
+.ng-select-input-group {
+  flex-wrap: nowrap;
+}
+
+.ng-select-input-group .ng-select.tm-ng-select {
+  width: 100%;
+}
+
+:host ::ng-deep .ng-select-input-group.ng-select-input-group-prepend .ng-select.tm-ng-select .ng-select-container {
+  border-left: none !important;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+:host ::ng-deep .ng-select-input-group.ng-select-input-group-append .ng-select.tm-ng-select .ng-select-container {
+  border-right: none !important;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+:host ::ng-deep .ng-select-input-group.ng-select-input-group-prepend .input-group-prepend .input-group-text {
+  margin-right: 1px;
+}
+
+:host ::ng-deep .ng-select-input-group.ng-select-input-group-append .input-group-append .input-group-text {
+  margin-left: 1px;
+}

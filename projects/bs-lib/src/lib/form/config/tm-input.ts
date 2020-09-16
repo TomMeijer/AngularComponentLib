@@ -1,4 +1,5 @@
-import {TmSelectOption} from "./tm-select-option";
+import {TmNgSelect} from "./tm-ng-select";
+import {TmSelect} from "./tm-select";
 
 export interface TmInput {
 
@@ -8,7 +9,8 @@ export interface TmInput {
   required?: boolean;
   placeholder?: string;
   maxLength?: number;
-  selectOptions?: TmSelectOption[];
+  select?: TmSelect;
+  ngSelect?: TmNgSelect;
   onChange?: (event: Event) => any;
   pattern?: string;
   textareaRows?: number;

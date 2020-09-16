@@ -34,14 +34,22 @@ let inputs: TmInput[] = [
     group: '2'
   },
   {
-    type: 'select',
+    type: 'ngselect',
     label: 'Country',
     name: 'country',
     required: true,
-    selectOptions: [
-      {text: 'Netherlands', value: 'NL'},
-      {text: 'United States', value: 'US'}
-    ],
+    prependIcon: 'fas fa-user',
+    ngSelect: {
+      searchable: true,
+      bindValue: 'code',
+      bindLabel: 'name',
+      optionTemplate: getCountryOptionHTML,
+      labelTemplate: getCountryOptionHTML,
+      items: [
+        {name: 'Netherlands', code: 'NL'},
+        {name: 'United States', code: 'US'}
+      ]
+    },
     tooltip: "Your country of birth",
     group: '2'
   },
@@ -57,6 +65,14 @@ let inputs: TmInput[] = [
     textareaRows: 3
   }
 ];
+
+function getCountryOptionHTML(country): string {
+  if (country.code === 'NL') {
+    return `<i class="fas fa-cheese mr-2"></i>${country.name}`;
+  } else {
+    return country.name;
+  }
+}
 
 function submitForm(form: NgForm) {
   window.alert(JSON.stringify(model, null, 4));
