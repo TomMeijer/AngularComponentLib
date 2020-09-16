@@ -9,13 +9,17 @@ export default {
   component: FormComponent,
 };
 
-let model = {};
+let model = {
+  name: {
+    first: 'Tom'
+  }
+};
 
 let inputs: TmInput[] = [
   {
     type: 'text',
     label: 'First name',
-    name: 'firstName',
+    name: 'name.first',
     required: true,
     prependIcon: 'fas fa-user',
     group: '1'
@@ -23,7 +27,7 @@ let inputs: TmInput[] = [
   {
     type: 'text',
     label: 'Last name',
-    name: 'lastName',
+    name: 'name.last',
     group: '1'
   },
   {
@@ -40,7 +44,6 @@ let inputs: TmInput[] = [
     required: true,
     prependIcon: 'fas fa-user',
     ngSelect: {
-      searchable: true,
       bindValue: 'code',
       bindLabel: 'name',
       optionTemplate: getCountryOptionHTML,

@@ -36,6 +36,24 @@ export class FormComponent implements OnInit {
     this.inputGroups = this.getInputGroups();
   }
 
+  public getModelProp(name: string): any {
+    return name.split('.').reduce((prev, curr) => prev && prev[curr], this.model);
+  }
+
+  public setModelProp(name: string, value: any) {
+    let model = this.model;
+    let properties = name.split('.');
+    let len = properties.length;
+    for(let i = 0; i < len - 1; i++) {
+      let property = properties[i];
+      if (!model[property]) {
+        model[property] = {};
+      }
+      model = model[property];
+    }
+    model[properties[len - 1]] = value;
+  }
+
   public submitForm(form: NgForm): void {
     this.wasValidated = !form.valid;
     this.onSubmit.emit(form);
