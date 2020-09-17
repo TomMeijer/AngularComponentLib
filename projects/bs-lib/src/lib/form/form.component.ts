@@ -20,12 +20,24 @@ export class FormComponent implements OnInit {
   @Input()
   public submitText: string;
   @Input()
+  public submitIcon: string;
+  @Input()
   public submitBtnClass: string;
   @Input()
   public tooltipIcon: string;
+  @Input()
+  public isChanged: boolean;
+  @Input()
+  public isSubmitting: boolean;
+  @Input()
+  public changedSubmitText: string;
+  @Input()
+  public changedSubmitIcon: string;
 
   @Output()
   public onSubmit: EventEmitter<NgForm> = new EventEmitter();
+  @Output()
+  public onInput: EventEmitter<NgForm> = new EventEmitter();
 
   public inputGroups: TmInput[][];
   public wasValidated: boolean = false;
@@ -44,7 +56,7 @@ export class FormComponent implements OnInit {
     let model = this.model;
     let properties = name.split('.');
     let len = properties.length;
-    for(let i = 0; i < len - 1; i++) {
+    for (let i = 0; i < len - 1; i++) {
       let property = properties[i];
       if (!model[property]) {
         model[property] = {};

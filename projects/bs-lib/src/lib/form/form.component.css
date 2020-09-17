@@ -25,3 +25,7 @@
 :host ::ng-deep .ng-select-input-group.ng-select-input-group-append .input-group-append .input-group-text {
   margin-left: 1px;
 }
+
+.btn i + span {
+  margin-left: 6px;
+}

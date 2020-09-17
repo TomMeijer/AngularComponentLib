@@ -90,7 +90,7 @@ export const Basic = (): StoryFnAngularReturnType => ({
     className: 'my-form',
     inputs: inputs,
     model: model,
+    submitText: 'Submit',
     onSubmit: submitForm,
-    submitBtnClass: 'btn-success'
   }
 });
