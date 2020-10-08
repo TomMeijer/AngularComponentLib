@@ -18,14 +18,6 @@
   border-bottom-right-radius: 0;
 }
 
-:host ::ng-deep .ng-select-input-group.ng-select-input-group-prepend .input-group-prepend .input-group-text {
-  margin-right: 1px;
-}
-
-:host ::ng-deep .ng-select-input-group.ng-select-input-group-append .input-group-append .input-group-text {
-  margin-left: 1px;
-}
-
 .btn i + span {
   margin-left: 6px;
 }

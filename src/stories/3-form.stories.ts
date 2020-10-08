@@ -12,6 +12,10 @@ export default {
 let model = {
   name: {
     first: 'Tom'
+  },
+  country: {
+    id: 1,
+    name: 'Netherlands'
   }
 };
 
@@ -44,13 +48,12 @@ let inputs: TmInput[] = [
     required: true,
     prependIcon: 'fas fa-user',
     ngSelect: {
-      bindValue: 'code',
       bindLabel: 'name',
       optionTemplate: getCountryOptionHTML,
       labelTemplate: getCountryOptionHTML,
       items: [
-        {name: 'Netherlands', code: 'NL'},
-        {name: 'United States', code: 'US'}
+        {name: 'Netherlands', id: 1, code: 'NL'},
+        {name: 'United States', id: 2, code: 'US'}
       ]
     },
     tooltip: "Your country of birth",
@@ -91,6 +94,6 @@ export const Basic = (): StoryFnAngularReturnType => ({
     inputs: inputs,
     model: model,
     submitText: 'Submit',
-    onSubmit: submitForm,
+    onSubmit: submitForm
   }
 });

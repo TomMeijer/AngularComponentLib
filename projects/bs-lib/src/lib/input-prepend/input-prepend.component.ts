@@ -8,13 +8,21 @@ import {Component, Input, OnInit} from '@angular/core';
 export class InputPrependComponent implements OnInit {
 
   @Input()
-  public icon: string;
+  public icon: string | (() => string);
   @Input()
-  public text: string;
+  public text: string | (() => any);
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public getIcon(): string {
+    return typeof this.icon === 'string' ? this.icon : this.icon();
+  }
+
+  public getText(): any {
+    return typeof this.text === 'string' ? this.text : this.text();
   }
 
 }

@@ -11,13 +11,15 @@ export interface TmInput {
   maxLength?: number;
   select?: TmSelect;
   ngSelect?: TmNgSelect;
-  onChange?: (event: Event) => any;
+  onChange?: (event: any) => void;
   pattern?: string;
   textareaRows?: number;
   tooltip?: string;
-  prependText?: string;
-  prependIcon?: string;
-  appendText?: string;
-  appendIcon?: string;
+  prependText?: string | (() => any);
+  prependIcon?: string | (() => string);
+  appendText?: string | (() => any);
+  appendIcon?: string | (() => string);
   group?: string
+  hidden?: boolean;
+  className?: string;
 }

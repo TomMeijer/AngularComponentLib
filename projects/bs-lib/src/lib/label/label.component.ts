@@ -15,6 +15,8 @@ export class LabelComponent implements OnInit {
   public tooltip: string;
   @Input()
   public tooltipIcon: string;
+  @Input()
+  public showRequiredStar: boolean;
 
   constructor() { }
 

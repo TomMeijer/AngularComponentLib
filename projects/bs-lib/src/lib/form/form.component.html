@@ -1,89 +1,95 @@
 <form #tmForm="ngForm" class="tm-form {{className}}" [class.was-validated]="wasValidated" (ngSubmit)="submitForm(tmForm)"
       (input)="onInput.emit(tmForm)">
-  <div *ngFor="let group of inputGroups" class="form-row">
-    <div *ngFor="let input of group" class="col">
-      <ng-container [ngSwitch]="input.type">
-        <ng-container *ngSwitchCase="'checkbox'">
-          <div class="form-group form-check">
-            <label class="form-check-label">
-              <input type="checkbox" [name]="input.name" class="form-check-input" [ngModel]="getModelProp(input.name)"
-                     (ngModelChange)="setModelProp(input.name, $event)" [required]="input.required" [checked]="model[input.name]"
-                     (change)="changeInput(input, $event)">
-              <span>{{input.label}}</span>
-              <span *ngIf="input.required">&nbsp;*</span>
-            </label>
-          </div>
-        </ng-container>
-        <ng-container *ngSwitchCase="'select'">
-          <div class="form-group">
-            <tm-label *ngIf="input.label" [text]="input.label" [required]="input.required" [tooltip]="input.tooltip"
-                      [tooltipIcon]="tooltipIcon"></tm-label>
-            <div [class.input-group]="input.prependIcon || input.prependText || input.appendIcon || input.appendText">
-              <tm-input-prepend *ngIf="input.prependIcon || input.prependText" class="input-group-prepend" [icon]="input.prependIcon"
-                                [text]="input.prependText"></tm-input-prepend>
-              <select [name]="input.name" class="form-control" [ngModel]="getModelProp(input.name)" (ngModelChange)="setModelProp(input.name, $event)"
-                      [required]="input.required" [class.form-control-sm]="small" (change)="changeInput(input, $event)">
-                <option></option>
-                <option *ngFor="let item of input.select.items" [value]="input.select.bindValue ? item[input.select.bindValue] : item.value">
-                  {{input.select.bindLabel ? item[input.select.bindLabel] : item.label}}
-                </option>
-              </select>
-              <tm-input-prepend *ngIf="input.appendIcon || input.appendText" class="input-group-append" [icon]="input.appendIcon"
-                                [text]="input.appendText"></tm-input-prepend>
-            </div>
-          </div>
-        </ng-container>
-        <ng-container *ngSwitchCase="'ngselect'">
-          <div class="form-group">
-            <tm-label *ngIf="input.label" [text]="input.label" [required]="input.required" [tooltip]="input.tooltip"
-                      [tooltipIcon]="tooltipIcon"></tm-label>
-            <div [ngClass]="{'input-group ng-select-input-group': input.prependIcon || input.prependText || input.appendIcon || input.appendText,
-              'ng-select-input-group-prepend': input.prependIcon || input.prependText, 'ng-select-input-group-append': input.appendIcon || input.appendText}">
-              <tm-input-prepend *ngIf="input.prependIcon || input.prependText" class="input-group-prepend" [icon]="input.prependIcon"
-                                [text]="input.prependText"></tm-input-prepend>
-              <ng-select [name]="input.name" class="tm-ng-select" [class.tm-ng-select-sm]="small" [items]="input.ngSelect.items"
-                         [ngModel]="getModelProp(input.name)" (ngModelChange)="setModelProp(input.name, $event)"
-                         [bindLabel]="input.ngSelect.bindLabel" [bindValue]="input.ngSelect.bindValue" (change)="changeInput(input, $event)"
-                         [searchable]="input.ngSelect.searchable" [clearable]="input.ngSelect.clearable" [placeholder]="input.placeholder">
-                <ng-template *ngIf="input.ngSelect.labelTemplate" ng-label-tmp let-item="item">
-                  <div [innerHTML]="input.ngSelect.labelTemplate(item)"></div>
-                </ng-template>
-                <ng-template *ngIf="input.ngSelect.optionTemplate" ng-option-tmp let-item="item">
-                  <div [innerHTML]="input.ngSelect.optionTemplate(item)"></div>
-                </ng-template>
-              </ng-select>
-              <tm-input-prepend *ngIf="input.appendIcon || input.appendText" class="input-group-append" [icon]="input.appendIcon"
-                                [text]="input.appendText"></tm-input-prepend>
-            </div>
-          </div>
-        </ng-container>
-        <ng-container *ngSwitchCase="'textarea'">
-          <div class="form-group">
-            <tm-label *ngIf="input.label" [text]="input.label" [required]="input.required" [tooltip]="input.tooltip"
-                      [tooltipIcon]="tooltipIcon"></tm-label>
-            <textarea [name]="input.name" class="form-control" [rows]="input.textareaRows" [ngModel]="getModelProp(input.name)"
-                      (ngModelChange)="setModelProp(input.name, $event)" [required]="input.required" placeholder="{{input.placeholder}}"
-                      [maxlength]="input.maxLength" [class.form-control-sm]="small" (change)="changeInput(input, $event)"></textarea>
-          </div>
-        </ng-container>
-        <ng-container *ngSwitchDefault>
-          <div class="form-group">
-            <tm-label *ngIf="input.label" [text]="input.label" [required]="input.required" [tooltip]="input.tooltip"
-                      [tooltipIcon]="tooltipIcon"></tm-label>
-            <div [class.input-group]="input.prependIcon || input.prependText || input.appendIcon || input.appendText">
-              <tm-input-prepend *ngIf="input.prependIcon || input.prependText" class="input-group-prepend" [icon]="input.prependIcon"
-                                [text]="input.prependText"></tm-input-prepend>
-              <input [type]="input.type" [name]="input.name" class="form-control" [ngModel]="getModelProp(input.name)"
-                     (ngModelChange)="setModelProp(input.name, $event)" [required]="input.required" placeholder="{{input.placeholder}}"
-                     [maxlength]="input.maxLength" [class.form-control-sm]="small" (change)="changeInput(input, $event)" [pattern]="input.pattern">
-              <tm-input-prepend *ngIf="input.appendIcon || input.appendText" class="input-group-append" [icon]="input.appendIcon"
-                                [text]="input.appendText"></tm-input-prepend>
-            </div>
-          </div>
-        </ng-container>
+  <ng-container *ngFor="let group of inputGroups">
+    <div *ngIf="containsDisplayable(group)" class="form-row">
+      <ng-container *ngFor="let input of group">
+        <div *ngIf="!input.hidden" class="col">
+          <ng-container [ngSwitch]="input.type">
+            <ng-container *ngSwitchCase="'checkbox'">
+              <div class="form-group form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" [name]="input.name" class="form-check-input {{input.className}}" [ngModel]="getModelProp(input.name)"
+                         (ngModelChange)="setModelProp(input.name, $event)" [required]="input.required" [checked]="model[input.name]"
+                         (change)="changeInput(input, $event)">
+                  <span>{{input.label}}</span>
+                  <span *ngIf="showRequiredStar && input.required">&nbsp;*</span>
+                </label>
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'select'">
+              <div class="form-group">
+                <tm-label *ngIf="input.label" [text]="input.label" [required]="input.required" [showRequiredStar]="showRequiredStar"
+                          [tooltip]="input.tooltip" [tooltipIcon]="tooltipIcon"></tm-label>
+                <div [class.input-group]="input.prependIcon || input.prependText || input.appendIcon || input.appendText">
+                  <tm-input-prepend *ngIf="input.prependIcon || input.prependText" class="input-group-prepend" [icon]="input.prependIcon"
+                                    [text]="input.prependText"></tm-input-prepend>
+                  <select [name]="input.name" class="form-control {{input.className}}" [ngModel]="getModelProp(input.name)"
+                          (ngModelChange)="setModelProp(input.name, $event)" [required]="input.required" [class.form-control-sm]="small"
+                          (change)="changeInput(input, $event)">
+                    <option></option>
+                    <option *ngFor="let item of input.select.items" [value]="input.select.bindValue ? item[input.select.bindValue] : item.value">
+                      {{input.select.bindLabel ? item[input.select.bindLabel] : item.label}}
+                    </option>
+                  </select>
+                  <tm-input-prepend *ngIf="input.appendIcon || input.appendText" class="input-group-append" [icon]="input.appendIcon"
+                                    [text]="input.appendText"></tm-input-prepend>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'ngselect'">
+              <div class="form-group">
+                <tm-label *ngIf="input.label" [text]="input.label" [required]="input.required" [showRequiredStar]="showRequiredStar"
+                          [tooltip]="input.tooltip" [tooltipIcon]="tooltipIcon"></tm-label>
+                <div [ngClass]="{'input-group ng-select-input-group': input.prependIcon || input.prependText || input.appendIcon || input.appendText,
+                          'ng-select-input-group-prepend': input.prependIcon || input.prependText, 'ng-select-input-group-append': input.appendIcon || input.appendText}">
+                  <tm-input-prepend *ngIf="input.prependIcon || input.prependText" class="input-group-prepend" [icon]="input.prependIcon"
+                                    [text]="input.prependText"></tm-input-prepend>
+                  <ng-select [name]="input.name" class="tm-ng-select {{input.className}}" [required]="input.required" [class.tm-ng-select-sm]="small"
+                             [items]="getNgSelectItems(input.ngSelect) | async" [ngModel]="getModelProp(input.name)" (ngModelChange)="setModelProp(input.name, $event)"
+                             [bindLabel]="input.ngSelect.bindLabel" [bindValue]="input.ngSelect.bindValue" (change)="changeInput(input, $event)"
+                             [searchable]="input.ngSelect.searchable" [clearable]="input.ngSelect.clearable" [placeholder]="input.placeholder"
+                             [searchFn]="input.ngSelect.searchFn">
+                    <ng-template *ngIf="input.ngSelect.labelTemplate" ng-label-tmp let-item="item">
+                      <div [innerHTML]="input.ngSelect.labelTemplate(item)"></div>
+                    </ng-template>
+                    <ng-template *ngIf="input.ngSelect.optionTemplate" ng-option-tmp let-item="item">
+                      <div [innerHTML]="input.ngSelect.optionTemplate(item)"></div>
+                    </ng-template>
+                  </ng-select>
+                  <tm-input-prepend *ngIf="input.appendIcon || input.appendText" class="input-group-append" [icon]="input.appendIcon"
+                                    [text]="input.appendText"></tm-input-prepend>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'textarea'">
+              <div class="form-group">
+                <tm-label *ngIf="input.label" [text]="input.label" [required]="input.required" [showRequiredStar]="showRequiredStar"
+                          [tooltip]="input.tooltip" [tooltipIcon]="tooltipIcon"></tm-label>
+                <textarea [name]="input.name" class="form-control {{input.className}}" [rows]="input.textareaRows" [ngModel]="getModelProp(input.name)"
+                          (ngModelChange)="setModelProp(input.name, $event)" [required]="input.required" placeholder="{{input.placeholder}}"
+                          [maxlength]="input.maxLength" [class.form-control-sm]="small" (change)="changeInput(input, $event)"></textarea>
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+              <div class="form-group">
+                <tm-label *ngIf="input.label" [text]="input.label" [required]="input.required" [showRequiredStar]="showRequiredStar"
+                          [tooltip]="input.tooltip" [tooltipIcon]="tooltipIcon"></tm-label>
+                <div [class.input-group]="input.prependIcon || input.prependText || input.appendIcon || input.appendText">
+                  <tm-input-prepend *ngIf="input.prependIcon || input.prependText" class="input-group-prepend" [icon]="input.prependIcon"
+                                    [text]="input.prependText"></tm-input-prepend>
+                  <input [type]="input.type" [name]="input.name" class="form-control {{input.className}}" [ngModel]="getModelProp(input.name)"
+                         (ngModelChange)="setModelProp(input.name, $event)" [required]="input.required" placeholder="{{input.placeholder}}"
+                         [maxlength]="input.maxLength" [class.form-control-sm]="small" (change)="changeInput(input, $event)" [pattern]="input.pattern">
+                  <tm-input-prepend *ngIf="input.appendIcon || input.appendText" class="input-group-append" [icon]="input.appendIcon"
+                                    [text]="input.appendText"></tm-input-prepend>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
       </ng-container>
     </div>
-  </div>
+  </ng-container>
   <button type="submit" class="btn {{submitBtnClass ? submitBtnClass : 'btn-primary'}}" [class.btn-warning]="isChanged">
     <span *ngIf="isSubmitting; else notSubmitting" class="spinner-border spinner-border-sm"></span>
     <ng-template #notSubmitting>

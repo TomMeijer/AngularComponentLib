@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {TmInput} from "./config/tm-input";
+import {Observable, of} from "rxjs";
+import {TmNgSelect} from "./config/tm-ng-select";
 
 @Component({
   selector: 'tm-form',
@@ -33,6 +35,8 @@ export class FormComponent implements OnInit {
   public changedSubmitText: string;
   @Input()
   public changedSubmitIcon: string;
+  @Input()
+  public showRequiredStar: boolean;
 
   @Output()
   public onSubmit: EventEmitter<NgForm> = new EventEmitter();
@@ -71,13 +75,13 @@ export class FormComponent implements OnInit {
     this.onSubmit.emit(form);
   }
 
-  public changeInput(input: TmInput, event: Event): void {
+  public changeInput(input: TmInput, event: any): void {
     if (input.onChange) {
       input.onChange(event);
     }
   }
 
-  private getInputGroups(): any {
+  private getInputGroups(): TmInput[][] {
     const inputGroups = [];
     const groups = [];
     for (let input of this.inputs) {
@@ -89,6 +93,14 @@ export class FormComponent implements OnInit {
       }
     }
     return inputGroups;
+  }
+
+  public getNgSelectItems(ngSelect: TmNgSelect): Observable<any[]> {
+    return Array.isArray(ngSelect.items) ? of(ngSelect.items) : ngSelect.items;
+  }
+
+  public containsDisplayable(group: TmInput[]): boolean {
+    return group.findIndex(input => !input.hidden) !== -1;
   }
 
 }
