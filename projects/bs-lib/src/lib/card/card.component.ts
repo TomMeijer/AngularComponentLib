@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {TmCardAction} from "./config/tm-card-action";
 
 @Component({
@@ -17,6 +17,8 @@ export class CardComponent implements OnInit {
   @Input()
   public headerSubText: string;
   @Input()
+  public headerTemplate: TemplateRef<HTMLElement>;
+  @Input()
   public footerText: string;
   @Input()
   public footerIcon: string;
@@ -26,10 +28,20 @@ export class CardComponent implements OnInit {
   public imgTopSrc: string;
   @Input()
   public imgBottomSrc: string;
+  @Input()
+  public footerTemplate: TemplateRef<HTMLElement>;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public hasHeader(): boolean {
+    return !!this.headerTemplate || !!this.headerText || !!this.headerIcon;
+  }
+
+  public hasFooter(): boolean {
+    return !!this.footerTemplate || !!this.footerText || !!this.footerIcon;
   }
 
 }

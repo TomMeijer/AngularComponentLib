@@ -1,13 +1,16 @@
-<table [id]="id" class="table tm-table {{className}}" [class.table-striped]="striped" [class.table-bordered]="bordered"
-       [class.table-sm]="small" [class.table-hover]="hover">
-  <thead>
+<table class="table tm-table {{className}}"
+       [class.table-striped]="striped"
+       [class.table-bordered]="bordered"
+       [class.table-sm]="small"
+       [class.table-hover]="hover">
+  <thead *ngIf="hasColumnNames()">
   <tr>
     <th *ngFor="let col of columns">{{col.name}}</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let obj of data; index as rowNum" (click)="onRowClick.emit(obj)">
-    <td *ngFor="let col of columns; index as colNum" id="{{id}}Row{{rowNum}}Col{{colNum}}">{{resolveValue(obj, col.data, getElement(id + 'Row' + rowNum + 'Col' + colNum))}}</td>
+  <tr *ngFor="let obj of data" (click)="onRowClick.emit(obj)">
+    <td *ngFor="let col of columns" [innerHTML]="resolveValue(obj, col.data)"></td>
   </tr>
   </tbody>
 </table>
@@ -16,7 +19,10 @@
 <div *ngIf="pagination && data && data.length > 0" class="pagination-container d-flex justify-content-between">
   <div class="results-count align-self-center">Total results: {{totalItems}}</div>
   <div class="align-self-center">
-    <pagination [totalItems]="totalItems" [itemsPerPage]="pagination.itemsPerPage" [maxSize]="pagination.maxPageLinks"
-                (pageChanged)="pagination.onPageChange($event.page - 1)"></pagination>
+    <pagination [totalItems]="totalItems"
+                [itemsPerPage]="pagination.itemsPerPage"
+                [maxSize]="pagination.maxPageLinks"
+                (pageChanged)="pagination.onPageChange($event.page - 1)">
+    </pagination>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {TmInput} from "./config/tm-input";
 import {Observable, of} from "rxjs";
@@ -37,6 +37,12 @@ export class FormComponent implements OnInit {
   public changedSubmitIcon: string;
   @Input()
   public showRequiredStar: boolean;
+  @Input()
+  public footerTemplate: TemplateRef<HTMLElement>;
+  @Input()
+  public noSubmitBtn: boolean;
+  @Input()
+  public submitBtnDisabled: boolean;
 
   @Output()
   public onSubmit: EventEmitter<NgForm> = new EventEmitter();
@@ -56,9 +62,9 @@ export class FormComponent implements OnInit {
     return name.split('.').reduce((prev, curr) => prev && prev[curr], this.model);
   }
 
-  public setModelProp(name: string, value: any) {
+  public setModelProp(input: TmInput, value: any) {
     let model = this.model;
-    let properties = name.split('.');
+    let properties = input.name.split('.');
     let len = properties.length;
     for (let i = 0; i < len - 1; i++) {
       let property = properties[i];
@@ -67,7 +73,7 @@ export class FormComponent implements OnInit {
       }
       model = model[property];
     }
-    model[properties[len - 1]] = value;
+    model[properties[len - 1]] = (input.type === 'number' && value !== '') ? +value : value;
   }
 
   public submitForm(form: NgForm): void {
@@ -101,6 +107,18 @@ export class FormComponent implements OnInit {
 
   public containsDisplayable(group: TmInput[]): boolean {
     return group.findIndex(input => !input.hidden) !== -1;
+  }
+
+  public isInputGroup(input: TmInput): boolean {
+    return this.hasPrepend(input) || this.hasAppend(input);
+  }
+
+  public hasPrepend(input: TmInput): boolean {
+    return (!!input.prependIcon || !!input.prependText);
+  }
+
+  public hasAppend(input: TmInput): boolean {
+    return (!!input.appendIcon || !!input.appendText);
   }
 
 }

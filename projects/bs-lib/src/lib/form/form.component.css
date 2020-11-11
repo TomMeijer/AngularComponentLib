@@ -21,3 +21,7 @@
 .btn i + span {
   margin-left: 6px;
 }
+
+.form-spinner {
+  text-align: center;
+}

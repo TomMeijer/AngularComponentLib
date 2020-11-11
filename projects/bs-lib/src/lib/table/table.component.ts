@@ -10,8 +10,6 @@ import {TmPagination} from "./config/tm-pagination";
 export class TableComponent implements OnInit {
 
   @Input()
-  public id: string;
-  @Input()
   public striped: boolean;
   @Input()
   public bordered: boolean;
@@ -38,15 +36,15 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public resolveValue(obj: any, data: string | ((obj: any, td: HTMLElement) => any), td: HTMLElement): any {
+  public resolveValue(obj: any, data: string | ((obj: any) => any)): any {
     if (typeof data === 'string') {
       return data.split('.').reduce((prev, curr) => prev && prev[curr], obj);
     }
-    return data(obj, td);
+    return data(obj);
   }
 
-  public getElement(id: string): HTMLElement {
-    return document.getElementById(id);
+  public hasColumnNames(): boolean {
+    return this.columns.findIndex(col => col.name) !== -1;
   }
 
 }

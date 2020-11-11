@@ -1,32 +1,41 @@
 <div class="card tm-card {{className}}">
-  <div *ngIf="headerText || headerIcon || headerSubText || (actions && actions.length > 0); else custHeader" class="card-header">
-    <div class="d-flex justify-content-between">
-      <div>
-        <div *ngIf="headerText || headerIcon"><i *ngIf="headerIcon" class="header-icon {{headerIcon}}"></i>{{headerText}}</div>
-        <div *ngIf="headerSubText" class="header-subtext">{{headerSubText}}</div>
-      </div>
-      <div *ngIf="actions && actions.length > 0; else custActions" class="card-actions d-flex">
-        <div *ngFor="let action of actions" class="card-action" [class.action-link]="action.link || action.onClick" [style.color]="action.color"
-             [routerLink]="action.link" (click)="action.onClick ? action.onClick() : false">
-          <i *ngIf="action.icon" class="action-icon {{action.icon}}"></i>
-          <span *ngIf="action.text" class="action-text">{{action.text}}</span>
+  <div *ngIf="hasHeader()" class="card-header">
+    <ng-container *ngIf="!headerTemplate; else custHeader">
+      <div class="d-flex justify-content-between">
+        <div>
+          <div *ngIf="headerText || headerIcon">
+            <i *ngIf="headerIcon" class="header-icon {{headerIcon}}"></i>{{headerText}}
+          </div>
+          <div *ngIf="headerSubText" class="header-subtext">{{headerSubText}}</div>
+        </div>
+        <div *ngIf="actions" class="card-actions d-flex">
+          <div *ngFor="let action of actions"
+               class="card-action"
+               [class.action-link]="action.link || action.onClick"
+               [style.color]="action.color"
+               [routerLink]="action.link"
+               (click)="action.onClick ? action.onClick() : false">
+            <i *ngIf="action.icon" class="action-icon {{action.icon}}"></i>
+            <span *ngIf="action.text" class="action-text">{{action.text}}</span>
+          </div>
         </div>
       </div>
-      <ng-template #custActions>
-        <ng-content select=".card-actions"></ng-content>
-      </ng-template>
-    </div>
+    </ng-container>
+    <ng-template #custHeader>
+      <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+    </ng-template>
   </div>
   <img *ngIf="imgTopSrc" class="card-img-top" [src]="imgTopSrc" alt="Not found">
-  <ng-template #custHeader>
-    <ng-content select=".card-header"></ng-content>
-  </ng-template>
   <div class="card-body">
     <ng-content></ng-content>
   </div>
   <img *ngIf="imgBottomSrc" class="card-img-bottom" [src]="imgBottomSrc" alt="Not found">
-  <div *ngIf="footerText || footerIcon; else custFooter" class="card-footer"><i *ngIf="footerIcon" class="footer-icon {{footerIcon}}"></i>{{footerText}}</div>
-  <ng-template #custFooter>
-    <ng-content select=".card-footer"></ng-content>
-  </ng-template>
+  <div *ngIf="hasFooter()" class="card-footer">
+    <ng-container *ngIf="!footerTemplate; else custFooter">
+      <i *ngIf="footerIcon" class="footer-icon {{footerIcon}}"></i>{{footerText}}
+    </ng-container>
+    <ng-template #custFooter>
+      <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
+    </ng-template>
+  </div>
 </div>
