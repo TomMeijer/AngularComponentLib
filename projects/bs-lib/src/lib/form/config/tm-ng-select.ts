@@ -1,4 +1,4 @@
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 
 export interface TmNgSelect {
 
@@ -10,4 +10,5 @@ export interface TmNgSelect {
   optionTemplate?: (item) => string;
   labelTemplate?: (item) => string;
   searchFn?: (term: string, item: any) => boolean;
+  typeAhead?: Subject<string>;
 }

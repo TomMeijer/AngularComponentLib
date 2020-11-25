@@ -18,8 +18,6 @@ export class TableComponent implements OnInit {
   @Input()
   public hover: boolean;
   @Input()
-  public className: string;
-  @Input()
   public columns: TmColumn[];
   @Input()
   public pagination: TmPagination;

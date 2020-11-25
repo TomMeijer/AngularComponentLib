@@ -15,7 +15,7 @@ let columns: TmColumn[] = [
   {name: 'Date registered', data: (obj) => formatDate(obj.registerDate, 'dd-MM-yyyy', 'en-US')},
   {name: 'Role', data: 'role.name'},
   {name: 'Status', data: renderStatus},
-  {data: (obj, td) => td.innerHTML = `<a href="#"><i class="fas fa-pencil-alt"></i></a>`}
+  {data: () => `<a href="#"><i class="fas fa-pencil-alt"></i></a>`}
 ];
 
 let pagination: TmPagination = {
@@ -24,9 +24,9 @@ let pagination: TmPagination = {
   onPageChange: changePage
 };
 
-function renderStatus(obj: any, td: HTMLElement): string {
+function renderStatus(obj: any): string {
   if (obj.status === 'Busy') {
-    td.parentElement.classList.add('text-danger');
+    return '<span class="text-danger">${obj.status}</span>'
   }
   return obj.status;
 }
@@ -80,7 +80,6 @@ export const Basic = (): StoryFnAngularReturnType => ({
     imports: [PaginationModule.forRoot()],
   },
   props: {
-    id: 'table1',
     striped: true,
     columns: columns,
     pagination: pagination,

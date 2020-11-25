@@ -16,7 +16,7 @@ export class FormComponent implements OnInit {
   @Input()
   public model: any;
   @Input()
-  public className: string;
+  public loading: boolean;
   @Input()
   public small: boolean;
   @Input()
@@ -55,7 +55,7 @@ export class FormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.inputGroups = this.getInputGroups();
+    this.inputGroups = this.inputs ? this.getInputGroups() : [];
   }
 
   public getModelProp(name: string): any {

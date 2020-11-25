@@ -1,9 +1,9 @@
 <form #tmForm="ngForm"
-      class="tm-form {{className}}"
+      class="tm-form"
       [class.was-validated]="wasValidated"
       (ngSubmit)="submitForm(tmForm)"
       (input)="onInput.emit(tmForm)">
-  <div *ngIf="!model; else modelAvailable" class="form-spinner">
+  <div *ngIf="loading; else modelAvailable" class="form-spinner">
     <div class="spinner-border"></div>
   </div>
   <ng-template #modelAvailable>
@@ -98,7 +98,9 @@
                                [searchable]="input.ngSelect.searchable"
                                [clearable]="input.ngSelect.clearable"
                                [placeholder]="input.placeholder"
-                               [searchFn]="input.ngSelect.searchFn">
+                               [searchFn]="input.ngSelect.searchFn"
+                               [typeahead]="input.ngSelect.typeAhead"
+                               minTermLength="2">
                       <ng-template *ngIf="input.ngSelect.labelTemplate" ng-label-tmp let-item="item">
                         <div [innerHTML]="input.ngSelect.labelTemplate(item)"></div>
                       </ng-template>
@@ -178,7 +180,7 @@
         </ng-container>
       </div>
     </ng-container>
-    <div class="d-flex">
+    <div class="footer-container d-flex">
       <button *ngIf="!noSubmitBtn"
               type="submit"
               class="btn {{submitBtnClass ? submitBtnClass : 'btn-primary'}}"

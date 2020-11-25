@@ -9,8 +9,6 @@ import {TmCardAction} from "./config/tm-card-action";
 export class CardComponent implements OnInit {
 
   @Input()
-  public className: string;
-  @Input()
   public headerText: string;
   @Input()
   public headerIcon: string;
