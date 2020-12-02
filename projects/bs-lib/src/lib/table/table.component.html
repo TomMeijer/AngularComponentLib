@@ -9,7 +9,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let obj of data" (click)="onRowClick.emit(obj)">
+  <tr *ngFor="let obj of data" (click)="onRowClick.emit(obj)" [class.cursor-pointer]="hover">
     <td *ngFor="let col of columns" [innerHTML]="resolveValue(obj, col.data)"></td>
   </tr>
   </tbody>

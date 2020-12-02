@@ -6,10 +6,10 @@ import { CardComponent } from './card/card.component';
 import {RouterModule} from "@angular/router";
 import { FormComponent } from './form/form.component';
 import {FormsModule} from "@angular/forms";
-import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
 import { LabelComponent } from './label/label.component';
 import { InputPrependComponent } from './input-prepend/input-prepend.component';
 import {NgSelectModule} from "@ng-select/ng-select";
+import {TooltipModule} from "ngx-bootstrap/tooltip";
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import {NgSelectModule} from "@ng-select/ng-select";
     PaginationModule,
     RouterModule,
     FormsModule,
-    NgbTooltipModule,
+    TooltipModule,
     NgSelectModule
   ],
   exports: [

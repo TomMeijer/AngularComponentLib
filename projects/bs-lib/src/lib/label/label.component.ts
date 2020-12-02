@@ -12,7 +12,7 @@ export class LabelComponent implements OnInit {
   @Input()
   public required: boolean;
   @Input()
-  public tooltip: string;
+  public tooltipText: string;
   @Input()
   public tooltipIcon: string;
   @Input()

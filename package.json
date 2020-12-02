@@ -23,7 +23,6 @@
     "@angular/platform-browser": "^9.1.12",
     "@angular/platform-browser-dynamic": "^9.1.12",
     "@angular/router": "^9.1.12",
-    "@ng-bootstrap/ng-bootstrap": "^6.2.0",
     "@ng-select/ng-select": "^3.7.3",
     "ngx-bootstrap": "^5.6.1",
     "rxjs": "~6.5.5",
