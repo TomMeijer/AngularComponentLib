@@ -43,5 +43,10 @@
         }
       }
     }},
-  "defaultProject": "bs-lib"
+  "defaultProject": "bs-lib",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  }
 }

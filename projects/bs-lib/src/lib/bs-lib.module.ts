@@ -10,6 +10,8 @@ import { LabelComponent } from './label/label.component';
 import { InputPrependComponent } from './input-prepend/input-prepend.component';
 import {NgSelectModule} from "@ng-select/ng-select";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
+import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.component';
+import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import {TooltipModule} from "ngx-bootstrap/tooltip";
     CardComponent,
     FormComponent,
     LabelComponent,
-    InputPrependComponent
+    InputPrependComponent,
+    SkeletonLoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -25,12 +28,14 @@ import {TooltipModule} from "ngx-bootstrap/tooltip";
     RouterModule,
     FormsModule,
     TooltipModule,
-    NgSelectModule
+    NgSelectModule,
+    NgxSkeletonLoaderModule
   ],
   exports: [
     TableComponent,
     CardComponent,
-    FormComponent
+    FormComponent,
+    SkeletonLoaderComponent
   ]
 })
 export class BsLibModule { }

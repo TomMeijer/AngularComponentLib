@@ -3,6 +3,7 @@ import {StoryFnAngularReturnType} from "@storybook/angular/dist/client/preview/t
 import {TmInput} from "../../projects/bs-lib/src/lib/form/config/tm-input";
 import {NgForm} from "@angular/forms";
 import {BsLibModule} from "../../projects/bs-lib/src/lib/bs-lib.module";
+import {TooltipModule} from "ngx-bootstrap/tooltip";
 
 export default {
   title: 'Form',
@@ -87,7 +88,10 @@ function submitForm(form: NgForm) {
 export const Basic = (): StoryFnAngularReturnType => ({
   component: FormComponent,
   moduleMetadata: {
-    imports: [BsLibModule]
+    imports: [
+      BsLibModule,
+      TooltipModule.forRoot()
+    ]
   },
   props: {
     className: 'my-form',

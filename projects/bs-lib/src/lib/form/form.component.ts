@@ -14,7 +14,7 @@ export class FormComponent implements OnInit {
   @Input()
   public inputs: TmInput[];
   @Input()
-  public model: any;
+  public model: any = {};
   @Input()
   public loading: boolean;
   @Input()

@@ -26,7 +26,7 @@ let pagination: TmPagination = {
 
 function renderStatus(obj: any): string {
   if (obj.status === 'Busy') {
-    return '<span class="text-danger">${obj.status}</span>'
+    return `<span class="text-danger">${obj.status}</span>`
   }
   return obj.status;
 }
