@@ -12,6 +12,8 @@ export class SkeletonLoaderComponent implements OnInit {
   @Input()
   public animation: 'progress' | 'progress-dark' | 'pulse' | 'false';
   @Input()
+  public count: number = 1;
+  @Input()
   public height: string;
   @Input()
   public width: string;
@@ -19,6 +21,10 @@ export class SkeletonLoaderComponent implements OnInit {
   public marginTop: string;
   @Input()
   public marginBottom: string;
+  @Input()
+  public marginLeft: string;
+  @Input()
+  public marginRight: string;
 
   constructor() { }
 

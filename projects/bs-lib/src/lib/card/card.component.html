@@ -1,25 +1,10 @@
 <div class="card tm-card">
   <div *ngIf="hasHeader()" class="card-header">
     <ng-container *ngIf="!headerTemplate; else custHeader">
-      <div class="d-flex justify-content-between">
-        <div>
-          <div *ngIf="headerText || headerIcon">
-            <i *ngIf="headerIcon" class="header-icon {{headerIcon}}"></i>{{headerText}}
-          </div>
-          <div *ngIf="headerSubText" class="header-subtext">{{headerSubText}}</div>
-        </div>
-        <div *ngIf="actions" class="card-actions d-flex">
-          <div *ngFor="let action of actions"
-               class="card-action"
-               [class.action-link]="action.link || action.onClick"
-               [style.color]="action.color"
-               [routerLink]="action.link"
-               (click)="action.onClick ? action.onClick() : false">
-            <i *ngIf="action.icon" class="action-icon {{action.icon}}"></i>
-            <span *ngIf="action.text" class="action-text">{{action.text}}</span>
-          </div>
-        </div>
+      <div *ngIf="headerTitle || headerIcon" class="card-title">
+        <i *ngIf="headerIcon" class="header-icon {{headerIcon}}"></i>{{headerTitle}}
       </div>
+      <div *ngIf="headerSubtitle" class="card-subtitle">{{headerSubtitle}}</div>
     </ng-container>
     <ng-template #custHeader>
       <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>

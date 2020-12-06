@@ -1,9 +1,9 @@
 .ng-select-input-group {
   flex-wrap: nowrap;
-}
 
-.ng-select-input-group .ng-select.tm-ng-select {
-  width: 100%;
+  .ng-select.tm-ng-select {
+    width: 100%;
+  }
 }
 
 :host ::ng-deep .ng-select-input-group.ng-select-input-group-prepend .ng-select.tm-ng-select .ng-select-container {

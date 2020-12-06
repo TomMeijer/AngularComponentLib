@@ -1,27 +1,24 @@
 import {Component, Input, OnInit, TemplateRef} from '@angular/core';
-import {TmCardAction} from "./config/tm-card-action";
 
 @Component({
   selector: 'tm-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
 
   @Input()
-  public headerText: string;
+  public headerTitle: string;
   @Input()
   public headerIcon: string;
   @Input()
-  public headerSubText: string;
+  public headerSubtitle: string;
   @Input()
   public headerTemplate: TemplateRef<HTMLElement>;
   @Input()
   public footerText: string;
   @Input()
   public footerIcon: string;
-  @Input()
-  public actions: TmCardAction[];
   @Input()
   public imgTopSrc: string;
   @Input()
@@ -35,7 +32,7 @@ export class CardComponent implements OnInit {
   }
 
   public hasHeader(): boolean {
-    return !!this.headerTemplate || !!this.headerText || !!this.headerIcon;
+    return !!this.headerTemplate || !!this.headerTitle || !!this.headerIcon;
   }
 
   public hasFooter(): boolean {
