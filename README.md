@@ -1,2 +1,2 @@
-# angular-bootstrap-component-lib
+# tm-bootstrap
 A Bootstrap based Angular component library
