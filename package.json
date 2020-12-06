@@ -10,8 +10,8 @@
     "e2e": "ng e2e",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build-bs-lib": "ng build bs-lib",
-    "pack-bs-lib": "cd dist/bs-lib && npm pack"
+    "build-tm-bootstrap": "ng build tm-bootstrap",
+    "pack-tm-bootstrap": "cd dist/tm-bootstrap && npm pack"
   },
   "private": true,
   "dependencies": {

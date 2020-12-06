@@ -38,4 +38,4 @@ import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
     SkeletonLoaderComponent
   ]
 })
-export class BsLibModule { }
+export class TmBootstrapModule { }

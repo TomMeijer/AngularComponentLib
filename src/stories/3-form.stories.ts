@@ -1,8 +1,8 @@
-import {FormComponent} from "../../projects/bs-lib/src/lib/form/form.component";
+import {FormComponent} from "../../projects/tm-bootstrap/src/lib/form/form.component";
 import {StoryFnAngularReturnType} from "@storybook/angular/dist/client/preview/types";
-import {TmInput} from "../../projects/bs-lib/src/lib/form/config/tm-input";
+import {TmInput} from "../../projects/tm-bootstrap/src/lib/form/config/tm-input";
 import {NgForm} from "@angular/forms";
-import {BsLibModule} from "../../projects/bs-lib/src/lib/bs-lib.module";
+import {TmBootstrapModule} from "../../projects/tm-bootstrap/src/lib/tm-bootstrap.module";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 
 export default {
@@ -89,7 +89,7 @@ export const Basic = (): StoryFnAngularReturnType => ({
   component: FormComponent,
   moduleMetadata: {
     imports: [
-      BsLibModule,
+      TmBootstrapModule,
       TooltipModule.forRoot()
     ]
   },

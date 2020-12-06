@@ -1,5 +1,5 @@
 import {StoryFnAngularReturnType} from "@storybook/angular/dist/client/preview/types";
-import {SkeletonLoaderComponent} from "../../projects/bs-lib/src/lib/skeleton-loader/skeleton-loader.component";
+import {SkeletonLoaderComponent} from "../../projects/tm-bootstrap/src/lib/skeleton-loader/skeleton-loader.component";
 import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
 
 export default {

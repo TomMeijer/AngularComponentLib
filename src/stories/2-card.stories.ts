@@ -1,6 +1,5 @@
-import {CardComponent} from "../../projects/bs-lib/src/lib/card/card.component";
+import {CardComponent} from "../../projects/tm-bootstrap/src/lib/card/card.component";
 import {StoryFnAngularReturnType} from "@storybook/angular/dist/client/preview/types";
-import {RouterTestingModule} from "@angular/router/testing";
 
 export default {
   title: 'Card',

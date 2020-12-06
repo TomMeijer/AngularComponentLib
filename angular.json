@@ -3,38 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "bs-lib": {
+    "tm-bootstrap": {
       "projectType": "library",
-      "root": "projects/bs-lib",
-      "sourceRoot": "projects/bs-lib/src",
+      "root": "projects/tm-bootstrap",
+      "sourceRoot": "projects/tm-bootstrap/src",
       "prefix": "tm",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/bs-lib/tsconfig.lib.json",
-            "project": "projects/bs-lib/ng-package.json"
+            "tsConfig": "projects/tm-bootstrap/tsconfig.lib.json",
+            "project": "projects/tm-bootstrap/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/bs-lib/tsconfig.lib.prod.json"
+              "tsConfig": "projects/tm-bootstrap/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/bs-lib/src/test.ts",
-            "tsConfig": "projects/bs-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/bs-lib/karma.conf.js"
+            "main": "projects/tm-bootstrap/src/test.ts",
+            "tsConfig": "projects/tm-bootstrap/tsconfig.spec.json",
+            "karmaConfig": "projects/tm-bootstrap/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/bs-lib/tsconfig.lib.json",
-              "projects/bs-lib/tsconfig.spec.json"
+              "projects/tm-bootstrap/tsconfig.lib.json",
+              "projects/tm-bootstrap/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -43,7 +43,7 @@
         }
       }
     }},
-  "defaultProject": "bs-lib",
+  "defaultProject": "tm-bootstrap",
   "schematics": {
     "@schematics/angular:component": {
       "style": "scss"

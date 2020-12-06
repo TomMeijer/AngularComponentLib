@@ -1,9 +1,9 @@
-import {TableComponent} from "../../projects/bs-lib/src/lib/table/table.component";
+import {TableComponent} from "../../projects/tm-bootstrap/src/lib/table/table.component";
 import {formatDate} from "@angular/common";
 import {PaginationModule} from "ngx-bootstrap/pagination";
 import {StoryFnAngularReturnType} from "@storybook/angular/dist/client/preview/types";
-import {TmColumn} from "../../projects/bs-lib/src/lib/table/config/tm-column";
-import {TmPagination} from "../../projects/bs-lib/src/lib/table/config/tm-pagination";
+import {TmColumn} from "../../projects/tm-bootstrap/src/lib/table/config/tm-column";
+import {TmPagination} from "../../projects/tm-bootstrap/src/lib/table/config/tm-pagination";
 
 export default {
   title: 'Table',

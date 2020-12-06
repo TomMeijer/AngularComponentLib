@@ -8,10 +8,10 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/bs-lib/tsconfig.lib.json"
+      "path": "./projects/tm-bootstrap/tsconfig.lib.json"
     },
     {
-      "path": "./projects/bs-lib/tsconfig.spec.json"
+      "path": "./projects/tm-bootstrap/tsconfig.spec.json"
     }
 ]
 }

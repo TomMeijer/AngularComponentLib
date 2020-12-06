@@ -16,9 +16,9 @@
       "dom"
     ],
     "paths": {
-      "bs-lib": [
-        "dist/bs-lib/bs-lib",
-        "dist/bs-lib"
+      "tm-bootstrap": [
+        "dist/tm-bootstrap/tm-bootstrap",
+        "dist/tm-bootstrap"
       ]
     }
   }
