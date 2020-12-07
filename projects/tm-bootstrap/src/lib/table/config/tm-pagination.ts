@@ -1,6 +1,6 @@
 export interface TmPagination {
-
   itemsPerPage?: number;
   maxPageLinks?: number;
-  onPageChange: (page: number) => any;
+  onPageChange?: (page: number) => any;
+  currentPage?: number;
 }

@@ -22,7 +22,8 @@
     <pagination [totalItems]="totalItems"
                 [itemsPerPage]="pagination.itemsPerPage"
                 [maxSize]="pagination.maxPageLinks"
-                (pageChanged)="pagination.onPageChange($event.page - 1)">
-    </pagination>
+                (pageChanged)="pagination.onPageChange($event.page)"
+                [(ngModel)]="pagination.currentPage"
+    ></pagination>
   </div>
 </div>
