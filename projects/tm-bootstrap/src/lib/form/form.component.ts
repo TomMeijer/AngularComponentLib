@@ -16,8 +16,6 @@ export class FormComponent implements OnInit {
   @Input()
   public model: any = {};
   @Input()
-  public loading: boolean;
-  @Input()
   public small: boolean;
   @Input()
   public submitText: string;
@@ -28,17 +26,9 @@ export class FormComponent implements OnInit {
   @Input()
   public tooltipIcon: string;
   @Input()
-  public isChanged: boolean;
-  @Input()
-  public isSubmitting: boolean;
-  @Input()
-  public changedSubmitText: string;
-  @Input()
-  public changedSubmitIcon: string;
-  @Input()
   public showRequiredStar: boolean;
   @Input()
-  public footerTemplate: TemplateRef<HTMLElement>;
+  public submitBtnTemplate: TemplateRef<HTMLElement>;
   @Input()
   public noSubmitBtn: boolean;
   @Input()

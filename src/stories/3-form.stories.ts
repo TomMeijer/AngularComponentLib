@@ -100,24 +100,3 @@ export const Basic = (): StoryFnAngularReturnType => ({
     onSubmit: submitForm
   }
 });
-
-export const Submitting = (): StoryFnAngularReturnType => ({
-  component: FormComponent,
-  moduleMetadata: {
-    imports: [
-      TmBootstrapModule,
-      TooltipModule.forRoot()
-    ]
-  },
-  props: {
-    inputs: [
-      {
-        type: 'text',
-        label: 'Name',
-        name: 'name'
-      }
-    ],
-    submitText: 'Submit',
-    isSubmitting: true
-  }
-});
