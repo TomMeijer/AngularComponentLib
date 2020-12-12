@@ -25,3 +25,27 @@
 .form-spinner {
   text-align: center;
 }
+
+.footer-container .submit-btn {
+  position: relative;
+
+  .submit-spinner {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+
+    &.submitting {
+      opacity: 1;
+    }
+  }
+
+  .submit-text.submitting {
+    opacity: 0;
+  }
+}

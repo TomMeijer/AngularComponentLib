@@ -179,11 +179,13 @@
   <div class="footer-container d-flex">
     <button *ngIf="!noSubmitBtn"
             type="submit"
-            class="btn {{submitBtnClass ? submitBtnClass : 'btn-primary'}}"
+            class="btn submit-btn {{submitBtnClass ? submitBtnClass : 'btn-primary'}}"
             [class.btn-warning]="isChanged"
             [disabled]="submitBtnDisabled">
-      <span *ngIf="isSubmitting; else notSubmitting" class="spinner-border spinner-border-sm"></span>
-      <ng-template #notSubmitting>
+      <span class="submit-spinner" [class.submitting]="isSubmitting">
+        <span class="spinner-border spinner-border-sm"></span>
+      </span>
+      <span class="submit-text" [class.submitting]="isSubmitting">
         <ng-container *ngIf="isChanged; else notChanged">
           <i *ngIf="changedSubmitIcon" [class]="changedSubmitIcon"></i>
           <span *ngIf="changedSubmitText">{{changedSubmitText}}</span>
@@ -192,7 +194,7 @@
           <i *ngIf="submitIcon" [class]="submitIcon"></i>
           <span *ngIf="submitText">{{submitText}}</span>
         </ng-template>
-      </ng-template>
+      </span>
     </button>
     <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
   </div>
