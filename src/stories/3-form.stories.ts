@@ -10,15 +10,7 @@ export default {
   component: FormComponent,
 };
 
-let model = {
-  name: {
-    first: 'Tom'
-  },
-  country: {
-    id: 1,
-    name: 'Netherlands'
-  }
-};
+let model = {};
 
 let inputs: TmInput[] = [
   {
@@ -43,15 +35,13 @@ let inputs: TmInput[] = [
     group: '2'
   },
   {
-    type: 'ngselect',
+    type: 'select',
     label: 'Country',
-    name: 'country',
+    name: 'country.id',
     required: true,
-    prependIcon: 'fas fa-user',
-    ngSelect: {
+    select: {
       bindLabel: 'name',
-      optionTemplate: getCountryOptionHTML,
-      labelTemplate: getCountryOptionHTML,
+      bindValue: 'id',
       items: [
         {name: 'Netherlands', id: 1, code: 'NL'},
         {name: 'United States', id: 2, code: 'US'}
@@ -62,8 +52,9 @@ let inputs: TmInput[] = [
   },
   {
     type: 'checkbox',
-    label: 'R U Awesome?',
-    name: 'awesome'
+    label: 'Awesome',
+    name: 'awesome',
+    tooltip: 'Check if you are awesome.'
   },
   {
     type: 'textarea',
@@ -72,14 +63,6 @@ let inputs: TmInput[] = [
     textareaRows: 3
   }
 ];
-
-function getCountryOptionHTML(country): string {
-  if (country.code === 'NL') {
-    return `<i class="fas fa-cheese mr-2"></i>${country.name}`;
-  } else {
-    return country.name;
-  }
-}
 
 function submitForm(form: NgForm) {
   window.alert(JSON.stringify(model, null, 4));

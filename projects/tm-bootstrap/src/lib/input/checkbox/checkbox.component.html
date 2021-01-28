@@ -1,0 +1,19 @@
+<div class="form-group form-check">
+  <label class="form-check-label">
+    <input type="checkbox"
+           [name]="name"
+           class="form-check-input {{className}}"
+           [ngModel]="inputUtils.getModelProperty(model, name)"
+           (ngModelChange)="inputUtils.setModelProperty(model, name, $event)"
+           [required]="required"
+           [checked]="model && model[name]"
+           (change)="onChange.emit($event)"
+    >
+    <span>{{label}}&nbsp;</span>
+    <span *ngIf="showRequiredStar && required">*&nbsp;</span>
+    <i *ngIf="tooltipText"
+       class="tooltip-icon {{tooltipIcon ? tooltipIcon : 'fas fa-question-circle'}}"
+       [tooltip]="tooltipText"
+    ></i>
+  </label>
+</div>

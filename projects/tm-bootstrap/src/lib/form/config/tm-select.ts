@@ -1,6 +1,6 @@
 export interface TmSelect {
 
-  items: any[]
+  items: any[];
   bindLabel?: string;
   bindValue?: string;
 }

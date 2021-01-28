@@ -6,12 +6,17 @@ import { CardComponent } from './card/card.component';
 import {RouterModule} from "@angular/router";
 import { FormComponent } from './form/form.component';
 import {FormsModule} from "@angular/forms";
-import { LabelComponent } from './label/label.component';
-import { InputPrependComponent } from './input-prepend/input-prepend.component';
+import { LabelComponent } from './input/label/label.component';
+import { InputPrependComponent } from './input/input-prepend/input-prepend.component';
 import {NgSelectModule} from "@ng-select/ng-select";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.component';
 import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
+import { InputComponent } from './input/input/input.component';
+import { CheckboxComponent } from './input/checkbox/checkbox.component';
+import { SelectComponent } from './input/select/select.component';
+import { NgSelectComponent } from './input/ng-select/ng-select.component';
+import { TextareaComponent } from './input/textarea/textarea.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +26,11 @@ import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
     LabelComponent,
     InputPrependComponent,
     SkeletonLoaderComponent,
+    InputComponent,
+    CheckboxComponent,
+    SelectComponent,
+    NgSelectComponent,
+    TextareaComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +45,12 @@ import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
     TableComponent,
     CardComponent,
     FormComponent,
-    SkeletonLoaderComponent
+    SkeletonLoaderComponent,
+    InputComponent,
+    CheckboxComponent,
+    SelectComponent,
+    NgSelectComponent,
+    TextareaComponent
   ]
 })
 export class TmBootstrapModule { }

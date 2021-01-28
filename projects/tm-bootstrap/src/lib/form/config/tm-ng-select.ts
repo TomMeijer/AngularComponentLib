@@ -2,7 +2,7 @@ import {Observable, Subject} from "rxjs";
 
 export interface TmNgSelect {
 
-  items: any[] | Observable<any[]>
+  items: any[] | Observable<any[]>;
   bindLabel?: string;
   bindValue?: string;
   clearable?: boolean;

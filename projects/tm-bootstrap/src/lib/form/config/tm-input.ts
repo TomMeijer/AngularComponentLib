@@ -19,7 +19,7 @@ export interface TmInput {
   prependIcon?: string | (() => string);
   appendText?: string | (() => any);
   appendIcon?: string | (() => string);
-  group?: string
+  group?: string;
   hidden?: boolean;
   className?: string;
 }

@@ -1,0 +1,20 @@
+<div class="form-group">
+  <tm-label *ngIf="label"
+            [text]="label"
+            [required]="required"
+            [showRequiredStar]="showRequiredStar"
+            [tooltipText]="tooltipText"
+            [tooltipIcon]="tooltipIcon"
+  ></tm-label>
+  <textarea [name]="name"
+            class="form-control {{className}}"
+            [rows]="textareaRows"
+            [ngModel]="inputUtils.getModelProperty(model, name)"
+            (ngModelChange)="inputUtils.setModelProperty(model, name, $event)"
+            [required]="required"
+            placeholder="{{placeholder}}"
+            [maxlength]="maxLength"
+            [class.form-control-sm]="small"
+            (change)="onChange.emit($event)"
+  ></textarea>
+</div>

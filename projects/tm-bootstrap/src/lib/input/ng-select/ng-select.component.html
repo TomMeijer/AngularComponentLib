@@ -1,0 +1,49 @@
+<div class="form-group">
+  <tm-label *ngIf="label"
+            [text]="label"
+            [required]="required"
+            [showRequiredStar]="showRequiredStar"
+            [tooltipText]="tooltipText"
+            [tooltipIcon]="tooltipIcon"
+  ></tm-label>
+  <div [class.input-group]="isInputGroup()"
+       [class.ng-select-input-group]="isInputGroup()"
+       [class.ng-select-input-group-prepend]="hasPrepend()"
+       [class.ng-select-input-group-append]="hasAppend()"
+  >
+    <tm-input-prepend *ngIf="hasPrepend()"
+                      class="input-group-prepend"
+                      [icon]="prependIcon"
+                      [text]="prependText"
+    ></tm-input-prepend>
+    <ng-select [name]="name"
+               class="tm-ng-select {{className}}"
+               [required]="required"
+               [class.tm-ng-select-sm]="small"
+               [items]="getSelectItems() | async"
+               [ngModel]="inputUtils.getModelProperty(model, name)"
+               (ngModelChange)="inputUtils.setModelProperty(model, name, $event)"
+               [bindLabel]="bindLabel"
+               [bindValue]="bindValue"
+               (change)="onChange.emit($event); onInput.emit($event)"
+               [searchable]="searchable"
+               [clearable]="clearable"
+               [placeholder]="placeholder"
+               [searchFn]="searchFn"
+               [typeahead]="typeAhead"
+               minTermLength="2"
+    >
+      <ng-template *ngIf="labelTemplate" ng-label-tmp let-item="item">
+        <div [innerHTML]="labelTemplate(item)"></div>
+      </ng-template>
+      <ng-template *ngIf="optionTemplate" ng-option-tmp let-item="item">
+        <div [innerHTML]="optionTemplate(item)"></div>
+      </ng-template>
+    </ng-select>
+    <tm-input-prepend *ngIf="hasAppend()"
+                      class="input-group-append"
+                      [icon]="appendIcon"
+                      [text]="appendText"
+    ></tm-input-prepend>
+  </div>
+</div>

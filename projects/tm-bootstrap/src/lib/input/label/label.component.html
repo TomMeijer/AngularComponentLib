@@ -2,7 +2,7 @@
   <span>{{text}}&nbsp;</span>
   <span *ngIf="showRequiredStar && required">*&nbsp;</span>
   <i *ngIf="tooltipText"
-     class="tooltip-icon {{tooltipIcon ? tooltipIcon : 'fas fa-question-circle'}}"
+     class="tooltip-icon {{tooltipIcon}}"
      [tooltip]="tooltipText"
   ></i>
 </label>

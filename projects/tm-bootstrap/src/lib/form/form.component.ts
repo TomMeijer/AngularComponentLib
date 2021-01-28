@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {TmInput} from "./config/tm-input";
 import {Observable, of} from "rxjs";
 import {TmNgSelect} from "./config/tm-ng-select";
+import {InputUtils} from "../input/input-utils";
 
 @Component({
   selector: 'tm-form',
@@ -14,7 +15,7 @@ export class FormComponent implements OnInit {
   @Input()
   public inputs: TmInput[];
   @Input()
-  public model: any = {};
+  public model: object = {};
   @Input()
   public small: boolean;
   @Input()
@@ -22,9 +23,9 @@ export class FormComponent implements OnInit {
   @Input()
   public submitIcon: string;
   @Input()
-  public submitBtnClass: string;
+  public submitBtnClass: string = 'btn-primary';
   @Input()
-  public tooltipIcon: string;
+  public tooltipIcon: string = 'fas fa-question-circle';
   @Input()
   public showRequiredStar: boolean;
   @Input()
@@ -39,6 +40,7 @@ export class FormComponent implements OnInit {
   @Output()
   public onInput: EventEmitter<NgForm> = new EventEmitter();
 
+  public inputUtils = new InputUtils();
   public inputGroups: TmInput[][];
   public wasValidated: boolean = false;
 
@@ -46,24 +48,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.inputGroups = this.inputs ? this.getInputGroups() : [];
-  }
-
-  public getModelProp(name: string): any {
-    return name.split('.').reduce((prev, curr) => prev && prev[curr], this.model);
-  }
-
-  public setModelProp(input: TmInput, value: any) {
-    let model = this.model;
-    let properties = input.name.split('.');
-    let len = properties.length;
-    for (let i = 0; i < len - 1; i++) {
-      let property = properties[i];
-      if (!model[property]) {
-        model[property] = {};
-      }
-      model = model[property];
-    }
-    model[properties[len - 1]] = (input.type === 'number' && value !== '') ? +value : value;
   }
 
   public submitForm(form: NgForm): void {
@@ -91,24 +75,8 @@ export class FormComponent implements OnInit {
     return inputGroups;
   }
 
-  public getNgSelectItems(ngSelect: TmNgSelect): Observable<any[]> {
-    return Array.isArray(ngSelect.items) ? of(ngSelect.items) : ngSelect.items;
-  }
-
   public containsDisplayable(group: TmInput[]): boolean {
     return group.findIndex(input => !input.hidden) !== -1;
-  }
-
-  public isInputGroup(input: TmInput): boolean {
-    return this.hasPrepend(input) || this.hasAppend(input);
-  }
-
-  public hasPrepend(input: TmInput): boolean {
-    return (!!input.prependIcon || !!input.prependText);
-  }
-
-  public hasAppend(input: TmInput): boolean {
-    return (!!input.appendIcon || !!input.appendText);
   }
 
 }

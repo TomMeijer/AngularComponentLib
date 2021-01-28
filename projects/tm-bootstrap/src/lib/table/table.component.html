@@ -2,7 +2,8 @@
        [class.table-striped]="striped"
        [class.table-bordered]="bordered"
        [class.table-sm]="small"
-       [class.table-hover]="hover">
+       [class.table-hover]="hover"
+>
   <thead *ngIf="hasColumnNames()">
   <tr>
     <th *ngFor="let col of columns">{{col.name}}</th>
