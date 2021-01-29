@@ -25,7 +25,7 @@
                (ngModelChange)="inputUtils.setModelProperty(model, name, $event)"
                [bindLabel]="bindLabel"
                [bindValue]="bindValue"
-               (change)="onChange.emit($event); onInput.emit($event)"
+               (change)="onChange.emit($event)"
                [searchable]="searchable"
                [clearable]="clearable"
                [placeholder]="placeholder"

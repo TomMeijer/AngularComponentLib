@@ -1,22 +1,23 @@
-import { NgModule } from '@angular/core';
-import { TableComponent } from './table/table.component';
+import {NgModule} from '@angular/core';
+import {TableComponent} from './table/table.component';
 import {CommonModule} from "@angular/common";
 import {PaginationModule} from "ngx-bootstrap/pagination";
-import { CardComponent } from './card/card.component';
+import {CardComponent} from './card/card.component';
 import {RouterModule} from "@angular/router";
-import { FormComponent } from './form/form.component';
+import {FormComponent} from './form/form.component';
 import {FormsModule} from "@angular/forms";
-import { LabelComponent } from './input/label/label.component';
-import { InputPrependComponent } from './input/input-prepend/input-prepend.component';
+import {LabelComponent} from './input/label/label.component';
+import {InputPrependComponent} from './input/input-prepend/input-prepend.component';
 import {NgSelectModule} from "@ng-select/ng-select";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
-import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.component';
+import {SkeletonLoaderComponent} from './skeleton-loader/skeleton-loader.component';
 import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
-import { InputComponent } from './input/input/input.component';
-import { CheckboxComponent } from './input/checkbox/checkbox.component';
-import { SelectComponent } from './input/select/select.component';
-import { NgSelectComponent } from './input/ng-select/ng-select.component';
-import { TextareaComponent } from './input/textarea/textarea.component';
+import {InputComponent} from './input/input/input.component';
+import {CheckboxComponent} from './input/checkbox/checkbox.component';
+import {SelectComponent} from './input/select/select.component';
+import {NgSelectComponent} from './input/ng-select/ng-select.component';
+import {TextareaComponent} from './input/textarea/textarea.component';
+import {InputGroupComponent} from './input/input-group/input-group.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TextareaComponent } from './input/textarea/textarea.component';
     CheckboxComponent,
     SelectComponent,
     NgSelectComponent,
-    TextareaComponent
+    TextareaComponent,
+    InputGroupComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +52,8 @@ import { TextareaComponent } from './input/textarea/textarea.component';
     CheckboxComponent,
     SelectComponent,
     NgSelectComponent,
-    TextareaComponent
+    TextareaComponent,
+    InputGroupComponent
   ]
 })
 export class TmBootstrapModule { }

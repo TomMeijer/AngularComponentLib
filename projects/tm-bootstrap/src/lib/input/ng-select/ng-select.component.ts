@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {InputUtils} from "../input-utils";
-import {TmNgSelect} from "../../form/config/tm-ng-select";
 import {Observable, of, Subject} from "rxjs";
 import {ControlContainer, NgForm} from "@angular/forms";
 
@@ -64,8 +63,6 @@ export class NgSelectComponent implements OnInit {
 
   @Output()
   public onChange: EventEmitter<any> = new EventEmitter();
-  @Output()
-  public onInput: EventEmitter<any> = new EventEmitter();
 
   public inputUtils = new InputUtils();
 

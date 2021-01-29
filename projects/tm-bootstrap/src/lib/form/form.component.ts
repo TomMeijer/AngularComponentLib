@@ -1,8 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {TmInput} from "./config/tm-input";
-import {Observable, of} from "rxjs";
-import {TmNgSelect} from "./config/tm-ng-select";
 import {InputUtils} from "../input/input-utils";
 
 @Component({
@@ -41,42 +39,16 @@ export class FormComponent implements OnInit {
   public onInput: EventEmitter<NgForm> = new EventEmitter();
 
   public inputUtils = new InputUtils();
-  public inputGroups: TmInput[][];
   public wasValidated: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.inputGroups = this.inputs ? this.getInputGroups() : [];
   }
 
   public submitForm(form: NgForm): void {
     this.wasValidated = !form.valid;
     this.onSubmit.emit(form);
-  }
-
-  public changeInput(input: TmInput, event: any): void {
-    if (input.onChange) {
-      input.onChange(event);
-    }
-  }
-
-  private getInputGroups(): TmInput[][] {
-    const inputGroups = [];
-    const groups = [];
-    for (let input of this.inputs) {
-      if (!input.group) {
-        inputGroups.push([input])
-      } else if (!groups.includes(input.group)) {
-        inputGroups.push(this.inputs.filter(i => i.group === input.group));
-        groups.push(input.group);
-      }
-    }
-    return inputGroups;
-  }
-
-  public containsDisplayable(group: TmInput[]): boolean {
-    return group.findIndex(input => !input.hidden) !== -1;
   }
 
 }

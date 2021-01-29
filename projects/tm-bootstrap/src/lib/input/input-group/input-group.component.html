@@ -1,0 +1,112 @@
+<ng-container *ngFor="let group of inputGroups">
+  <div *ngIf="containsDisplayable(group)" class="form-row">
+    <ng-container *ngFor="let input of group">
+      <div *ngIf="!input.hidden" class="col">
+        <ng-container [ngSwitch]="input.type">
+
+          <ng-container *ngSwitchCase="'checkbox'">
+            <tm-checkbox [model]="model"
+                         [label]="input.label"
+                         [name]="input.name"
+                         [required]="input.required"
+                         [tooltipText]="input.tooltip"
+                         [className]="input.className"
+                         [showRequiredStar]="showRequiredStar"
+                         [tooltipIcon]="tooltipIcon"
+                         (onChange)="changeInput(input, $event)"
+            ></tm-checkbox>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'select'">
+            <tm-select [model]="model"
+                       [label]="input.label"
+                       [name]="input.name"
+                       [required]="input.required"
+                       [tooltipText]="input.tooltip"
+                       [prependText]="input.prependText"
+                       [prependIcon]="input.prependIcon"
+                       [appendText]="input.appendText"
+                       [appendIcon]="input.appendIcon"
+                       [className]="input.className"
+                       [showRequiredStar]="showRequiredStar"
+                       [tooltipIcon]="tooltipIcon"
+                       [small]="small"
+                       (onChange)="changeInput(input, $event)"
+                       [items]="input.select.items"
+                       [bindLabel]="input.select.bindLabel"
+                       [bindValue]="input.select.bindValue"
+            ></tm-select>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'ngselect'">
+            <tm-ng-select [model]="model"
+                          [label]="input.label"
+                          [name]="input.name"
+                          [required]="input.required"
+                          [placeholder]="input.placeholder"
+                          [tooltipText]="input.tooltip"
+                          [prependText]="input.prependText"
+                          [prependIcon]="input.prependIcon"
+                          [appendText]="input.appendText"
+                          [appendIcon]="input.appendIcon"
+                          [className]="input.className"
+                          [showRequiredStar]="showRequiredStar"
+                          [tooltipIcon]="tooltipIcon"
+                          [small]="small"
+                          [items]="input.ngSelect.items"
+                          [bindLabel]="input.ngSelect.bindLabel"
+                          [bindValue]="input.ngSelect.bindValue"
+                          [clearable]="input.ngSelect.clearable"
+                          [searchable]="input.ngSelect.searchable"
+                          [optionTemplate]="input.ngSelect.optionTemplate"
+                          [labelTemplate]="input.ngSelect.labelTemplate"
+                          [searchFn]="input.ngSelect.searchFn"
+                          [typeAhead]="input.ngSelect.typeAhead"
+                          (onChange)="changeInput(input, $event)"
+            ></tm-ng-select>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'textarea'">
+            <tm-textarea [model]="model"
+                         [label]="input.label"
+                         [name]="input.name"
+                         [required]="input.required"
+                         [placeholder]="input.placeholder"
+                         [maxLength]="input.maxLength"
+                         [tooltipText]="input.tooltip"
+                         [className]="input.className"
+                         [showRequiredStar]="showRequiredStar"
+                         [tooltipIcon]="tooltipIcon"
+                         [small]="small"
+                         [textareaRows]="input.textareaRows"
+                         (onChange)="changeInput(input, $event)"
+            ></tm-textarea>
+          </ng-container>
+
+          <ng-container *ngSwitchDefault>
+            <tm-input [model]="model"
+                      [type]="input.type"
+                      [label]="input.label"
+                      [name]="input.name"
+                      [required]="input.required"
+                      [placeholder]="input.placeholder"
+                      [maxLength]="input.maxLength"
+                      [pattern]="input.pattern"
+                      [tooltipText]="input.tooltip"
+                      [prependText]="input.prependText"
+                      [prependIcon]="input.prependIcon"
+                      [appendText]="input.appendText"
+                      [appendIcon]="input.appendIcon"
+                      [className]="input.className"
+                      [showRequiredStar]="showRequiredStar"
+                      [tooltipIcon]="tooltipIcon"
+                      [small]="small"
+                      (onChange)="changeInput(input, $event)"
+            ></tm-input>
+          </ng-container>
+
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
