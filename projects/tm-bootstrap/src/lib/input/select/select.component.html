@@ -6,7 +6,7 @@
             [tooltipText]="tooltipText"
             [tooltipIcon]="tooltipIcon"
   ></tm-label>
-  <div [class.input-group]="isInputGroup()">
+  <div [class.input-group]="isInputGroup()" [class.input-group-sm]="isInputGroup() && small">
     <tm-input-prepend *ngIf="hasPrepend()"
                       class="input-group-prepend"
                       [icon]="prependIcon"
@@ -19,12 +19,13 @@
             [required]="required"
             [class.form-control-sm]="small"
             (change)="onChange.emit($event)"
+            [disabled]="disabled"
     >
       <option></option>
       <option *ngFor="let item of items"
-              [value]="bindValue ? item[bindValue] : item.value"
+              [value]="bindValue ? item[bindValue] : item"
       >
-        {{bindLabel ? item[bindLabel] : item.label}}
+        {{bindLabel ? item[bindLabel] : item}}
       </option>
     </select>
     <tm-input-prepend *ngIf="hasAppend()"

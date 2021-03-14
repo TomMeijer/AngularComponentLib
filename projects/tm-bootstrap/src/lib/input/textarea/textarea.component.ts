@@ -37,6 +37,8 @@ export class TextareaComponent implements OnInit {
   public small: boolean;
   @Input()
   public textareaRows: number;
+  @Input()
+  public disabled: boolean;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();

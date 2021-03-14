@@ -14,6 +14,7 @@
                          [showRequiredStar]="showRequiredStar"
                          [tooltipIcon]="tooltipIcon"
                          (onChange)="changeInput(input, $event)"
+                         [disabled]="input.disabled"
             ></tm-checkbox>
           </ng-container>
 
@@ -35,6 +36,7 @@
                        [items]="input.select.items"
                        [bindLabel]="input.select.bindLabel"
                        [bindValue]="input.select.bindValue"
+                       [disabled]="input.disabled"
             ></tm-select>
           </ng-container>
 
@@ -63,6 +65,7 @@
                           [searchFn]="input.ngSelect.searchFn"
                           [typeAhead]="input.ngSelect.typeAhead"
                           (onChange)="changeInput(input, $event)"
+                          [disabled]="input.disabled"
             ></tm-ng-select>
           </ng-container>
 
@@ -80,6 +83,7 @@
                          [small]="small"
                          [textareaRows]="input.textareaRows"
                          (onChange)="changeInput(input, $event)"
+                         [disabled]="input.disabled"
             ></tm-textarea>
           </ng-container>
 
@@ -102,6 +106,7 @@
                       [tooltipIcon]="tooltipIcon"
                       [small]="small"
                       (onChange)="changeInput(input, $event)"
+                      [disabled]="input.disabled"
             ></tm-input>
           </ng-container>
 

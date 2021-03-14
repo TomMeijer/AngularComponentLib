@@ -7,6 +7,7 @@
             [tooltipIcon]="tooltipIcon"
   ></tm-label>
   <div [class.input-group]="isInputGroup()"
+       [class.input-group-sm]="isInputGroup() && small"
        [class.ng-select-input-group]="isInputGroup()"
        [class.ng-select-input-group-prepend]="hasPrepend()"
        [class.ng-select-input-group-append]="hasAppend()"
@@ -32,6 +33,7 @@
                [searchFn]="searchFn"
                [typeahead]="typeAhead"
                minTermLength="2"
+               [disabled]="disabled"
     >
       <ng-template *ngIf="labelTemplate" ng-label-tmp let-item="item">
         <div [innerHTML]="labelTemplate(item)"></div>

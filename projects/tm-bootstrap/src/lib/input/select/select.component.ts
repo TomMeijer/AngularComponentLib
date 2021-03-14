@@ -45,6 +45,8 @@ export class SelectComponent implements OnInit {
   public bindLabel: string;
   @Input()
   public bindValue: string;
+  @Input()
+  public disabled: boolean;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();

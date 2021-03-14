@@ -8,6 +8,7 @@
            [required]="required"
            [checked]="model && model[name]"
            (change)="onChange.emit($event)"
+           [disabled]="disabled"
     >
     <span>{{label}}&nbsp;</span>
     <span *ngIf="showRequiredStar && required">*&nbsp;</span>

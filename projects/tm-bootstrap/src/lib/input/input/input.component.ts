@@ -47,6 +47,8 @@ export class InputComponent implements OnInit {
   public tooltipIcon: string = 'fas fa-question-circle';
   @Input()
   public small: boolean;
+  @Input()
+  public disabled: boolean;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();

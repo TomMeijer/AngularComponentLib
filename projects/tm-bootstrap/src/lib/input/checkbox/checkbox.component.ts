@@ -29,6 +29,8 @@ export class CheckboxComponent implements OnInit {
   public showRequiredStar: boolean;
   @Input()
   public tooltipIcon: string = 'fas fa-question-circle';
+  @Input()
+  public disabled: boolean;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();

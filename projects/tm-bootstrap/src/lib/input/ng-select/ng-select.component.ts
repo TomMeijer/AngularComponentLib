@@ -60,6 +60,8 @@ export class NgSelectComponent implements OnInit {
   public searchFn: (term: string, item: any) => boolean;
   @Input()
   public typeAhead: Subject<string>;
+  @Input()
+  public disabled: boolean;
 
   @Output()
   public onChange: EventEmitter<any> = new EventEmitter();

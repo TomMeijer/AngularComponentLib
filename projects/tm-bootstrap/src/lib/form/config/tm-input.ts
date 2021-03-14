@@ -22,4 +22,5 @@ export interface TmInput {
   group?: string;
   hidden?: boolean;
   className?: string;
+  disabled?: boolean
 }

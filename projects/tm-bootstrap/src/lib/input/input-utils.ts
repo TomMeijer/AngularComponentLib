@@ -5,10 +5,10 @@ export class InputUtils {
   }
 
   public setModelProperty(model: object, propertyName: string, value: any): void {
-    let properties = propertyName.split('.');
-    let len = properties.length;
+    const properties = propertyName.split('.');
+    const len = properties.length;
     for (let i = 0; i < len - 1; i++) {
-      let property = properties[i];
+      const property = properties[i];
       if (!model[property]) {
         model[property] = {};
       }

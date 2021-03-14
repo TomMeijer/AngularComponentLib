@@ -6,7 +6,7 @@
             [tooltipText]="tooltipText"
             [tooltipIcon]="tooltipIcon"
   ></tm-label>
-  <div [class.input-group]="isInputGroup()">
+  <div [class.input-group]="isInputGroup()" [class.input-group-sm]="isInputGroup() && small">
     <tm-input-prepend *ngIf="hasPrepend()"
                       class="input-group-prepend"
                       [icon]="prependIcon"
@@ -23,6 +23,7 @@
            [class.form-control-sm]="small"
            (change)="onChange.emit($event)"
            [pattern]="pattern"
+           [disabled]="disabled"
     >
     <tm-input-prepend *ngIf="hasAppend()"
                       class="input-group-append"
