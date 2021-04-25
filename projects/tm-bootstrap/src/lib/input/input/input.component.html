@@ -21,9 +21,10 @@
            placeholder="{{placeholder}}"
            [maxlength]="maxLength"
            [class.form-control-sm]="small"
-           (change)="onChange.emit($event)"
            [pattern]="pattern"
            [disabled]="disabled"
+           [readOnly]="readOnly"
+           (change)="onChange.emit($event)"
     >
     <tm-input-prepend *ngIf="hasAppend()"
                       class="input-group-append"

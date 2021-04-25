@@ -49,6 +49,8 @@ export class InputComponent implements OnInit {
   public small: boolean;
   @Input()
   public disabled: boolean;
+  @Input()
+  public readOnly: boolean;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();

@@ -3,6 +3,8 @@
       [class.was-validated]="wasValidated"
       (ngSubmit)="submitForm(tmForm)"
       (input)="onInput.emit(tmForm)"
+      autocomplete="off"
+      spellcheck="false"
 >
   <tm-input-group [inputs]="inputs"
                   [model]="model"

@@ -84,6 +84,7 @@
                          [textareaRows]="input.textareaRows"
                          (onChange)="changeInput(input, $event)"
                          [disabled]="input.disabled"
+                         [readOnly]="input.readOnly"
             ></tm-textarea>
           </ng-container>
 
@@ -107,6 +108,7 @@
                       [small]="small"
                       (onChange)="changeInput(input, $event)"
                       [disabled]="input.disabled"
+                      [readOnly]="input.readOnly"
             ></tm-input>
           </ng-container>
 

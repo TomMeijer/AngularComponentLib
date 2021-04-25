@@ -23,4 +23,5 @@ export interface TmInput {
   hidden?: boolean;
   className?: string;
   disabled?: boolean
+  readOnly?: boolean
 }
