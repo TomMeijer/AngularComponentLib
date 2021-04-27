@@ -1,5 +1,5 @@
 {
-  "name": "angular-bootstrap-component-lib",
+  "name": "angular-component-lib",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

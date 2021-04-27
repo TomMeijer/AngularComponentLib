@@ -27,7 +27,7 @@ export class FormComponent implements OnInit {
   @Input()
   public showRequiredStar: boolean;
   @Input()
-  public submitBtnTemplate: TemplateRef<HTMLElement>;
+  public submitBtnTemplate: TemplateRef<any>;
   @Input()
   public noSubmitBtn: boolean;
   @Input()

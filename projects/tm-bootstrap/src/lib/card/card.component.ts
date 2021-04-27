@@ -14,7 +14,7 @@ export class CardComponent implements OnInit {
   @Input()
   public headerSubtitle: string;
   @Input()
-  public headerTemplate: TemplateRef<HTMLElement>;
+  public headerTemplate: TemplateRef<any>;
   @Input()
   public footerText: string;
   @Input()
@@ -24,7 +24,7 @@ export class CardComponent implements OnInit {
   @Input()
   public imgBottomSrc: string;
   @Input()
-  public footerTemplate: TemplateRef<HTMLElement>;
+  public footerTemplate: TemplateRef<any>;
 
   constructor() { }
 

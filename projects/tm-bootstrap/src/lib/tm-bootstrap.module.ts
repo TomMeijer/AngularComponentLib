@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {TableComponent} from './table/table.component';
 import {CommonModule} from "@angular/common";
 import {PaginationModule} from "ngx-bootstrap/pagination";
 import {CardComponent} from './card/card.component';
@@ -18,10 +17,10 @@ import {SelectComponent} from './input/select/select.component';
 import {NgSelectComponent} from './input/ng-select/ng-select.component';
 import {TextareaComponent} from './input/textarea/textarea.component';
 import {InputGroupComponent} from './input/input-group/input-group.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
-    TableComponent,
     CardComponent,
     FormComponent,
     LabelComponent,
@@ -32,7 +31,8 @@ import {InputGroupComponent} from './input/input-group/input-group.component';
     SelectComponent,
     NgSelectComponent,
     TextareaComponent,
-    InputGroupComponent
+    InputGroupComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +44,6 @@ import {InputGroupComponent} from './input/input-group/input-group.component';
     NgxSkeletonLoaderModule
   ],
   exports: [
-    TableComponent,
     CardComponent,
     FormComponent,
     SkeletonLoaderComponent,
@@ -53,7 +52,8 @@ import {InputGroupComponent} from './input/input-group/input-group.component';
     SelectComponent,
     NgSelectComponent,
     TextareaComponent,
-    InputGroupComponent
+    InputGroupComponent,
+    TableComponent
   ]
 })
 export class TmBootstrapModule { }

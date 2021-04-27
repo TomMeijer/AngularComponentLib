@@ -1,6 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {TmColumn} from "./config/tm-column";
-import {TmPagination} from "./config/tm-pagination";
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'tm-table',
@@ -18,31 +16,28 @@ export class TableComponent implements OnInit {
   @Input()
   public hover: boolean;
   @Input()
-  public columns: TmColumn[];
+  public headerTemplate: TemplateRef<any>;
   @Input()
-  public pagination: TmPagination;
+  public rowTemplate: TemplateRef<any>;
   @Input()
   public data: any[];
+  @Input()
+  public pagination: boolean;
+  @Input()
+  public itemsPerPage: number;
+  @Input()
+  public maxPageLinks: number;
+  @Input()
+  public currentPage: number;
   @Input()
   public totalItems: number;
 
   @Output()
-  public onRowClick: EventEmitter<any> = new EventEmitter();
+  public onPageChange: EventEmitter<number> = new EventEmitter()
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  public resolveValue(obj: any, data: string | ((obj: any) => any)): any {
-    if (typeof data === 'string') {
-      return data.split('.').reduce((prev, curr) => prev && prev[curr], obj);
-    }
-    return data(obj);
-  }
-
-  public hasColumnNames(): boolean {
-    return this.columns.findIndex(col => col.name) !== -1;
   }
 
 }
