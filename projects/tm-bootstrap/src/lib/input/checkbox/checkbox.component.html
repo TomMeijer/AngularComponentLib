@@ -3,12 +3,11 @@
     <input type="checkbox"
            [name]="name"
            class="form-check-input {{className}}"
-           [ngModel]="inputUtils.getModelProperty(model, name)"
-           (ngModelChange)="inputUtils.setModelProperty(model, name, $event)"
+           [(ngModel)]="value"
            [required]="required"
-           [checked]="model && model[name]"
-           (change)="onChange.emit($event)"
+           [checked]="value"
            [disabled]="disabled"
+           (change)="onChange.emit($event)"
     >
     <span>{{label}}&nbsp;</span>
     <span *ngIf="showRequiredStar && required">*&nbsp;</span>

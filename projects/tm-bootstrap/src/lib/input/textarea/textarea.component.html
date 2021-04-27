@@ -9,14 +9,13 @@
   <textarea [name]="name"
             class="form-control {{className}}"
             [rows]="textareaRows"
-            [ngModel]="inputUtils.getModelProperty(model, name)"
-            (ngModelChange)="inputUtils.setModelProperty(model, name, $event)"
+            [(ngModel)]="value"
             [required]="required"
             placeholder="{{placeholder}}"
             [maxlength]="maxLength"
             [class.form-control-sm]="small"
-            (change)="onChange.emit($event)"
             [disabled]="disabled"
             [readOnly]="readOnly"
+            (change)="onChange.emit($event)"
   ></textarea>
 </div>

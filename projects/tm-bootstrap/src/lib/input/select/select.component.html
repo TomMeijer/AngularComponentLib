@@ -14,12 +14,11 @@
     ></tm-input-prepend>
     <select [name]="name"
             class="form-control {{className}}"
-            [ngModel]="inputUtils.getModelProperty(model, name)"
-            (ngModelChange)="inputUtils.setModelProperty(model, name, $event)"
+            [(ngModel)]="value"
             [required]="required"
             [class.form-control-sm]="small"
-            (change)="onChange.emit($event)"
             [disabled]="disabled"
+            (change)="onChange.emit($event)"
     >
       <option></option>
       <option *ngFor="let item of items"
