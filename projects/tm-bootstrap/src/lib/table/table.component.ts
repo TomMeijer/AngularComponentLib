@@ -16,6 +16,8 @@ export class TableComponent implements OnInit {
   @Input()
   public hover: boolean;
   @Input()
+  public responsive: boolean;
+  @Input()
   public headerTemplate: TemplateRef<any>;
   @Input()
   public rowTemplate: TemplateRef<any>;
