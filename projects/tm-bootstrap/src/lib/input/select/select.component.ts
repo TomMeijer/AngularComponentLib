@@ -22,13 +22,13 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   @Input()
   public tooltipText: string;
   @Input()
-  public prependText: string | (() => any);
+  public prependText: string;
   @Input()
-  public prependIcon: string | (() => string);
+  public prependIcon: string;
   @Input()
-  public appendText: string | (() => any);
+  public appendText: string;
   @Input()
-  public appendIcon: string | (() => string);
+  public appendIcon: string;
   @Input()
   public className: string;
   @Input()
