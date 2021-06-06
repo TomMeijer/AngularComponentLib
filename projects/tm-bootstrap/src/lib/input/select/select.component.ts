@@ -48,6 +48,10 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();
+  @Output()
+  public prependClick: EventEmitter<MouseEvent> = new EventEmitter();
+  @Output()
+  public appendClick: EventEmitter<MouseEvent> = new EventEmitter();
 
   public _value: any;
   private onChangeFn = (value) => {};

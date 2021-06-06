@@ -11,6 +11,7 @@
                       class="input-group-prepend"
                       [icon]="prependIcon"
                       [text]="prependText"
+                      (click)="prependClick.emit($event)"
     ></tm-input-prepend>
     <input [type]="type"
            [name]="name"
@@ -29,6 +30,7 @@
                       class="input-group-append"
                       [icon]="appendIcon"
                       [text]="appendText"
+                      (click)="appendClick.emit($event)"
     ></tm-input-prepend>
   </div>
 </div>

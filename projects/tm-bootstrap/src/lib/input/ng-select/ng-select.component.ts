@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {Observable, of, Subject} from "rxjs";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
@@ -51,9 +51,9 @@ export class NgSelectComponent implements OnInit, ControlValueAccessor {
   @Input()
   public searchable: boolean;
   @Input()
-  public optionTemplate: (item) => string;
+  public optionTemplate: TemplateRef<any>;
   @Input()
-  public labelTemplate: (item) => string;
+  public labelTemplate: TemplateRef<any>;
   @Input()
   public searchFn: (term: string, item: any) => boolean;
   @Input()
@@ -63,6 +63,10 @@ export class NgSelectComponent implements OnInit, ControlValueAccessor {
 
   @Output()
   public onChange: EventEmitter<any> = new EventEmitter();
+  @Output()
+  public prependClick: EventEmitter<MouseEvent> = new EventEmitter();
+  @Output()
+  public appendClick: EventEmitter<MouseEvent> = new EventEmitter();
 
   public _value: any;
   private onChangeFn = (value) => {};

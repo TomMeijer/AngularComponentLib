@@ -1,6 +1,6 @@
 <label>
   <span>{{text}}&nbsp;</span>
-  <span *ngIf="showRequiredStar && required">*&nbsp;</span>
+  <span *ngIf="showRequiredStar && required" class="required-star">*&nbsp;</span>
   <i *ngIf="tooltipText"
      class="tooltip-icon {{tooltipIcon}}"
      [tooltip]="tooltipText"
