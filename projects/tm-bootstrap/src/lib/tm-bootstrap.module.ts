@@ -16,6 +16,8 @@ import {SelectComponent} from './input/select/select.component';
 import {NgSelectComponent} from './input/ng-select/ng-select.component';
 import {TextareaComponent} from './input/textarea/textarea.component';
 import {TableComponent} from './table/table.component';
+import { DateRangePickerComponent } from './input/date-range-picker/date-range-picker.component';
+import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {TableComponent} from './table/table.component';
     SelectComponent,
     NgSelectComponent,
     TextareaComponent,
-    TableComponent
+    TableComponent,
+    DateRangePickerComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +40,8 @@ import {TableComponent} from './table/table.component';
     FormsModule,
     TooltipModule,
     NgSelectModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    BsDatepickerModule
   ],
   exports: [
     CardComponent,
@@ -47,7 +51,8 @@ import {TableComponent} from './table/table.component';
     SelectComponent,
     NgSelectComponent,
     TextareaComponent,
-    TableComponent
+    TableComponent,
+    DateRangePickerComponent
   ]
 })
 export class TmBootstrapModule { }

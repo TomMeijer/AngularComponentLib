@@ -1,0 +1,26 @@
+<div class="form-group">
+  <tm-label *ngIf="label"
+            [text]="label"
+            [required]="required"
+            [showRequiredStar]="showRequiredStar"
+            [tooltipText]="tooltipText"
+            [tooltipIcon]="tooltipIcon"
+  ></tm-label>
+  <input type="text"
+         [name]="name"
+         class="form-control {{className}}"
+         [class.form-control-sm]="small"
+         #dateRangePicker="bsDaterangepicker"
+         bsDaterangepicker
+         [bsConfig]="config"
+         [(ngModel)]="value"
+         [required]="required"
+         placeholder="{{placeholder}}"
+         [disabled]="disabled"
+         [readOnly]="readOnly"
+         [isDisabled]="readOnly"
+         [minDate]="minDate"
+         [maxDate]="maxDate"
+  >
+  <div *ngIf="errors?.message" class="invalid-feedback">{{errors.message}}</div>
+</div>

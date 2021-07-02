@@ -11,3 +11,4 @@ export * from './lib/input/select/select.component';
 export * from './lib/input/ng-select/ng-select.component';
 export * from './lib/input/textarea/textarea.component';
 export * from './lib/table/table.component';
+export * from './lib/input/date-range-picker/date-range-picker.component';
