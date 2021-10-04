@@ -26,9 +26,11 @@ export class TableComponent implements OnInit {
   @Input()
   public pagination: boolean;
   @Input()
-  public itemsPerPage: number;
+  public itemsPerPage: number = 10;
   @Input()
-  public maxPageLinks: number;
+  public maxPageLinks: number = 5;
+  @Input()
+  public pageBoundaryLinks: boolean = true;
   @Input()
   public currentPage: number;
   @Input()

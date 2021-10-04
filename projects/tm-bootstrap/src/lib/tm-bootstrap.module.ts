@@ -18,6 +18,7 @@ import {TextareaComponent} from './input/textarea/textarea.component';
 import {TableComponent} from './table/table.component';
 import { DateRangePickerComponent } from './input/date-range-picker/date-range-picker.component';
 import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
+import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
     NgSelectComponent,
     TextareaComponent,
     TableComponent,
-    DateRangePickerComponent
+    DateRangePickerComponent,
+    ImageUploaderComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +54,8 @@ import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
     NgSelectComponent,
     TextareaComponent,
     TableComponent,
-    DateRangePickerComponent
+    DateRangePickerComponent,
+    ImageUploaderComponent
   ]
 })
 export class TmBootstrapModule { }

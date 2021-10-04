@@ -138,7 +138,7 @@ export class DateRangePickerComponent implements OnInit, OnChanges, ControlValue
       error = `End date must be before ${this.datePipe.transform(DateUtils.addDays(this.maxDate, 1), 'dd-MM-yyyy')}`
     } else if (!this.isMaxDaysValid()) {
       valid = false;
-      error = `Max date range of ${this.maxDays} days allowed`
+      error = `Maximum of ${this.maxDays} days allowed`
     }
     this.errors = !valid ? {invalid: true, message: error} : null;
     return this.errors;
