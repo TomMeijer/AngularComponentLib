@@ -8,6 +8,8 @@ import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angu
 export class TableComponent implements OnInit {
 
   @Input()
+  public loading: boolean;
+  @Input()
   public striped: boolean;
   @Input()
   public bordered: boolean;

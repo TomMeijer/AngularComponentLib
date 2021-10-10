@@ -14,9 +14,9 @@
       </ng-container>
     </tbody>
   </table>
-  <div *ngIf="!data" class="table-spinner"><div class="spinner-border"></div></div>
-  <div *ngIf="data && data.length === 0" class="table-no-results">No results...</div>
-  <div *ngIf="pagination && data && data.length > 0" class="pagination-container d-flex justify-content-between">
+  <div *ngIf="loading" class="table-spinner"><div class="spinner-border"></div></div>
+  <div *ngIf="!loading && (!data || data.length === 0)" class="table-no-results d-flex justify-content-center align-items-center">No results...</div>
+  <div *ngIf="!loading && pagination && data && data.length > 0" class="pagination-container d-flex justify-content-between">
     <div class="results-count align-self-center">Total results: {{totalItems}}</div>
     <div class="align-self-center">
       <pagination [totalItems]="totalItems"
