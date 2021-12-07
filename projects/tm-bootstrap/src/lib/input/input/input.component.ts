@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
@@ -30,11 +30,11 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Input()
   public tooltipText: string;
   @Input()
-  public prependText: string;
+  public prependText: string | TemplateRef<any>;
   @Input()
   public prependIcon: string;
   @Input()
-  public appendText: string;
+  public appendText: string | TemplateRef<any>;
   @Input()
   public appendIcon: string;
   @Input()
@@ -49,9 +49,13 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   public disabled: boolean;
   @Input()
   public readOnly: boolean;
+  @Input()
+  public step: string | number;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();
+  @Output()
+  public onInput: EventEmitter<Event> = new EventEmitter();
   @Output()
   public prependClick: EventEmitter<MouseEvent> = new EventEmitter();
   @Output()

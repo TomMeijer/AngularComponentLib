@@ -24,7 +24,9 @@
            [pattern]="pattern"
            [disabled]="disabled"
            [readOnly]="readOnly"
+           [step]="step"
            (change)="onChange.emit($event)"
+           (input)="onInput.emit($event)"
     >
     <tm-input-prepend *ngIf="hasAppend()"
                       class="input-group-append"

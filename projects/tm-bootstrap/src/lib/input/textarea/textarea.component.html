@@ -17,5 +17,6 @@
             [disabled]="disabled"
             [readOnly]="readOnly"
             (change)="onChange.emit($event)"
+            (input)="onInput.emit($event)"
   ></textarea>
 </div>

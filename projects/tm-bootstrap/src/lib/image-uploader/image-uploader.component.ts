@@ -34,6 +34,10 @@ export class ImageUploaderComponent implements OnInit, ControlValueAccessor {
   public clearable: boolean;
   @Input()
   public rounded: boolean;
+  @Input()
+  public uploadIcon = 'fas fa-pencil-alt';
+  @Input()
+  public clearIcon = 'fas fa-trash-alt'
 
   @Output()
   public onClear: EventEmitter<MouseEvent> = new EventEmitter();

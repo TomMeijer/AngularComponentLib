@@ -1,4 +1,9 @@
 <span class="input-group-text">
-  <i *ngIf="icon" [class]="icon"></i>
-  <span *ngIf="text">{{text}}</span>
+  <ng-container *ngIf="instanceOfTemplateRef(); else stringContent">
+    <ng-container *ngTemplateOutlet="text"></ng-container>
+  </ng-container>
+  <ng-template #stringContent>
+    <i *ngIf="icon" [class]="icon"></i>
+    <span *ngIf="text">{{text}}</span>
+  </ng-template>
 </span>

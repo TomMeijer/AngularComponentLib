@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'tm-input-prepend',
@@ -10,10 +10,15 @@ export class InputPrependComponent implements OnInit {
   @Input()
   public icon: string;
   @Input()
-  public text: string;
+  public text: string | TemplateRef<any>;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  public instanceOfTemplateRef(): boolean {
+    return this.text instanceof TemplateRef;
+  }
+
 }

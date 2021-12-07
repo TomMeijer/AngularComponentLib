@@ -26,14 +26,14 @@
              [required]="required"
              (change)="value = imageInput.files[0]"
       >
-      <i class="icon-pencil"></i>
+      <i [class]="uploadIcon"></i>
     </label>
     <button *ngIf="clearable && value"
             type="button"
             class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round mb-0 ml-2"
             (click)="clearImage($event)"
     >
-      <i class="icon-bin"></i>
+      <i [class]="clearIcon"></i>
     </button>
   </div>
 </div>

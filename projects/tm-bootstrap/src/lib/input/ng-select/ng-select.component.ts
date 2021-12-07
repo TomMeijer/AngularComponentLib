@@ -25,11 +25,11 @@ export class NgSelectComponent implements OnInit, ControlValueAccessor {
   @Input()
   public tooltipText: string;
   @Input()
-  public prependText: string;
+  public prependText: string | TemplateRef<any>;
   @Input()
   public prependIcon: string;
   @Input()
-  public appendText: string;
+  public appendText: string | TemplateRef<any>;
   @Input()
   public appendIcon: string;
   @Input()

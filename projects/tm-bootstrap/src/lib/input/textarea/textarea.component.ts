@@ -42,6 +42,8 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();
+  @Output()
+  public onInput: EventEmitter<Event> = new EventEmitter();
 
   public _value: any;
   private onChangeFn = (value) => {};
