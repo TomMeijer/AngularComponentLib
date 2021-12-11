@@ -1,4 +1,4 @@
-<div class="form-group">
+<div [class.form-group]="formGroupClass">
   <tm-label *ngIf="label"
             [text]="label"
             [required]="required"
@@ -24,7 +24,6 @@
            [pattern]="pattern"
            [disabled]="disabled"
            [readOnly]="readOnly"
-           [step]="step"
            (change)="onChange.emit($event)"
            (input)="onInput.emit($event)"
     >
