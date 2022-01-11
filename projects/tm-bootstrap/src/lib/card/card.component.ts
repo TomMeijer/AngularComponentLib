@@ -25,6 +25,8 @@ export class CardComponent implements OnInit {
   public imgBottomSrc: string;
   @Input()
   public footerTemplate: TemplateRef<any>;
+  @Input()
+  public className: string;
 
   constructor() { }
 

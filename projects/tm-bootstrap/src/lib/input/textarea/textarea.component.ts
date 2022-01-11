@@ -39,6 +39,8 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
   public disabled: boolean;
   @Input()
   public readOnly: boolean;
+  @Input()
+  public formGroupClass = true;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();

@@ -60,6 +60,8 @@ export class NgSelectComponent implements OnInit, ControlValueAccessor {
   public typeAhead: Subject<string>;
   @Input()
   public disabled: boolean;
+  @Input()
+  public formGroupClass = true;
 
   @Output()
   public onChange: EventEmitter<any> = new EventEmitter();

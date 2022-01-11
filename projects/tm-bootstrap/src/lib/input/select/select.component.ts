@@ -45,6 +45,8 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   public bindValue: string;
   @Input()
   public disabled: boolean;
+  @Input()
+  public formGroupClass = true;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();

@@ -1,4 +1,4 @@
-<div class="card tm-card">
+<div class="card tm-card {{className}}">
   <div *ngIf="hasHeader()" class="card-header">
     <ng-container *ngIf="headerTemplate; else headerContent">
       <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>

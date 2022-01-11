@@ -131,16 +131,20 @@ export class InputComponent implements OnInit, OnChanges, ControlValueAccessor, 
 
   validate(control: AbstractControl): ValidationErrors | null {
     let errors: ValidationErrors = {};
-    if (this.step && this.type === 'number' && this._value && this.mod(Number(this._value), this.step) !== 0) {
-      errors.step = `Value must be dividable by ${this.step}`
+    if (!this.isEmpty(this.step) && this.type === 'number' && !this.isEmpty(this._value) && this.mod(Number(this._value), this.step) !== 0) {
+      errors.step = `Value must be dividable by: ${this.step}`
     }
-    if (this.min && this.type === 'number' && this._value < this.min) {
-      errors.min = `Minimum value ${this.min}`
+    if (!this.isEmpty(this.min) && this.type === 'number' && !this.isEmpty(this._value) && Number(this._value) < this.min) {
+      errors.min = `Minimum value: ${this.min}`
     }
-    if (this.max && this.type === 'number' && this._value > this.max) {
-      errors.max = `Maximum value ${this.max}`
+    if (!this.isEmpty(this.max) && this.type === 'number' && !this.isEmpty(this._value) && Number(this._value) > this.max) {
+      errors.max = `Maximum value: ${this.max}`
     }
     return Object.keys(errors).length > 0 ? errors : null;
+  }
+
+  private isEmpty(value: any): boolean {
+    return value === undefined || value === null || value === '';
   }
 
   private mod(val: number, step: number): number {

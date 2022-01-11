@@ -1,4 +1,14 @@
-import {Component, forwardRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {
+  Component, EventEmitter,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  TemplateRef,
+  ViewChild
+} from '@angular/core';
 import {BsDaterangepickerConfig, BsDaterangepickerDirective} from "ngx-bootstrap/datepicker";
 import {BsCustomDates} from "ngx-bootstrap/datepicker/themes/bs/bs-custom-dates-view.component";
 import {
@@ -51,6 +61,14 @@ export class DateRangePickerComponent implements OnInit, OnChanges, ControlValue
   @Input()
   public tooltipIcon: string = 'fas fa-question-circle';
   @Input()
+  public prependText: string | TemplateRef<any>;
+  @Input()
+  public prependIcon: string;
+  @Input()
+  public appendText: string | TemplateRef<any>;
+  @Input()
+  public appendIcon: string;
+  @Input()
   public small: boolean;
   @Input()
   public disabled: boolean;
@@ -64,15 +82,26 @@ export class DateRangePickerComponent implements OnInit, OnChanges, ControlValue
   public maxDays: number;
   @Input()
   public ranges: BsCustomDates[];
+  @Input()
+  public formGroupClass = true;
+  @Input()
+  public containerClass: string;
+
+  @Output()
+  public onChange: EventEmitter<Date[]> = new EventEmitter();
+  @Output()
+  public prependClick: EventEmitter<MouseEvent> = new EventEmitter();
+  @Output()
+  public appendClick: EventEmitter<MouseEvent> = new EventEmitter();
 
   private datePipe = new DatePipe('en-US');
   public config: Partial<BsDaterangepickerConfig> = {
     rangeInputFormat: 'DD-MM-YYYY',
     showWeekNumbers: false,
     containerClass: 'tm-datepicker',
-    rangeSeparator: ' / ',
+    rangeSeparator: ' / '
   };
-  public errors: ValidationErrors;
+  private changeCount = 0;
   public _value: Date[];
   private onChangeFn = (value) => {};
   private onValidatorChangeFn = () => {};
@@ -89,6 +118,10 @@ export class DateRangePickerComponent implements OnInit, OnChanges, ControlValue
     }
     if (changes.ranges && changes.ranges.currentValue) {
       this.config.ranges = this.ranges;
+      this.updateConfig();
+    }
+    if (changes.containerClass && changes.containerClass.currentValue) {
+      this.config.containerClass = this.config.containerClass + ' ' + this.containerClass;
       this.updateConfig();
     }
     if (changes.required || changes.minDate || changes.maxDate || changes.maxDays) {
@@ -126,22 +159,20 @@ export class DateRangePickerComponent implements OnInit, OnChanges, ControlValue
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    let valid = true;
-    let error: string = null;
+    const errors: ValidationErrors = {};
     if (!this.isValid()) {
-      valid = false;
-    } else if (!this.isMinDateValid()) {
-      valid = false;
-      error = `Start date must be after ${this.datePipe.transform(DateUtils.addDays(this.minDate, -1), 'dd-MM-yyyy')}`
-    } else if (!this.isMaxDateValid()) {
-      valid = false;
-      error = `End date must be before ${this.datePipe.transform(DateUtils.addDays(this.maxDate, 1), 'dd-MM-yyyy')}`
-    } else if (!this.isMaxDaysValid()) {
-      valid = false;
-      error = `Maximum of ${this.maxDays} days allowed`
+      errors.required = 'Required';
     }
-    this.errors = !valid ? {invalid: true, message: error} : null;
-    return this.errors;
+    if (!this.isMinDateValid()) {
+      errors.minDate = `Minimum date: ${this.datePipe.transform(this.minDate, 'dd-MM-yyyy')}`
+    }
+    if (!this.isMaxDateValid()) {
+      errors.maxDate = `Maximum date: ${this.datePipe.transform(this.maxDate, 'dd-MM-yyyy')}`
+    }
+    if (!this.isMaxDaysValid()) {
+      errors.maxDays = `Maximum days: ${this.maxDays}`
+    }
+    return Object.keys(errors).length > 0 ? errors : null;
   }
 
   private isValid(): boolean {
@@ -172,5 +203,24 @@ export class DateRangePickerComponent implements OnInit, OnChanges, ControlValue
 
   registerOnValidatorChange?(fn: () => void): void {
     this.onValidatorChangeFn = fn;
+  }
+
+  public emitOnChange(value: Date[]): void {
+    this.changeCount = this.changeCount + 1;
+    if (this.changeCount > 2) {
+      this.onChange.emit(value)
+    }
+  }
+
+  public isInputGroup(): boolean {
+    return this.hasPrepend() || this.hasAppend();
+  }
+
+  public hasPrepend(): boolean {
+    return (!!this.prependIcon || !!this.prependText);
+  }
+
+  public hasAppend(): boolean {
+    return (!!this.appendIcon || !!this.appendText);
   }
 }

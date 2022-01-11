@@ -29,6 +29,8 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
   public tooltipIcon: string = 'fas fa-question-circle';
   @Input()
   public disabled: boolean;
+  @Input()
+  public formGroupClass = true;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();
