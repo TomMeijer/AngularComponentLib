@@ -45,7 +45,7 @@ export class DateRangePickerComponent implements OnInit, OnChanges, ControlValue
   public dateRangePicker: BsDaterangepickerDirective;
 
   @Input()
-  public label: string;
+  public label: string | TemplateRef<any>;
   @Input()
   public name: string;
   @Input()

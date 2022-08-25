@@ -9,11 +9,16 @@
            [disabled]="disabled"
            (change)="onChange.emit($event)"
     >
-    <span>{{label}}&nbsp;</span>
-    <span *ngIf="showRequiredStar && required">*&nbsp;</span>
-    <i *ngIf="tooltipText"
-       class="tooltip-icon {{tooltipIcon ? tooltipIcon : 'fas fa-question-circle'}}"
-       [tooltip]="tooltipText"
-    ></i>
+    <ng-container *ngIf="labelInstanceOfTemplateRef(); else stringContent">
+      <ng-container *ngTemplateOutlet="label"></ng-container>
+    </ng-container>
+    <ng-template #stringContent>
+      <span>{{label}}&nbsp;</span>
+      <span *ngIf="showRequiredStar && required">*&nbsp;</span>
+      <i *ngIf="tooltipText"
+         class="tooltip-icon {{tooltipIcon ? tooltipIcon : 'fas fa-question-circle'}}"
+         [tooltip]="tooltipText"
+      ></i>
+    </ng-template>
   </label>
 </div>

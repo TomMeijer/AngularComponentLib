@@ -15,7 +15,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 export class NgSelectComponent implements OnInit, ControlValueAccessor {
 
   @Input()
-  public label: string;
+  public label: string | TemplateRef<any>;
   @Input()
   public name: string;
   @Input()

@@ -42,7 +42,7 @@ export class InputComponent implements OnInit, OnChanges, ControlValueAccessor, 
   @Input()
   public name: string;
   @Input()
-  public label: string;
+  public label: string | TemplateRef<any>;
   @Input()
   public required: boolean;
   @Input()

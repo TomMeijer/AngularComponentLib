@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
@@ -16,7 +16,7 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
   @Input()
   public name: string;
   @Input()
-  public label: string;
+  public label: string | TemplateRef<any>;
   @Input()
   public required: boolean;
   @Input()

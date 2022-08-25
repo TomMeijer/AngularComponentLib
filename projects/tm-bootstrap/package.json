@@ -1,6 +1,6 @@
 {
   "name": "tm-bootstrap",
-  "version": "0.12.12",
+  "version": "0.12.13",
   "peerDependencies": {
     "@angular/common": ">=9.1.12",
     "@angular/core": ">=9.1.12",

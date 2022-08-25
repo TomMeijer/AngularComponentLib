@@ -20,5 +20,4 @@ export class InputPrependComponent implements OnInit {
   public instanceOfTemplateRef(): boolean {
     return this.text instanceof TemplateRef;
   }
-
 }

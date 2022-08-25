@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'tm-label',
@@ -8,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class LabelComponent implements OnInit {
 
   @Input()
-  public text: string;
+  public text: string | TemplateRef<any>;
   @Input()
   public required: boolean;
   @Input()
@@ -23,4 +23,7 @@ export class LabelComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public instanceOfTemplateRef(): boolean {
+    return this.text instanceof TemplateRef;
+  }
 }
