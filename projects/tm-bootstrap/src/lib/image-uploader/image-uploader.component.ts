@@ -1,5 +1,5 @@
-import {Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
   selector: 'tm-image-uploader',
@@ -11,9 +11,9 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
     multi: true
   }]
 })
-export class ImageUploaderComponent implements OnInit, ControlValueAccessor {
+export class ImageUploaderComponent implements ControlValueAccessor {
 
-  @ViewChild("imageInput")
+  @ViewChild('imageInput')
   public imageInputElement: ElementRef;
 
   @Input()
@@ -37,7 +37,7 @@ export class ImageUploaderComponent implements OnInit, ControlValueAccessor {
   @Input()
   public uploadIcon = 'fas fa-pencil-alt';
   @Input()
-  public clearIcon = 'fas fa-trash-alt'
+  public clearIcon = 'fas fa-trash-alt';
 
   @Output()
   public onClear: EventEmitter<MouseEvent> = new EventEmitter();
@@ -47,14 +47,9 @@ export class ImageUploaderComponent implements OnInit, ControlValueAccessor {
   public _value: File;
   private onChangeFn = (value) => {};
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   get value(): File {
     return this._value;
-  };
+  }
 
   set value(value: File) {
     this._value = value;
@@ -90,5 +85,4 @@ export class ImageUploaderComponent implements OnInit, ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
   }
-
 }

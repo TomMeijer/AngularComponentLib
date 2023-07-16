@@ -1,11 +1,11 @@
-import {Component, Input, OnInit, TemplateRef} from '@angular/core';
+import {Component, Input, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'tm-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
   @Input()
   public headerTitle: string;
@@ -28,11 +28,6 @@ export class CardComponent implements OnInit {
   @Input()
   public className: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   public hasHeader(): boolean {
     return !!this.headerTemplate || !!this.headerTitle || !!this.headerIcon;
   }
@@ -40,5 +35,4 @@ export class CardComponent implements OnInit {
   public hasFooter(): boolean {
     return !!this.footerTemplate || !!this.footerText || !!this.footerIcon;
   }
-
 }

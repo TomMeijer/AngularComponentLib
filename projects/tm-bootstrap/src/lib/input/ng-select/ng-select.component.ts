@@ -1,6 +1,6 @@
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output, TemplateRef} from '@angular/core';
-import {Observable, of, Subject} from "rxjs";
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {Component, EventEmitter, forwardRef, Input, Output, TemplateRef} from '@angular/core';
+import {Observable, of, Subject} from 'rxjs';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
   selector: 'tm-ng-select',
@@ -12,7 +12,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
     multi: true
   }]
 })
-export class NgSelectComponent implements OnInit, ControlValueAccessor {
+export class NgSelectComponent implements ControlValueAccessor {
 
   @Input()
   public label: string | TemplateRef<any>;
@@ -37,7 +37,7 @@ export class NgSelectComponent implements OnInit, ControlValueAccessor {
   @Input()
   public showRequiredStar: boolean;
   @Input()
-  public tooltipIcon: string = 'fas fa-question-circle';
+  public tooltipIcon = 'fas fa-question-circle';
   @Input()
   public small: boolean;
   @Input()
@@ -73,14 +73,9 @@ export class NgSelectComponent implements OnInit, ControlValueAccessor {
   public _value: any;
   private onChangeFn = (value) => {};
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   get value(): any {
     return this._value;
-  };
+  }
 
   set value(value: any) {
     if (value !== this._value) {
@@ -115,5 +110,4 @@ export class NgSelectComponent implements OnInit, ControlValueAccessor {
   public hasAppend(): boolean {
     return (!!this.appendIcon || !!this.appendText);
   }
-
 }

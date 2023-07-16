@@ -1,5 +1,5 @@
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output, TemplateRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {Component, EventEmitter, forwardRef, Input, Output, TemplateRef} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
   selector: 'tm-checkbox',
@@ -11,7 +11,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
     multi: true
   }]
 })
-export class CheckboxComponent implements OnInit, ControlValueAccessor {
+export class CheckboxComponent implements ControlValueAccessor {
 
   @Input()
   public name: string;
@@ -26,7 +26,7 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
   @Input()
   public showRequiredStar: boolean;
   @Input()
-  public tooltipIcon: string = 'fas fa-question-circle';
+  public tooltipIcon = 'fas fa-question-circle';
   @Input()
   public disabled: boolean;
   @Input()
@@ -38,14 +38,9 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
   public _value: any;
   private onChangeFn = (value) => {};
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   get value(): any {
     return this._value;
-  };
+  }
 
   set value(value: any) {
     if (value !== this._value) {

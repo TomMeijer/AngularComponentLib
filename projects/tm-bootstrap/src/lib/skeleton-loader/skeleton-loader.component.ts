@@ -1,18 +1,18 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'tm-skeleton-loader',
   templateUrl: './skeleton-loader.component.html',
   styleUrls: ['./skeleton-loader.component.scss']
 })
-export class SkeletonLoaderComponent implements OnInit {
+export class SkeletonLoaderComponent {
 
   @Input()
   public appearance: 'circle' | '';
   @Input()
   public animation: 'progress' | 'progress-dark' | 'pulse' | 'false';
   @Input()
-  public count: number = 1;
+  public count = 1;
   @Input()
   public height: string;
   @Input()
@@ -25,10 +25,5 @@ export class SkeletonLoaderComponent implements OnInit {
   public marginLeft: string;
   @Input()
   public marginRight: string;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

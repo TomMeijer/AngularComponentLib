@@ -1,22 +1,5 @@
-import {
-  Component,
-  EventEmitter,
-  forwardRef,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-  TemplateRef
-} from '@angular/core';
-import {
-  AbstractControl,
-  ControlValueAccessor,
-  NG_VALIDATORS,
-  NG_VALUE_ACCESSOR,
-  ValidationErrors,
-  Validator
-} from "@angular/forms";
+import {Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, TemplateRef} from '@angular/core';
+import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 
 @Component({
   selector: 'tm-input',
@@ -35,7 +18,7 @@ import {
     }
   ]
 })
-export class InputComponent implements OnInit, OnChanges, ControlValueAccessor, Validator {
+export class InputComponent implements OnChanges, ControlValueAccessor, Validator {
 
   @Input()
   public type: string;
@@ -66,7 +49,7 @@ export class InputComponent implements OnInit, OnChanges, ControlValueAccessor, 
   @Input()
   public showRequiredStar: boolean;
   @Input()
-  public tooltipIcon: string = 'fas fa-question-circle';
+  public tooltipIcon = 'fas fa-question-circle';
   @Input()
   public small: boolean;
   @Input()
@@ -95,11 +78,6 @@ export class InputComponent implements OnInit, OnChanges, ControlValueAccessor, 
   private onChangeFn = (value) => {};
   private onValidatorChangeFn = () => {};
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.step || changes.min || changes.max) {
       this.onValidatorChangeFn();
@@ -108,13 +86,13 @@ export class InputComponent implements OnInit, OnChanges, ControlValueAccessor, 
 
   get value(): any {
     return this._value;
-  };
+  }
 
   set value(value: any) {
     if (value !== this._value) {
       this._value = value;
       this.onChangeFn(value);
-      this.onValidatorChangeFn()
+      this.onValidatorChangeFn();
     }
   }
 
@@ -130,15 +108,15 @@ export class InputComponent implements OnInit, OnChanges, ControlValueAccessor, 
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    let errors: ValidationErrors = {};
+    const errors: ValidationErrors = {};
     if (!this.isEmpty(this.step) && this.type === 'number' && !this.isEmpty(this._value) && this.mod(Number(this._value), this.step) !== 0) {
-      errors.step = `Value must be dividable by: ${this.step}`
+      errors.step = `Value must be dividable by: ${this.step}`;
     }
     if (!this.isEmpty(this.min) && this.type === 'number' && !this.isEmpty(this._value) && Number(this._value) < this.min) {
-      errors.min = `Minimum value: ${this.min}`
+      errors.min = `Minimum value: ${this.min}`;
     }
     if (!this.isEmpty(this.max) && this.type === 'number' && !this.isEmpty(this._value) && Number(this._value) > this.max) {
-      errors.max = `Maximum value: ${this.max}`
+      errors.max = `Maximum value: ${this.max}`;
     }
     return Object.keys(errors).length > 0 ? errors : null;
   }
@@ -150,9 +128,9 @@ export class InputComponent implements OnInit, OnChanges, ControlValueAccessor, 
   private mod(val: number, step: number): number {
     const valDecCount = (val.toString().split('.')[1] || '').length;
     const stepDecCount = (step.toString().split('.')[1] || '').length;
-    const decCount = valDecCount > stepDecCount? valDecCount : stepDecCount;
-    const valInt = parseInt(val.toFixed(decCount).replace('.',''));
-    const stepInt = parseInt(step.toFixed(decCount).replace('.',''));
+    const decCount = valDecCount > stepDecCount ? valDecCount : stepDecCount;
+    const valInt = parseInt(val.toFixed(decCount).replace('.', ''));
+    const stepInt = parseInt(step.toFixed(decCount).replace('.', ''));
     return (valInt % stepInt) / Math.pow(10, decCount);
   }
 
@@ -171,5 +149,4 @@ export class InputComponent implements OnInit, OnChanges, ControlValueAccessor, 
   public hasAppend(): boolean {
     return (!!this.appendIcon || !!this.appendText);
   }
-
 }

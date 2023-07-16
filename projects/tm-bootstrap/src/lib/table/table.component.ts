@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, Input, Output, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'tm-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent {
 
   @Input()
   public loading: boolean;
@@ -28,22 +28,17 @@ export class TableComponent implements OnInit {
   @Input()
   public pagination: boolean;
   @Input()
-  public itemsPerPage: number = 10;
+  public itemsPerPage = 10;
   @Input()
-  public maxPageLinks: number = 5;
+  public maxPageLinks = 5;
   @Input()
-  public pageBoundaryLinks: boolean = true;
+  public pageBoundaryLinks = true;
   @Input()
   public currentPage: number;
   @Input()
   public totalItems: number;
 
   @Output()
-  public onPageChange: EventEmitter<number> = new EventEmitter()
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  public onPageChange: EventEmitter<number> = new EventEmitter();
 
 }

@@ -1,11 +1,11 @@
-import {Component, Input, OnInit, TemplateRef} from '@angular/core';
+import {Component, Input, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'tm-label',
   templateUrl: './label.component.html',
   styleUrls: ['./label.component.scss']
 })
-export class LabelComponent implements OnInit {
+export class LabelComponent {
 
   @Input()
   public text: string | TemplateRef<any>;
@@ -17,11 +17,6 @@ export class LabelComponent implements OnInit {
   public tooltipIcon: string;
   @Input()
   public showRequiredStar: boolean;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   public instanceOfTemplateRef(): boolean {
     return this.text instanceof TemplateRef;

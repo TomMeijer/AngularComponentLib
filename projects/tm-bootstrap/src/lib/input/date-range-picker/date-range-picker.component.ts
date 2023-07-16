@@ -1,26 +1,8 @@
-import {
-  Component, EventEmitter,
-  forwardRef,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-  TemplateRef,
-  ViewChild
-} from '@angular/core';
-import {BsDaterangepickerConfig, BsDaterangepickerDirective} from "ngx-bootstrap/datepicker";
-import {BsCustomDates} from "ngx-bootstrap/datepicker/themes/bs/bs-custom-dates-view.component";
-import {
-  AbstractControl,
-  ControlValueAccessor,
-  NG_VALIDATORS,
-  NG_VALUE_ACCESSOR,
-  ValidationErrors,
-  Validator
-} from "@angular/forms";
-import {DatePipe} from "@angular/common";
-import {DateUtils} from "../../utils/date-utils";
+import {Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, TemplateRef, ViewChild} from '@angular/core';
+import {BsDaterangepickerConfig, BsDaterangepickerDirective} from 'ngx-bootstrap/datepicker';
+import {BsCustomDates} from 'ngx-bootstrap/datepicker/themes/bs/bs-custom-dates-view.component';
+import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'tm-date-range-picker',
@@ -39,7 +21,7 @@ import {DateUtils} from "../../utils/date-utils";
     }
   ]
 })
-export class DateRangePickerComponent implements OnInit, OnChanges, ControlValueAccessor, Validator {
+export class DateRangePickerComponent implements OnChanges, ControlValueAccessor, Validator {
 
   @ViewChild('dateRangePicker', {static: false})
   public dateRangePicker: BsDaterangepickerDirective;
@@ -59,7 +41,7 @@ export class DateRangePickerComponent implements OnInit, OnChanges, ControlValue
   @Input()
   public tooltipText: string;
   @Input()
-  public tooltipIcon: string = 'fas fa-question-circle';
+  public tooltipIcon = 'fas fa-question-circle';
   @Input()
   public prependText: string | TemplateRef<any>;
   @Input()
@@ -106,11 +88,6 @@ export class DateRangePickerComponent implements OnInit, OnChanges, ControlValue
   private onChangeFn = (value) => {};
   private onValidatorChangeFn = () => {};
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.maxDays && changes.maxDays.currentValue) {
       this.config.maxDateRange = this.maxDays;
@@ -137,7 +114,7 @@ export class DateRangePickerComponent implements OnInit, OnChanges, ControlValue
 
   get value(): Date[] {
     return this._value;
-  };
+  }
 
   set value(value: Date[]) {
     if (JSON.stringify(value) !== JSON.stringify(this._value)) {
@@ -164,13 +141,13 @@ export class DateRangePickerComponent implements OnInit, OnChanges, ControlValue
       errors.required = 'Required';
     }
     if (!this.isMinDateValid()) {
-      errors.minDate = `Minimum date: ${this.datePipe.transform(this.minDate, 'dd-MM-yyyy')}`
+      errors.minDate = `Minimum date: ${this.datePipe.transform(this.minDate, 'dd-MM-yyyy')}`;
     }
     if (!this.isMaxDateValid()) {
-      errors.maxDate = `Maximum date: ${this.datePipe.transform(this.maxDate, 'dd-MM-yyyy')}`
+      errors.maxDate = `Maximum date: ${this.datePipe.transform(this.maxDate, 'dd-MM-yyyy')}`;
     }
     if (!this.isMaxDaysValid()) {
-      errors.maxDays = `Maximum days: ${this.maxDays}`
+      errors.maxDays = `Maximum days: ${this.maxDays}`;
     }
     return Object.keys(errors).length > 0 ? errors : null;
   }
@@ -208,7 +185,7 @@ export class DateRangePickerComponent implements OnInit, OnChanges, ControlValue
   public emitOnChange(value: Date[]): void {
     this.changeCount = this.changeCount + 1;
     if (this.changeCount > 2) {
-      this.onChange.emit(value)
+      this.onChange.emit(value);
     }
   }
 

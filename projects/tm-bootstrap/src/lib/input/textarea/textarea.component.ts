@@ -1,5 +1,5 @@
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output, TemplateRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {Component, EventEmitter, forwardRef, Input, Output, TemplateRef} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
   selector: 'tm-textarea',
@@ -11,7 +11,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
     multi: true
   }]
 })
-export class TextareaComponent implements OnInit, ControlValueAccessor {
+export class TextareaComponent implements ControlValueAccessor {
 
   @Input()
   public name: string;
@@ -30,7 +30,7 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
   @Input()
   public showRequiredStar: boolean;
   @Input()
-  public tooltipIcon: string = 'fas fa-question-circle';
+  public tooltipIcon = 'fas fa-question-circle';
   @Input()
   public small: boolean;
   @Input()
@@ -50,14 +50,9 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
   public _value: any;
   private onChangeFn = (value) => {};
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   get value(): any {
     return this._value;
-  };
+  }
 
   set value(value: any) {
     if (value !== this._value) {
@@ -76,5 +71,4 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
   }
-
 }
