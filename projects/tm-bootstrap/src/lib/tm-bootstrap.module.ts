@@ -5,7 +5,7 @@ import {CardComponent} from './card/card.component';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {LabelComponent} from './input/label/label.component';
-import {InputPrependComponent} from './input/input-prepend/input-prepend.component';
+import {InputGroupTextComponent} from './input/input-group-text/input-group-text.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {SkeletonLoaderComponent} from './skeleton-loader/skeleton-loader.component';
@@ -24,7 +24,7 @@ import {ImageUploaderComponent} from './image-uploader/image-uploader.component'
   declarations: [
     CardComponent,
     LabelComponent,
-    InputPrependComponent,
+    InputGroupTextComponent,
     SkeletonLoaderComponent,
     InputComponent,
     CheckboxComponent,

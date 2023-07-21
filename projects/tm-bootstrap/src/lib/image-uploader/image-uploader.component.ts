@@ -35,9 +35,9 @@ export class ImageUploaderComponent implements ControlValueAccessor {
   @Input()
   public rounded: boolean;
   @Input()
-  public uploadIcon = 'fas fa-pencil-alt';
+  public uploadIcon = 'bi bi-pencil';
   @Input()
-  public clearIcon = 'fas fa-trash-alt';
+  public clearIcon = 'bi bi-trash';
 
   @Output()
   public onClear: EventEmitter<MouseEvent> = new EventEmitter();

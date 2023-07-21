@@ -26,11 +26,9 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input()
   public showRequiredStar: boolean;
   @Input()
-  public tooltipIcon = 'fas fa-question-circle';
+  public tooltipIcon = 'bi bi-question-circle';
   @Input()
   public disabled: boolean;
-  @Input()
-  public formGroupClass = true;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();

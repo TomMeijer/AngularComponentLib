@@ -37,7 +37,7 @@ export class NgSelectComponent implements ControlValueAccessor {
   @Input()
   public showRequiredStar: boolean;
   @Input()
-  public tooltipIcon = 'fas fa-question-circle';
+  public tooltipIcon = 'bi bi-question-circle';
   @Input()
   public small: boolean;
   @Input()
@@ -60,8 +60,6 @@ export class NgSelectComponent implements ControlValueAccessor {
   public typeAhead: Subject<string>;
   @Input()
   public disabled: boolean;
-  @Input()
-  public formGroupClass = true;
 
   @Output()
   public onChange: EventEmitter<any> = new EventEmitter();

@@ -4,6 +4,7 @@
     "outDir": "../../out-tsc/lib",
     "target": "ES2022",
     "declaration": true,
+    "declarationMap": true,
     "inlineSources": true,
     "types": [],
     "lib": [

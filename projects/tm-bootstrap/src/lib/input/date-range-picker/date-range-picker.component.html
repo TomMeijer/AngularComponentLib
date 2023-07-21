@@ -1,4 +1,4 @@
-<div [class.form-group]="formGroupClass">
+<div>
   <tm-label *ngIf="label"
             [text]="label"
             [required]="required"
@@ -7,12 +7,12 @@
             [tooltipIcon]="tooltipIcon"
   ></tm-label>
   <div [class.input-group]="isInputGroup()" [class.input-group-sm]="isInputGroup() && small">
-    <tm-input-prepend *ngIf="hasPrepend()"
-                      class="input-group-prepend"
+    <tm-input-group-text *ngIf="hasPrepend()"
+                      class="input-group-text"
                       [icon]="prependIcon"
                       [text]="prependText"
                       (click)="prependClick.emit($event)"
-    ></tm-input-prepend>
+    ></tm-input-group-text>
     <input type="text"
            [name]="name"
            class="form-control {{className}}"
@@ -30,11 +30,11 @@
            [maxDate]="maxDate"
            (bsValueChange)="emitOnChange($event)"
     >
-    <tm-input-prepend *ngIf="hasAppend()"
-                      class="input-group-append"
+    <tm-input-group-text *ngIf="hasAppend()"
+                      class="input-group-text"
                       [icon]="appendIcon"
                       [text]="appendText"
                       (click)="appendClick.emit($event)"
-    ></tm-input-prepend>
+    ></tm-input-group-text>
   </div>
 </div>

@@ -1,11 +1,11 @@
 import {Component, Input, TemplateRef} from '@angular/core';
 
 @Component({
-  selector: 'tm-input-prepend',
-  templateUrl: './input-prepend.component.html',
-  styleUrls: ['./input-prepend.component.scss']
+  selector: 'tm-input-group-text',
+  templateUrl: './input-group-text.component.html',
+  styleUrls: ['./input-group-text.component.scss']
 })
-export class InputPrependComponent {
+export class InputGroupTextComponent {
 
   @Input()
   public icon: string;

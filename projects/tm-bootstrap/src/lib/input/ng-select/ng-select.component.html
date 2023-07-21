@@ -1,4 +1,4 @@
-<div [class.form-group]="formGroupClass">
+<div>
   <tm-label *ngIf="label"
             [text]="label"
             [required]="required"
@@ -12,12 +12,12 @@
        [class.ng-select-input-group-prepend]="hasPrepend()"
        [class.ng-select-input-group-append]="hasAppend()"
   >
-    <tm-input-prepend *ngIf="hasPrepend()"
-                      class="input-group-prepend"
+    <tm-input-group-text *ngIf="hasPrepend()"
+                      class="input-group-text"
                       [icon]="prependIcon"
                       [text]="prependText"
                       (click)="prependClick.emit($event)"
-    ></tm-input-prepend>
+    ></tm-input-group-text>
     <ng-select [name]="name"
                class="tm-ng-select {{className}}"
                [required]="required"
@@ -32,7 +32,7 @@
                [placeholder]="placeholder"
                [searchFn]="searchFn"
                [typeahead]="typeAhead"
-               minTermLength="2"
+               [minTermLength]="2"
                [disabled]="disabled"
     >
       <ng-template *ngIf="labelTemplate" ng-label-tmp let-item="item">
@@ -42,11 +42,11 @@
         <ng-container *ngTemplateOutlet="optionTemplate; context: {$implicit: item}"></ng-container>
       </ng-template>
     </ng-select>
-    <tm-input-prepend *ngIf="hasAppend()"
-                      class="input-group-append"
+    <tm-input-group-text *ngIf="hasAppend()"
+                      class="input-group-text"
                       [icon]="appendIcon"
                       [text]="appendText"
                       (click)="appendClick.emit($event)"
-    ></tm-input-prepend>
+    ></tm-input-group-text>
   </div>
 </div>

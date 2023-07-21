@@ -49,7 +49,7 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
   @Input()
   public showRequiredStar: boolean;
   @Input()
-  public tooltipIcon = 'fas fa-question-circle';
+  public tooltipIcon = 'bi bi-question-circle';
   @Input()
   public small: boolean;
   @Input()
@@ -62,8 +62,6 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
   public min: number;
   @Input()
   public max: number;
-  @Input()
-  public formGroupClass = true;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();

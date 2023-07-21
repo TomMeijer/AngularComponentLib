@@ -41,7 +41,7 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
   @Input()
   public tooltipText: string;
   @Input()
-  public tooltipIcon = 'fas fa-question-circle';
+  public tooltipIcon = 'bi bi-question-circle';
   @Input()
   public prependText: string | TemplateRef<any>;
   @Input()
@@ -64,8 +64,6 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
   public maxDays: number;
   @Input()
   public ranges: BsCustomDates[];
-  @Input()
-  public formGroupClass = true;
   @Input()
   public containerClass: string;
 
