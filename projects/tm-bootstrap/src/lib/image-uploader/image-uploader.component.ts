@@ -45,7 +45,7 @@ export class ImageUploaderComponent implements ControlValueAccessor {
   public imageSrc: string;
 
   public _value: File;
-  private onChangeFn = (value) => {};
+  private onChangeFn = (value: File) => {};
 
   get value(): File {
     return this._value;

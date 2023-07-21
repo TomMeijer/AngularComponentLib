@@ -1,6 +1,10 @@
 {
-  "name": "tm-bootstrap",
-  "version": "0.12.13",
+  "name": "@tommeijer/tm-bootstrap",
+  "repository": "git://github.com/TomMeijer/AngularComponentLib.git",
+  "version": "0.12.17",
+  "scripts": {
+    "publish": "npm publish"
+  },
   "peerDependencies": {
     "@angular/common": ">=9.1.12",
     "@angular/core": ">=9.1.12",
@@ -9,6 +13,6 @@
     "ngx-skeleton-loader": ">=2.6.1"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.6.0"
   }
 }

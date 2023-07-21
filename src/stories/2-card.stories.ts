@@ -1,5 +1,5 @@
-import {CardComponent} from "../../projects/tm-bootstrap/src/lib/card/card.component";
-import {StoryFnAngularReturnType} from "@storybook/angular/dist/client/preview/types";
+import {CardComponent} from '../../projects/tm-bootstrap/src/lib/card/card.component';
+import {StoryFnAngularReturnType} from '@storybook/angular/dist/client/types';
 
 export default {
   title: 'Card',
@@ -12,5 +12,5 @@ export const Basic = (): StoryFnAngularReturnType => ({
   },
   props: {
   },
-  template: '<tm-card headerTitle="Header Title" headerSubtitle="Subtile" footerText="Footer Text" footerIcon="fas fa-hand-paper">Lorem ipsum</tm-card>'
+  template: '<tm-card headerTitle="Header Title" headerSubtitle="Subtitle" footerText="Footer Text" footerIcon="fas fa-hand-paper">Lorem ipsum</tm-card>'
 });
