@@ -1,6 +1,6 @@
 <span class="input-group-text">
   <ng-container *ngIf="instanceOfTemplateRef(); else stringContent">
-    <ng-container *ngTemplateOutlet="text"></ng-container>
+    <ng-container *ngTemplateOutlet="textAsTemplateRef"></ng-container>
   </ng-container>
   <ng-template #stringContent>
     <i *ngIf="icon" [class]="icon"></i>

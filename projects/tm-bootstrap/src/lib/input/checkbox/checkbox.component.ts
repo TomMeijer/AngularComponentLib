@@ -63,4 +63,8 @@ export class CheckboxComponent implements ControlValueAccessor {
   public labelInstanceOfTemplateRef(): boolean {
     return this.label instanceof TemplateRef;
   }
+
+  get labelAsTemplateRef(): TemplateRef<any> {
+    return this.label as TemplateRef<any>;
+  }
 }

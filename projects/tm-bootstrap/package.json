@@ -1,7 +1,7 @@
 {
   "name": "@tommeijer/tm-bootstrap",
   "repository": "git://github.com/TomMeijer/AngularComponentLib.git",
-  "version": "0.12.17",
+  "version": "0.12.18",
   "scripts": {
     "publish": "npm publish"
   },

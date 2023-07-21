@@ -15,4 +15,8 @@ export class InputPrependComponent {
   public instanceOfTemplateRef(): boolean {
     return this.text instanceof TemplateRef;
   }
+
+  get textAsTemplateRef(): TemplateRef<any> {
+    return this.text as TemplateRef<any>;
+  }
 }

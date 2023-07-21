@@ -10,7 +10,7 @@
            (change)="onChange.emit($event)"
     >
     <ng-container *ngIf="labelInstanceOfTemplateRef(); else stringContent">
-      <ng-container *ngTemplateOutlet="label"></ng-container>
+      <ng-container *ngTemplateOutlet="labelAsTemplateRef"></ng-container>
     </ng-container>
     <ng-template #stringContent>
       <span>{{label}}&nbsp;</span>

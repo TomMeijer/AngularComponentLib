@@ -1,6 +1,6 @@
 <label>
   <ng-container *ngIf="instanceOfTemplateRef(); else stringContent">
-    <ng-container *ngTemplateOutlet="text"></ng-container>
+    <ng-container *ngTemplateOutlet="textAsTemplateRef"></ng-container>
   </ng-container>
   <ng-template #stringContent>
     <span>{{text}}&nbsp;</span>
