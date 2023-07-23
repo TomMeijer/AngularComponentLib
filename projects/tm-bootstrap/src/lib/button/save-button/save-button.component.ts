@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'app-save-button',
+  selector: 'tm-save-button',
   templateUrl: './save-button.component.html',
   styleUrls: ['./save-button.component.scss']
 })
