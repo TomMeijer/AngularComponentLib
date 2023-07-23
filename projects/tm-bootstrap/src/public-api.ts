@@ -13,3 +13,4 @@ export * from './lib/input/textarea/textarea.component';
 export * from './lib/table/table.component';
 export * from './lib/input/date-range-picker/date-range-picker.component';
 export * from './lib/image-uploader/image-uploader.component';
+export * from './lib/button/spinner-button/spinner-button.component';

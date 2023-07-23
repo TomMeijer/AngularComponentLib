@@ -1,0 +1,15 @@
+<button [type]="btnType"
+        class="btn btn-spinner {{className}}"
+        [class.btn-spinner-icon]="displayAsIcon"
+        [class.spinning]="spin"
+        [disabled]="disabled"
+        (click)="onClick.emit($event)"
+>
+  <span class="btn-spinner-text">
+    <i *ngIf="icon" class="{{icon}}" [class.me-2]="text"></i>
+    <span *ngIf="text">{{text}}</span>
+  </span>
+  <div class="btn-spinner-spinner">
+    <div class="spinner-border spinner-border-sm"></div>
+  </div>
+</button>

@@ -1,0 +1,35 @@
+.btn-spinner {
+  position: relative;
+
+  &-spinner {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  &.spinning {
+    .btn-spinner-spinner {
+      opacity: 1;
+    }
+
+    .btn-spinner-text {
+      opacity: 0;
+    }
+  }
+  &-icon {
+    padding: 0;
+    border: 0;
+
+    &:hover,
+    &:focus {
+      box-shadow: none !important;
+      opacity: .75
+    }
+  }
+}
