@@ -6,7 +6,6 @@ import {Component, Input, TemplateRef} from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-
   @Input()
   public headerTitle: string;
   @Input()

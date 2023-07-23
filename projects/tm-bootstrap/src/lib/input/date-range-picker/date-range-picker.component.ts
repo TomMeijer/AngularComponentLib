@@ -22,7 +22,6 @@ import {DatePipe} from '@angular/common';
   ]
 })
 export class DateRangePickerComponent implements OnChanges, ControlValueAccessor, Validator {
-
   @ViewChild('dateRangePicker', {static: false})
   public dateRangePicker: BsDaterangepickerDirective;
 

@@ -6,7 +6,6 @@ import {Component, EventEmitter, Input, Output, TemplateRef} from '@angular/core
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
-
   @Input()
   public loading: boolean;
   @Input()
@@ -40,5 +39,4 @@ export class TableComponent {
 
   @Output()
   public onPageChange: EventEmitter<number> = new EventEmitter();
-
 }

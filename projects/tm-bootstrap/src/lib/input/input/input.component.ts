@@ -19,7 +19,6 @@ import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR,
   ]
 })
 export class InputComponent implements OnChanges, ControlValueAccessor, Validator {
-
   @Input()
   public type: string;
   @Input()

@@ -12,7 +12,6 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
   }]
 })
 export class ImageUploaderComponent implements ControlValueAccessor {
-
   @ViewChild('imageInput')
   public imageInputElement: ElementRef;
 

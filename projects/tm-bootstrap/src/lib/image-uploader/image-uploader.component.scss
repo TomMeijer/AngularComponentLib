@@ -17,11 +17,23 @@
     left: 0;
     right: 0;
     background-color: rgba(0,0,0,.75);
-    color: #fff;
     opacity: 0;
     visibility: hidden;
     transition: all ease-in-out .15s;
     width: 100%;
+
+    .btn {
+      padding: 6px 10px;
+      i {
+        color: white;
+      }
+      &:hover {
+        background-color: white;
+        i {
+          color: black;
+        }
+      }
+    }
   }
 
   &:hover &-overlay {

@@ -14,3 +14,6 @@ export * from './lib/table/table.component';
 export * from './lib/input/date-range-picker/date-range-picker.component';
 export * from './lib/image-uploader/image-uploader.component';
 export * from './lib/button/spinner-button/spinner-button.component';
+export * from './lib/utils/file-utils';
+export * from './lib/utils/date-utils';
+export * from './lib/button/save-button/save-button.component';

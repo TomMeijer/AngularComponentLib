@@ -6,7 +6,6 @@ import {Component, Input, TemplateRef} from '@angular/core';
   styleUrls: ['./label.component.scss']
 })
 export class LabelComponent {
-
   @Input()
   public text: string | TemplateRef<any>;
   @Input()

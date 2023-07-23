@@ -20,6 +20,7 @@ import {DateRangePickerComponent} from './input/date-range-picker/date-range-pic
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {ImageUploaderComponent} from './image-uploader/image-uploader.component';
 import {SpinnerButtonComponent} from './button/spinner-button/spinner-button.component';
+import {SaveButtonComponent} from './button/save-button/save-button.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {SpinnerButtonComponent} from './button/spinner-button/spinner-button.com
     TableComponent,
     DateRangePickerComponent,
     ImageUploaderComponent,
-    SpinnerButtonComponent
+    SpinnerButtonComponent,
+    SaveButtonComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +60,8 @@ import {SpinnerButtonComponent} from './button/spinner-button/spinner-button.com
     TableComponent,
     DateRangePickerComponent,
     ImageUploaderComponent,
-    SpinnerButtonComponent
+    SpinnerButtonComponent,
+    SaveButtonComponent
   ]
 })
 export class TmBootstrapModule { }

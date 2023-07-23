@@ -12,7 +12,6 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
   }]
 })
 export class SelectComponent implements ControlValueAccessor {
-
   @Input()
   public name: string;
   @Input()

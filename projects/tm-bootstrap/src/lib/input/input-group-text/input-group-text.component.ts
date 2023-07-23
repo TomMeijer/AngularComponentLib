@@ -6,7 +6,6 @@ import {Component, Input, TemplateRef} from '@angular/core';
   styleUrls: ['./input-group-text.component.scss']
 })
 export class InputGroupTextComponent {
-
   @Input()
   public icon: string;
   @Input()

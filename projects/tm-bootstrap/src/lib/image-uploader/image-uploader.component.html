@@ -17,7 +17,7 @@
        class="tm-img-upload-overlay"
        [class.rounded-circle]="rounded"
   >
-    <label class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-circle cursor-pointer mb-0">
+    <label class="btn border-white border-2 rounded-circle cursor-pointer">
       <input #imageInput
              class="d-none"
              type="file"
@@ -30,7 +30,7 @@
     </label>
     <button *ngIf="clearable && value"
             type="button"
-            class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-circle mb-0 ml-2"
+            class="btn border-white border-2 rounded-circle ms-2"
             (click)="clearImage($event)"
     >
       <i [class]="clearIcon"></i>

@@ -6,7 +6,6 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./skeleton-loader.component.scss']
 })
 export class SkeletonLoaderComponent {
-
   @Input()
   public appearance: 'circle' | '';
   @Input()
@@ -25,5 +24,4 @@ export class SkeletonLoaderComponent {
   public marginLeft: string;
   @Input()
   public marginRight: string;
-
 }

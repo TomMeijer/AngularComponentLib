@@ -13,7 +13,6 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
   }]
 })
 export class NgSelectComponent implements ControlValueAccessor {
-
   @Input()
   public label: string | TemplateRef<any>;
   @Input()
