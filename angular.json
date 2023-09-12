@@ -42,8 +42,8 @@
           }
         }
       }
-    }},
-  "defaultProject": "tm-bootstrap",
+    }
+  },
   "schematics": {
     "@schematics/angular:component": {
       "style": "scss"

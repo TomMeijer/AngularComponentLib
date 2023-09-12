@@ -1,10 +1,10 @@
 {
   "name": "@tommeijer/tm-bootstrap",
   "repository": "git://github.com/TomMeijer/AngularComponentLib.git",
-  "version": "0.13.10",
+  "version": "0.14.1",
   "scripts": {
-    "build": "ng build",
-    "publish": "npm publish"
+    "build": "ng build tm-bootstrap --configuration production",
+    "publish": "cd ../../dist/tm-bootstrap && npm publish"
   },
   "peerDependencies": {
     "@angular/common": ">=9.1.12",

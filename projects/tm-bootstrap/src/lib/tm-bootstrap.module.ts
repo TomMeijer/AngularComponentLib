@@ -21,6 +21,8 @@ import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {ImageUploaderComponent} from './image-uploader/image-uploader.component';
 import {SpinnerButtonComponent} from './button/spinner-button/spinner-button.component';
 import {SaveButtonComponent} from './button/save-button/save-button.component';
+import {AlertOutputComponent} from './alert/alert-output/alert-output.component';
+import {AlertModule} from 'ngx-bootstrap/alert';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import {SaveButtonComponent} from './button/save-button/save-button.component';
     DateRangePickerComponent,
     ImageUploaderComponent,
     SpinnerButtonComponent,
-    SaveButtonComponent
+    SaveButtonComponent,
+    AlertOutputComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +50,8 @@ import {SaveButtonComponent} from './button/save-button/save-button.component';
     TooltipModule,
     NgSelectModule,
     NgxSkeletonLoaderModule,
-    BsDatepickerModule
+    BsDatepickerModule,
+    AlertModule
   ],
   exports: [
     CardComponent,
@@ -61,7 +65,8 @@ import {SaveButtonComponent} from './button/save-button/save-button.component';
     DateRangePickerComponent,
     ImageUploaderComponent,
     SpinnerButtonComponent,
-    SaveButtonComponent
+    SaveButtonComponent,
+    AlertOutputComponent
   ]
 })
 export class TmBootstrapModule { }

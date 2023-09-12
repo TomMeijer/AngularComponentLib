@@ -7,9 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "build-tm-bootstrap": "ng build tm-bootstrap",
-    "pack-tm-bootstrap": "cd dist/tm-bootstrap && npm pack"
+    "build-storybook": "build-storybook"
   },
   "private": true,
   "dependencies": {
