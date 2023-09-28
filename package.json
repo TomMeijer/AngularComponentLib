@@ -24,7 +24,8 @@
     "zone.js": "~0.13.1",
     "@ng-select/ng-select": "^11.0.0",
     "ngx-bootstrap": "^10.2.0",
-    "ngx-skeleton-loader": "^8.0.0"
+    "ngx-skeleton-loader": "^8.0.0",
+    "@auth0/angular-jwt": "^5.1.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~16.1.5",

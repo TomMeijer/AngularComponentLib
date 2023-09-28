@@ -17,5 +17,8 @@ export * from './lib/button/spinner-button/spinner-button.component';
 export * from './lib/utils/file-utils';
 export * from './lib/utils/date-utils';
 export * from './lib/button/save-button/save-button.component';
-export * from './lib/alert/alert-output/alert-output.component'
-export * from './lib/alert/alert.service'
+export * from './lib/alert/alert-output/alert-output.component';
+export * from './lib/alert/alert.service';
+export * from './lib/auth/auth.interceptor';
+export * from './lib/auth/auth.service';
+export * from './lib/error/error.interceptor';

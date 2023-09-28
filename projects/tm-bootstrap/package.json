@@ -1,7 +1,7 @@
 {
   "name": "@tommeijer/tm-bootstrap",
   "repository": "git://github.com/TomMeijer/AngularComponentLib.git",
-  "version": "0.14.1",
+  "version": "0.15.0",
   "scripts": {
     "build": "ng build tm-bootstrap --configuration production",
     "publish": "cd ../../dist/tm-bootstrap && npm publish"
@@ -11,7 +11,8 @@
     "@angular/core": ">=9.1.12",
     "ngx-bootstrap": ">=6.2.0",
     "@ng-select/ng-select": ">=3.7.3",
-    "ngx-skeleton-loader": ">=2.6.1"
+    "ngx-skeleton-loader": ">=2.6.1",
+    "@auth0/angular-jwt": ">=5.1.2"
   },
   "dependencies": {
     "tslib": "^2.6.0"
