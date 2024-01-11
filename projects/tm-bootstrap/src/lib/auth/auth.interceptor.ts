@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
       if (this.authService.isTokenExpired(accessToken)) {
         return this.authService.refreshAccessToken().pipe(
           switchMap(response => {
-            this.authService.saveAccessToken(response.accessToken);
+            this.authService.saveNewAuth(response.accessToken, response.refreshToken);
             req = this.setAuthorization(req, response.accessToken);
             return next.handle(req);
           })

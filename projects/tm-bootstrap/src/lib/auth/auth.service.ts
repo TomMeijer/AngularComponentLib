@@ -42,8 +42,9 @@ export class AuthService {
     this.setStorageItem(REFRESH_TOKEN_KEY, refreshToken, remember);
   }
 
-  public saveAccessToken(accessToken: string): void {
+  public saveNewAuth(accessToken: string, refreshToken: string): void {
     this.setStorageItem(ACCESS_TOKEN_KEY, accessToken, !!localStorage.getItem(ACCESS_TOKEN_KEY));
+    this.setStorageItem(REFRESH_TOKEN_KEY, refreshToken, !!localStorage.getItem(REFRESH_TOKEN_KEY));
   }
 
   public getAccessToken(): string {
