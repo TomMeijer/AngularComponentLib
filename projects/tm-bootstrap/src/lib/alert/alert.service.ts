@@ -32,6 +32,14 @@ export class AlertService {
     this.show(message, AlertType.Danger, timeout);
   }
 
+  public showInfo(message: string, timeout?: number): void {
+    this.show(message, AlertType.Info, timeout);
+  }
+
+  public showWarning(message: string, timeout?: number): void {
+    this.show(message, AlertType.Warning, timeout);
+  }
+
   public dismiss(dismissedAlert: Alert): void {
     this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
   }

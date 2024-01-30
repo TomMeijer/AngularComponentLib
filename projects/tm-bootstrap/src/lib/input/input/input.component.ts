@@ -61,6 +61,8 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
   public min: number;
   @Input()
   public max: number;
+  @Input()
+  public validator: Validator;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();
@@ -105,7 +107,7 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    const errors: ValidationErrors = {};
+    let errors: ValidationErrors = {};
     if (!this.isEmpty(this.step) && this.type === 'number' && !this.isEmpty(this._value) && this.mod(Number(this._value), this.step) !== 0) {
       errors.step = `Value must be dividable by: ${this.step}`;
     }
@@ -114,6 +116,12 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
     }
     if (!this.isEmpty(this.max) && this.type === 'number' && !this.isEmpty(this._value) && Number(this._value) > this.max) {
       errors.max = `Maximum value: ${this.max}`;
+    }
+    if (this.validator) {
+      const customErrors = this.validator.validate(control);
+      if (customErrors) {
+        errors = {...errors, ...customErrors};
+      }
     }
     return Object.keys(errors).length > 0 ? errors : null;
   }
