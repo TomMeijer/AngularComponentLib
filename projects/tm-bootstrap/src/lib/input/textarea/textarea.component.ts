@@ -1,17 +1,31 @@
 import {Component, EventEmitter, forwardRef, Input, Output, TemplateRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator
+} from '@angular/forms';
 
 @Component({
   selector: 'tm-textarea',
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss'],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => TextareaComponent),
-    multi: true
-  }]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TextareaComponent),
+      multi: true
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => TextareaComponent),
+      multi: true
+    }
+  ]
 })
-export class TextareaComponent implements ControlValueAccessor {
+export class TextareaComponent implements ControlValueAccessor, Validator {
   @Input()
   public name: string;
   @Input()
@@ -38,6 +52,8 @@ export class TextareaComponent implements ControlValueAccessor {
   public disabled: boolean;
   @Input()
   public readOnly: boolean;
+  @Input()
+  public validationFn: (control: AbstractControl) => ValidationErrors | null;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();
@@ -46,6 +62,7 @@ export class TextareaComponent implements ControlValueAccessor {
 
   public _value: any;
   private onChangeFn = (value) => {};
+  private onValidatorChangeFn = () => {};
 
   get value(): any {
     return this._value;
@@ -67,5 +84,20 @@ export class TextareaComponent implements ControlValueAccessor {
   }
 
   registerOnTouched(fn: any): void {
+  }
+
+  validate(control: AbstractControl): ValidationErrors | null {
+    let errors: ValidationErrors = {};
+    if (this.validationFn) {
+      const customErrors = this.validationFn(control);
+      if (customErrors) {
+        errors = {...errors, ...customErrors};
+      }
+    }
+    return Object.keys(errors).length > 0 ? errors : null;
+  }
+
+  registerOnValidatorChange?(fn: () => void): void {
+    this.onValidatorChangeFn = fn;
   }
 }

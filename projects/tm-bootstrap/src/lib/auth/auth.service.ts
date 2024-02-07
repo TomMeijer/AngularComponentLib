@@ -23,7 +23,11 @@ export class AuthService {
 
   public refreshAccessToken(): Observable<RefreshAccessTokenResponse> {
     const request = {refreshToken: this.getStorageItem(REFRESH_TOKEN_KEY)}
-    return this.http.post<RefreshAccessTokenResponse>(`${this.apiUrl}/auth/refresh-access-token`, request);
+    return this.http.post<RefreshAccessTokenResponse>(this.refreshAccessTokenUrl, request);
+  }
+
+  get refreshAccessTokenUrl(): string {
+    return this.apiUrl + '/auth/refresh-access-token';
   }
 
   public isAuthenticated(): boolean {

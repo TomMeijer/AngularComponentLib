@@ -3,8 +3,6 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {Observable, switchMap} from 'rxjs';
 import {AuthService} from './auth.service';
 
-const REFRESH_ENDPOINT = '/auth/refresh-access-token';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,8 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
   public constructor(private authService: AuthService) { }
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const url = new URL(req.url);
-    if (url.pathname !== REFRESH_ENDPOINT && this.authService.isAuthenticated()) {
+    if (req.url !== this.authService.refreshAccessTokenUrl && this.authService.isAuthenticated()) {
       let accessToken = this.authService.getAccessToken();
       if (this.authService.isTokenExpired(accessToken)) {
         return this.authService.refreshAccessToken().pipe(

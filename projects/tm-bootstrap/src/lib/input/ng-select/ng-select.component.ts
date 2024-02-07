@@ -1,18 +1,32 @@
 import {Component, EventEmitter, forwardRef, Input, Output, TemplateRef} from '@angular/core';
 import {Observable, of, Subject} from 'rxjs';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator
+} from '@angular/forms';
 
 @Component({
   selector: 'tm-ng-select',
   templateUrl: './ng-select.component.html',
   styleUrls: ['./ng-select.component.scss'],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => NgSelectComponent),
-    multi: true
-  }]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => NgSelectComponent),
+      multi: true
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => NgSelectComponent),
+      multi: true
+    }
+  ]
 })
-export class NgSelectComponent implements ControlValueAccessor {
+export class NgSelectComponent implements ControlValueAccessor, Validator {
   @Input()
   public label: string | TemplateRef<any>;
   @Input()
@@ -59,6 +73,8 @@ export class NgSelectComponent implements ControlValueAccessor {
   public typeAhead: Subject<string>;
   @Input()
   public disabled: boolean;
+  @Input()
+  public validationFn: (control: AbstractControl) => ValidationErrors | null;
 
   @Output()
   public onChange: EventEmitter<any> = new EventEmitter();
@@ -69,6 +85,7 @@ export class NgSelectComponent implements ControlValueAccessor {
 
   public _value: any;
   private onChangeFn = (value) => {};
+  private onValidatorChangeFn = () => {};
 
   get value(): any {
     return this._value;
@@ -78,6 +95,7 @@ export class NgSelectComponent implements ControlValueAccessor {
     if (value !== this._value) {
       this._value = value;
       this.onChangeFn(value);
+      this.onValidatorChangeFn();
     }
   }
 
@@ -90,6 +108,21 @@ export class NgSelectComponent implements ControlValueAccessor {
   }
 
   registerOnTouched(fn: any): void {
+  }
+
+  validate(control: AbstractControl): ValidationErrors | null {
+    let errors: ValidationErrors = {};
+    if (this.validationFn) {
+      const customErrors = this.validationFn(control);
+      if (customErrors) {
+        errors = {...errors, ...customErrors};
+      }
+    }
+    return Object.keys(errors).length > 0 ? errors : null;
+  }
+
+  registerOnValidatorChange?(fn: () => void): void {
+    this.onValidatorChangeFn = fn;
   }
 
   public getSelectItems(): Observable<any[]> {

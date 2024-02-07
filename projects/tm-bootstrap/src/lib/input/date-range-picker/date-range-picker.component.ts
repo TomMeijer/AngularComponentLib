@@ -65,6 +65,8 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
   public ranges: BsCustomDates[];
   @Input()
   public containerClass: string;
+  @Input()
+  public validationFn: (control: AbstractControl) => ValidationErrors | null;
 
   @Output()
   public onChange: EventEmitter<Date[]> = new EventEmitter();
@@ -133,7 +135,7 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    const errors: ValidationErrors = {};
+    let errors: ValidationErrors = {};
     if (!this.isValid()) {
       errors.required = 'Required';
     }
@@ -145,6 +147,12 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
     }
     if (!this.isMaxDaysValid()) {
       errors.maxDays = `Maximum days: ${this.maxDays}`;
+    }
+    if (this.validationFn) {
+      const customErrors = this.validationFn(control);
+      if (customErrors) {
+        errors = {...errors, ...customErrors};
+      }
     }
     return Object.keys(errors).length > 0 ? errors : null;
   }

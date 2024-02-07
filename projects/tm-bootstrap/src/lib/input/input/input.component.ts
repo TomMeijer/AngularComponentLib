@@ -62,7 +62,7 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
   @Input()
   public max: number;
   @Input()
-  public validator: Validator;
+  public validationFn: (control: AbstractControl) => ValidationErrors | null;
 
   @Output()
   public onChange: EventEmitter<Event> = new EventEmitter();
@@ -117,8 +117,8 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
     if (!this.isEmpty(this.max) && this.type === 'number' && !this.isEmpty(this._value) && Number(this._value) > this.max) {
       errors.max = `Maximum value: ${this.max}`;
     }
-    if (this.validator) {
-      const customErrors = this.validator.validate(control);
+    if (this.validationFn) {
+      const customErrors = this.validationFn(control);
       if (customErrors) {
         errors = {...errors, ...customErrors};
       }
