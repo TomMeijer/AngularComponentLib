@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output, TemplateRef} from '@angular/core
 
 @Component({
   selector: 'tm-table',
+  standalone: false,
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })

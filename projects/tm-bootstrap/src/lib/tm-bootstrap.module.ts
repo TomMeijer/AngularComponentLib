@@ -23,6 +23,8 @@ import {SpinnerButtonComponent} from './button/spinner-button/spinner-button.com
 import {SaveButtonComponent} from './button/save-button/save-button.component';
 import {AlertOutputComponent} from './alert/alert-output/alert-output.component';
 import {AlertModule} from 'ngx-bootstrap/alert';
+import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
+import {ConfirmButtonComponent} from './button/confirm-button/confirm-button.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import {AlertModule} from 'ngx-bootstrap/alert';
     ImageUploaderComponent,
     SpinnerButtonComponent,
     SaveButtonComponent,
-    AlertOutputComponent
+    AlertOutputComponent,
+    ConfirmDialogComponent,
+    ConfirmButtonComponent
   ],
   imports: [
     CommonModule,
@@ -66,7 +70,9 @@ import {AlertModule} from 'ngx-bootstrap/alert';
     ImageUploaderComponent,
     SpinnerButtonComponent,
     SaveButtonComponent,
-    AlertOutputComponent
+    AlertOutputComponent,
+    ConfirmDialogComponent,
+    ConfirmButtonComponent
   ]
 })
 export class TmBootstrapModule { }

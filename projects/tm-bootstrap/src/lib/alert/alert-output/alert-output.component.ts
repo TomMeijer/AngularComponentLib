@@ -4,6 +4,7 @@ import {Alert} from '../alert';
 
 @Component({
   selector: 'tm-alert-output',
+  standalone: false,
   templateUrl: './alert-output.component.html',
   styleUrls: ['./alert-output.component.scss']
 })

@@ -2,12 +2,13 @@ import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'tm-skeleton-loader',
+  standalone: false,
   templateUrl: './skeleton-loader.component.html',
   styleUrls: ['./skeleton-loader.component.scss']
 })
 export class SkeletonLoaderComponent {
   @Input()
-  public appearance: 'circle' | '';
+  public appearance: 'circle' | 'line' | 'custom-content';
   @Input()
   public animation: 'progress' | 'progress-dark' | 'pulse' | 'false';
   @Input()

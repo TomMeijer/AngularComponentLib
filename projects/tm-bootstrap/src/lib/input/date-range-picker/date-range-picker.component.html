@@ -28,7 +28,7 @@
            [isDisabled]="readOnly"
            [minDate]="minDate"
            [maxDate]="maxDate"
-           (bsValueChange)="emitOnChange($event)"
+           (bsValueChange)="onChange.emit($event)"
     >
     <tm-input-group-text *ngIf="hasAppend()"
                       class="input-group-text"

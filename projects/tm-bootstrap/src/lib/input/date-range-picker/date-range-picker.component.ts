@@ -1,11 +1,13 @@
 import {Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, TemplateRef, ViewChild} from '@angular/core';
 import {BsDaterangepickerConfig, BsDaterangepickerDirective} from 'ngx-bootstrap/datepicker';
+// @ts-ignore
 import {BsCustomDates} from 'ngx-bootstrap/datepicker/themes/bs/bs-custom-dates-view.component';
 import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'tm-date-range-picker',
+  standalone: false,
   templateUrl: './date-range-picker.component.html',
   styleUrls: ['./date-range-picker.component.scss'],
   providers: [
@@ -79,28 +81,27 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
   public config: Partial<BsDaterangepickerConfig> = {
     rangeInputFormat: 'DD-MM-YYYY',
     showWeekNumbers: false,
-    containerClass: 'tm-datepicker',
+    containerClass: 'theme-default',
     rangeSeparator: ' / '
   };
-  private changeCount = 0;
   public _value: Date[];
-  private onChangeFn = (value) => {};
+  private onChangeFn = (value: Date[]) => {};
   private onValidatorChangeFn = () => {};
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.maxDays && changes.maxDays.currentValue) {
+    if (changes['maxDays']?.currentValue) {
       this.config.maxDateRange = this.maxDays;
       this.updateConfig();
     }
-    if (changes.ranges && changes.ranges.currentValue) {
+    if (changes['ranges']?.currentValue) {
       this.config.ranges = this.ranges;
       this.updateConfig();
     }
-    if (changes.containerClass && changes.containerClass.currentValue) {
-      this.config.containerClass = this.config.containerClass + ' ' + this.containerClass;
+    if (changes['containerClass']?.currentValue) {
+      this.config.containerClass = this.containerClass;
       this.updateConfig();
     }
-    if (changes.required || changes.minDate || changes.maxDate || changes.maxDays) {
+    if (changes['required'] || changes['minDate'] || changes['maxDate'] || changes['maxDays']) {
       this.onValidatorChangeFn();
     }
   }
@@ -137,16 +138,16 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
   validate(control: AbstractControl): ValidationErrors | null {
     let errors: ValidationErrors = {};
     if (!this.isValid()) {
-      errors.required = 'Required';
+      errors['required'] = 'Required';
     }
     if (!this.isMinDateValid()) {
-      errors.minDate = `Minimum date: ${this.datePipe.transform(this.minDate, 'dd-MM-yyyy')}`;
+      errors['minDate'] = `Minimum date: ${this.datePipe.transform(this.minDate, 'dd-MM-yyyy')}`;
     }
     if (!this.isMaxDateValid()) {
-      errors.maxDate = `Maximum date: ${this.datePipe.transform(this.maxDate, 'dd-MM-yyyy')}`;
+      errors['maxDate'] = `Maximum date: ${this.datePipe.transform(this.maxDate, 'dd-MM-yyyy')}`;
     }
     if (!this.isMaxDaysValid()) {
-      errors.maxDays = `Maximum days: ${this.maxDays}`;
+      errors['maxDays'] = `Maximum days: ${this.maxDays}`;
     }
     if (this.validationFn) {
       const customErrors = this.validationFn(control);
@@ -185,13 +186,6 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
 
   registerOnValidatorChange?(fn: () => void): void {
     this.onValidatorChangeFn = fn;
-  }
-
-  public emitOnChange(value: Date[]): void {
-    this.changeCount = this.changeCount + 1;
-    if (this.changeCount > 2) {
-      this.onChange.emit(value);
-    }
   }
 
   public isInputGroup(): boolean {

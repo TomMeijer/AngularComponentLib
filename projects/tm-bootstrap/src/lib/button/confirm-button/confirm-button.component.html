@@ -1,0 +1,19 @@
+<tm-confirm-dialog [show]="showConfirmDialog"
+                   [left]="leftDialog"
+                   [text]="confirmText"
+                   [subText]="subText"
+                   [width]="dialogWidth"
+                   [class.tm-confirm-dialog-icon]="displayAsIcon"
+                   [requiredUserInput]="requiredUserInput"
+                   (onConfirm)="confirm()"
+                   (onCancel)="cancel()"
+                   (outsideClick)="showConfirmDialog = false"
+>
+  <tm-spinner-button [className]="className"
+                     [icon]="icon"
+                     [text]="text"
+                     [displayAsIcon]="displayAsIcon"
+                     [spin]="spin"
+                     (onClick)="toggleConfirmDialog()"
+  ></tm-spinner-button>
+</tm-confirm-dialog>

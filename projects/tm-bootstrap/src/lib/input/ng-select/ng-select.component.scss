@@ -6,14 +6,27 @@
   }
 }
 
+:host ::ng-deep .ng-select.tm-ng-select .ng-select-container {
+  height: 38px;
+  min-height: 38px;
+}
+
+:host ::ng-deep .ng-select.tm-ng-select.tm-ng-select-sm .ng-select-container {
+  height: 31px;
+  min-height: 31px;
+  font-size: 14px;
+}
+
+:host ::ng-deep .ng-select.tm-ng-select.tm-ng-select-sm .ng-dropdown-panel {
+  font-size: 14px;
+}
+
 :host ::ng-deep .ng-select-input-group.ng-select-input-group-prepend .ng-select.tm-ng-select .ng-select-container {
-  border-left: none !important;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
 :host ::ng-deep .ng-select-input-group.ng-select-input-group-append .ng-select.tm-ng-select .ng-select-container {
-  border-right: none !important;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }

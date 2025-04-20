@@ -2,6 +2,7 @@ import {Component, Input, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'tm-input-group-text',
+  standalone: false,
   templateUrl: './input-group-text.component.html',
   styleUrls: ['./input-group-text.component.scss']
 })

@@ -2,6 +2,7 @@ import {Component, Input, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'tm-card',
+  standalone: false,
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })

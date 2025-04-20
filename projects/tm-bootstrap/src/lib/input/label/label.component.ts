@@ -2,6 +2,7 @@ import {Component, Input, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'tm-label',
+  standalone: false,
   templateUrl: './label.component.html',
   styleUrls: ['./label.component.scss']
 })

@@ -1,8 +1,9 @@
-import {Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
   selector: 'tm-image-uploader',
+  standalone: false,
   templateUrl: './image-uploader.component.html',
   styleUrls: ['./image-uploader.component.scss'],
   providers: [{
@@ -11,7 +12,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
     multi: true
   }]
 })
-export class ImageUploaderComponent implements ControlValueAccessor {
+export class ImageUploaderComponent implements ControlValueAccessor, OnInit {
   @ViewChild('imageInput')
   public imageInputElement: ElementRef;
 
@@ -45,6 +46,10 @@ export class ImageUploaderComponent implements ControlValueAccessor {
 
   public _value: File;
   private onChangeFn = (value: File) => {};
+
+  ngOnInit(): void {
+    this.imageSrc = this.defaultImageSrc;
+  }
 
   get value(): File {
     return this._value;

@@ -10,6 +10,7 @@ import {
 
 @Component({
   selector: 'tm-textarea',
+  standalone: false,
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss'],
   providers: [
@@ -39,11 +40,11 @@ export class TextareaComponent implements ControlValueAccessor, Validator {
   @Input()
   public tooltipText: string;
   @Input()
+  public tooltipIcon = 'bi bi-question-circle';
+  @Input()
   public className: string;
   @Input()
   public showRequiredStar: boolean;
-  @Input()
-  public tooltipIcon = 'bi bi-question-circle';
   @Input()
   public small: boolean;
   @Input()
@@ -61,7 +62,7 @@ export class TextareaComponent implements ControlValueAccessor, Validator {
   public onInput: EventEmitter<Event> = new EventEmitter();
 
   public _value: any;
-  private onChangeFn = (value) => {};
+  private onChangeFn = (value: any) => {};
   private onValidatorChangeFn = () => {};
 
   get value(): any {

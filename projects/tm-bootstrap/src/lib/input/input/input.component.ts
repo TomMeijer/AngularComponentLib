@@ -3,6 +3,7 @@ import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR,
 
 @Component({
   selector: 'tm-input',
+  standalone: false,
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   providers: [
@@ -36,6 +37,8 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
   @Input()
   public tooltipText: string;
   @Input()
+  public tooltipIcon = 'bi bi-question-circle';
+  @Input()
   public prependText: string | TemplateRef<any>;
   @Input()
   public prependIcon: string;
@@ -47,8 +50,6 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
   public className: string;
   @Input()
   public showRequiredStar: boolean;
-  @Input()
-  public tooltipIcon = 'bi bi-question-circle';
   @Input()
   public small: boolean;
   @Input()
@@ -74,11 +75,11 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
   public appendClick: EventEmitter<MouseEvent> = new EventEmitter();
 
   public _value: any;
-  private onChangeFn = (value) => {};
+  private onChangeFn = (value: any) => {};
   private onValidatorChangeFn = () => {};
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.step || changes.min || changes.max) {
+    if (changes['step'] || changes['min'] || changes['max']) {
       this.onValidatorChangeFn();
     }
   }
@@ -109,13 +110,13 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
   validate(control: AbstractControl): ValidationErrors | null {
     let errors: ValidationErrors = {};
     if (!this.isEmpty(this.step) && this.type === 'number' && !this.isEmpty(this._value) && this.mod(Number(this._value), this.step) !== 0) {
-      errors.step = `Value must be dividable by: ${this.step}`;
+      errors['step'] = `Value must be dividable by: ${this.step}`;
     }
     if (!this.isEmpty(this.min) && this.type === 'number' && !this.isEmpty(this._value) && Number(this._value) < this.min) {
-      errors.min = `Minimum value: ${this.min}`;
+      errors['min'] = `Minimum value: ${this.min}`;
     }
     if (!this.isEmpty(this.max) && this.type === 'number' && !this.isEmpty(this._value) && Number(this._value) > this.max) {
-      errors.max = `Maximum value: ${this.max}`;
+      errors['max'] = `Maximum value: ${this.max}`;
     }
     if (this.validationFn) {
       const customErrors = this.validationFn(control);

@@ -68,7 +68,7 @@ export class AuthService {
 
   private getStorageItem(key: string): string {
     const value = localStorage.getItem(key);
-    return value ? value : sessionStorage.getItem(key);
+    return value ?? sessionStorage.getItem(key);
   }
 
   private setStorageItem(key: string, value: string, remember: boolean): void {

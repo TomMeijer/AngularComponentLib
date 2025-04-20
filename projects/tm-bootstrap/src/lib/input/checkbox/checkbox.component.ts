@@ -10,6 +10,7 @@ import {
 
 @Component({
   selector: 'tm-checkbox',
+  standalone: false,
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
   providers: [
@@ -49,7 +50,7 @@ export class CheckboxComponent implements ControlValueAccessor, Validator {
   public onChange: EventEmitter<Event> = new EventEmitter();
 
   public _value: any;
-  private onChangeFn = (value) => {};
+  private onChangeFn = (value: any) => {};
   private onValidatorChangeFn = () => {};
 
   get value(): any {

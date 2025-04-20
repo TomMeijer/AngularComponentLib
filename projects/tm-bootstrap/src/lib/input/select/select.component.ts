@@ -10,6 +10,7 @@ import {
 
 @Component({
   selector: 'tm-select',
+  standalone: false,
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
   providers: [
@@ -35,6 +36,8 @@ export class SelectComponent implements ControlValueAccessor, Validator {
   @Input()
   public tooltipText: string;
   @Input()
+  public tooltipIcon = 'bi bi-question-circle';
+  @Input()
   public prependText: string | TemplateRef<any>;
   @Input()
   public prependIcon: string;
@@ -46,8 +49,6 @@ export class SelectComponent implements ControlValueAccessor, Validator {
   public className: string;
   @Input()
   public showRequiredStar: boolean;
-  @Input()
-  public tooltipIcon = 'bi bi-question-circle';
   @Input()
   public small: boolean;
   @Input()
@@ -69,7 +70,7 @@ export class SelectComponent implements ControlValueAccessor, Validator {
   public appendClick: EventEmitter<MouseEvent> = new EventEmitter();
 
   public _value: any;
-  private onChangeFn = (value) => {};
+  private onChangeFn = (value: any) => {};
   private onValidatorChangeFn = () => {};
 
   get value(): any {

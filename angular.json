@@ -10,35 +10,58 @@
       "prefix": "tm",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/tm-bootstrap/tsconfig.lib.json",
             "project": "projects/tm-bootstrap/ng-package.json"
           },
           "configurations": {
             "production": {
               "tsConfig": "projects/tm-bootstrap/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/tm-bootstrap/tsconfig.lib.json"
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/tm-bootstrap/src/test.ts",
             "tsConfig": "projects/tm-bootstrap/tsconfig.spec.json",
-            "karmaConfig": "projects/tm-bootstrap/karma.conf.js"
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
           "options": {
-            "tsConfig": [
-              "projects/tm-bootstrap/tsconfig.lib.json",
-              "projects/tm-bootstrap/tsconfig.spec.json"
+            "configDir": "projects/tm-bootstrap/.storybook",
+            "browserTarget": "tm-bootstrap:build",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "projects/tm-bootstrap"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/tm-bootstrap/.storybook",
+            "browserTarget": "tm-bootstrap:build",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "projects/tm-bootstrap"
+            ],
+            "outputDir": "storybook-static"
           }
         }
       }
@@ -46,7 +69,8 @@
   },
   "schematics": {
     "@schematics/angular:component": {
-      "style": "scss"
+      "style": "scss",
+      "skipTests": true
     }
   }
 }

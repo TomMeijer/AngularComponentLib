@@ -23,3 +23,5 @@ export * from './lib/auth/auth.interceptor';
 export * from './lib/auth/auth.service';
 export * from './lib/error/error.interceptor';
 export * from './lib/alert/alert-type.enum'
+export * from './lib/confirm-dialog/confirm-dialog.component'
+export * from './lib/button/confirm-button/confirm-button.component';
