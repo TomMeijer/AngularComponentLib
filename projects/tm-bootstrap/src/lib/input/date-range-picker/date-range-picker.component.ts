@@ -1,7 +1,5 @@
 import {Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, TemplateRef, ViewChild} from '@angular/core';
 import {BsDaterangepickerConfig, BsDaterangepickerDirective} from 'ngx-bootstrap/datepicker';
-// @ts-ignore
-import {BsCustomDates} from 'ngx-bootstrap/datepicker/index';
 import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {DatePipe} from '@angular/common';
 
@@ -64,7 +62,7 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
   @Input()
   public maxDays: number;
   @Input()
-  public ranges: BsCustomDates[];
+  public ranges: {label: string, value: Date | Date[]}[];
   @Input()
   public containerClass: string;
   @Input()
