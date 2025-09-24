@@ -2,7 +2,7 @@ import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 import {TmBootstrapModule} from '../lib/tm-bootstrap.module';
 import {TableComponent} from '../lib/table/table.component';
-import {action} from '@storybook/addon-actions';
+import {action} from 'storybook/actions';
 
 export default {
   title: 'Library/Table',

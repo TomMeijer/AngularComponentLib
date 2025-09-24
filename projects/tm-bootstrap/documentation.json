@@ -34,6 +34,16 @@
                 "name": "Example",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/tm-bootstrap/src/stories/confirm-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [CommonModule, TmBootstrapModule]\r\n    }),\r\n  ],\r\n  args: {\r\n    spin: false,\r\n    className: 'btn-danger',\r\n    text: 'Delete account',\r\n    icon: 'bi bi-x-lg',\r\n    displayAsIcon: false,\r\n    leftDialog: false,\r\n    confirmText: 'Are you sure?',\r\n    subText: 'Your account will be permanently deleted',\r\n    dialogWidth: '',\r\n    requiredUserInput: '',\r\n    onConfirm: action('onConfirm'),\r\n    onCancel: action('onCancel'),\r\n  },\r\n}"
+            },
+            {
+                "name": "Example",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/tm-bootstrap/src/stories/date-range-picker.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -84,6 +94,26 @@
                 "name": "Example",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/tm-bootstrap/src/stories/select.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [CommonModule, TmBootstrapModule]\r\n    }),\r\n  ],\r\n  args: {\r\n    name: 'country',\r\n    label: 'Country',\r\n    required: false,\r\n    tooltipText: 'Select a country',\r\n    tooltipIcon: 'bi bi-question-circle',\r\n    prependText: '',\r\n    prependIcon: 'bi bi-flag',\r\n    className: '',\r\n    showRequiredStar: false,\r\n    small: false,\r\n    items: [{name: 'Netherlands', code: 'NL'}, {name: 'United States', code: 'US'}],\r\n    bindLabel: 'name',\r\n    bindValue: 'code',\r\n    disabled: false,\r\n    validationFn: () => null,\r\n    onChange: action('onChange'),\r\n    prependClick: action('prependClick'),\r\n    appendClick: action('appendClick'),\r\n  },\r\n}"
+            },
+            {
+                "name": "Example",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/tm-bootstrap/src/stories/skeleton-loader.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [CommonModule, TmBootstrapModule]\r\n    }),\r\n  ],\r\n  args: {\r\n    appearance: 'line',\r\n    animation: 'progress',\r\n    count: 3,\r\n    height: '20px',\r\n    width: '100%',\r\n    marginTop: '0',\r\n    marginBottom: '8px',\r\n    marginLeft: '0',\r\n    marginRight: '0',\r\n  },\r\n}"
+            },
+            {
+                "name": "Example",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/tm-bootstrap/src/stories/spinner-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -101,6 +131,16 @@
                 "defaultValue": "{\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [CommonModule, TmBootstrapModule]\r\n    }),\r\n  ],\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `\r\n      <tm-table\r\n        [data]=\"data\"\r\n        [rowTemplate]=\"rowTpl\"\r\n        [headerTemplate]=\"headerTpl\"\r\n        [loading]=\"loading\"\r\n        [pagination]=\"pagination\"\r\n        [striped]=\"striped\"\r\n        [bordered]=\"bordered\"\r\n        [hover]=\"hover\"\r\n        [small]=\"small\"\r\n        [responsive]=\"responsive\"\r\n        [itemsPerPage]=\"itemsPerPage\"\r\n        [maxPageLinks]=\"maxPageLinks\"\r\n        [pageBoundaryLinks]=\"pageBoundaryLinks\"\r\n        [totalItems]=\"data.length\"\r\n        (onPageChange)=\"onPageChange($event)\"\r\n      >\r\n        <ng-template #headerTpl>\r\n          <tr><th>Naam</th><th>Leeftijd</th></tr>\r\n        </ng-template>\r\n        <ng-template #rowTpl let-item>\r\n          <tr><td>{{ item.naam }}</td><td>{{ item.leeftijd }}</td></tr>\r\n        </ng-template>\r\n      </tm-table>\r\n    `,\r\n  }),\r\n  args: {\r\n    loading: false,\r\n    striped: true,\r\n    bordered: false,\r\n    small: false,\r\n    hover: false,\r\n    responsive: true,\r\n    data: [\r\n      { naam: 'Alice', leeftijd: 30 },\r\n      { naam: 'Bob', leeftijd: 40 },\r\n      { naam: 'Carol', leeftijd: 27 },\r\n      { naam: 'Hank', leeftijd: 33 },\r\n      { naam: 'Tom', leeftijd: 29 }\r\n    ],\r\n    pagination: true,\r\n    itemsPerPage: 5,\r\n    maxPageLinks: 5,\r\n    pageBoundaryLinks: true,\r\n    onPageChange: action('onPageChange')\r\n  },\r\n}"
             },
             {
+                "name": "Example",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/tm-bootstrap/src/stories/textarea.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [CommonModule, TmBootstrapModule]\r\n    }),\r\n  ],\r\n  args: {\r\n    name: 'bio',\r\n    label: 'Biography',\r\n    required: false,\r\n    placeholder: '',\r\n    maxLength: 50,\r\n    tooltipText: 'Write your life story',\r\n    tooltipIcon: 'bi bi-question-circle',\r\n    className: '',\r\n    showRequiredStar: false,\r\n    small: false,\r\n    textareaRows: 5,\r\n    disabled: false,\r\n    readOnly: false,\r\n    validationFn: () => null,\r\n    onChange: action('onChange'),\r\n    onInput: action('onInput'),\r\n  },\r\n}"
+            },
+            {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -109,6 +149,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<CheckboxComponent>",
                 "defaultValue": "{\r\n  title: 'Library/Inputs/Checkbox',\r\n  component: CheckboxComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    onChange: { action: 'onChange' },\r\n  },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/tm-bootstrap/src/stories/confirm-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ConfirmButtonComponent>",
+                "defaultValue": "{\r\n  title: 'Library/Buttons/ConfirmButton',\r\n  component: ConfirmButtonComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    onConfirm: { action: 'onConfirm' },\r\n    onCancel: { action: 'onCancel' },\r\n  },\r\n}"
             },
             {
                 "name": "meta",
@@ -164,11 +214,41 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/tm-bootstrap/src/stories/select.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SelectComponent>",
+                "defaultValue": "{\r\n  title: 'Library/Inputs/Select',\r\n  component: SelectComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    onChange: { action: 'onChange' },\r\n    prependClick: { action: 'prependClick' },\r\n    appendClick: { action: 'appendClick' },\r\n  },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/tm-bootstrap/src/stories/skeleton-loader.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SkeletonLoaderComponent>",
+                "defaultValue": "{\r\n  title: 'Library/SkeletonLoader',\r\n  component: SkeletonLoaderComponent,\r\n  tags: ['autodocs'],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/tm-bootstrap/src/stories/spinner-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SpinnerButtonComponent>",
                 "defaultValue": "{\r\n  title: 'Library/Buttons/SpinnerButton',\r\n  component: SpinnerButtonComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    onClick: { action: 'onClick' },\r\n  },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/tm-bootstrap/src/stories/textarea.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<TextareaComponent>",
+                "defaultValue": "{\r\n  title: 'Library/Inputs/Textarea',\r\n  component: TextareaComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    onInput: { action: 'onInput' },\r\n    onChange: { action: 'onChange' },\r\n  },\r\n}"
             },
             {
                 "name": "preview",
@@ -200,6 +280,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<CheckboxComponent>",
                 "file": "projects/tm-bootstrap/src/stories/checkbox.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ConfirmButtonComponent>",
+                "file": "projects/tm-bootstrap/src/stories/confirm-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -264,6 +355,28 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<SelectComponent>",
+                "file": "projects/tm-bootstrap/src/stories/select.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<SkeletonLoaderComponent>",
+                "file": "projects/tm-bootstrap/src/stories/skeleton-loader.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<SpinnerButtonComponent>",
                 "file": "projects/tm-bootstrap/src/stories/spinner-button.stories.ts",
                 "deprecated": false,
@@ -277,6 +390,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<TableComponent>",
                 "file": "projects/tm-bootstrap/src/stories/table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<TextareaComponent>",
+                "file": "projects/tm-bootstrap/src/stories/textarea.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -317,6 +441,28 @@
                     "deprecationMessage": "",
                     "type": "Meta<CheckboxComponent>",
                     "defaultValue": "{\r\n  title: 'Library/Inputs/Checkbox',\r\n  component: CheckboxComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    onChange: { action: 'onChange' },\r\n  },\r\n}"
+                }
+            ],
+            "projects/tm-bootstrap/src/stories/confirm-button.stories.ts": [
+                {
+                    "name": "Example",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/tm-bootstrap/src/stories/confirm-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [CommonModule, TmBootstrapModule]\r\n    }),\r\n  ],\r\n  args: {\r\n    spin: false,\r\n    className: 'btn-danger',\r\n    text: 'Delete account',\r\n    icon: 'bi bi-x-lg',\r\n    displayAsIcon: false,\r\n    leftDialog: false,\r\n    confirmText: 'Are you sure?',\r\n    subText: 'Your account will be permanently deleted',\r\n    dialogWidth: '',\r\n    requiredUserInput: '',\r\n    onConfirm: action('onConfirm'),\r\n    onCancel: action('onCancel'),\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/tm-bootstrap/src/stories/confirm-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ConfirmButtonComponent>",
+                    "defaultValue": "{\r\n  title: 'Library/Buttons/ConfirmButton',\r\n  component: ConfirmButtonComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    onConfirm: { action: 'onConfirm' },\r\n    onCancel: { action: 'onCancel' },\r\n  },\r\n}"
                 }
             ],
             "projects/tm-bootstrap/src/stories/date-range-picker.stories.ts": [
@@ -429,6 +575,50 @@
                     "defaultValue": "{\r\n  title: 'Library/Buttons/SaveButton',\r\n  component: SaveButtonComponent,\r\n  tags: ['autodocs'],\r\n}"
                 }
             ],
+            "projects/tm-bootstrap/src/stories/select.stories.ts": [
+                {
+                    "name": "Example",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/tm-bootstrap/src/stories/select.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [CommonModule, TmBootstrapModule]\r\n    }),\r\n  ],\r\n  args: {\r\n    name: 'country',\r\n    label: 'Country',\r\n    required: false,\r\n    tooltipText: 'Select a country',\r\n    tooltipIcon: 'bi bi-question-circle',\r\n    prependText: '',\r\n    prependIcon: 'bi bi-flag',\r\n    className: '',\r\n    showRequiredStar: false,\r\n    small: false,\r\n    items: [{name: 'Netherlands', code: 'NL'}, {name: 'United States', code: 'US'}],\r\n    bindLabel: 'name',\r\n    bindValue: 'code',\r\n    disabled: false,\r\n    validationFn: () => null,\r\n    onChange: action('onChange'),\r\n    prependClick: action('prependClick'),\r\n    appendClick: action('appendClick'),\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/tm-bootstrap/src/stories/select.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<SelectComponent>",
+                    "defaultValue": "{\r\n  title: 'Library/Inputs/Select',\r\n  component: SelectComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    onChange: { action: 'onChange' },\r\n    prependClick: { action: 'prependClick' },\r\n    appendClick: { action: 'appendClick' },\r\n  },\r\n}"
+                }
+            ],
+            "projects/tm-bootstrap/src/stories/skeleton-loader.stories.ts": [
+                {
+                    "name": "Example",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/tm-bootstrap/src/stories/skeleton-loader.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [CommonModule, TmBootstrapModule]\r\n    }),\r\n  ],\r\n  args: {\r\n    appearance: 'line',\r\n    animation: 'progress',\r\n    count: 3,\r\n    height: '20px',\r\n    width: '100%',\r\n    marginTop: '0',\r\n    marginBottom: '8px',\r\n    marginLeft: '0',\r\n    marginRight: '0',\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/tm-bootstrap/src/stories/skeleton-loader.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<SkeletonLoaderComponent>",
+                    "defaultValue": "{\r\n  title: 'Library/SkeletonLoader',\r\n  component: SkeletonLoaderComponent,\r\n  tags: ['autodocs'],\r\n}"
+                }
+            ],
             "projects/tm-bootstrap/src/stories/spinner-button.stories.ts": [
                 {
                     "name": "Example",
@@ -461,6 +651,28 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [CommonModule, TmBootstrapModule]\r\n    }),\r\n  ],\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `\r\n      <tm-table\r\n        [data]=\"data\"\r\n        [rowTemplate]=\"rowTpl\"\r\n        [headerTemplate]=\"headerTpl\"\r\n        [loading]=\"loading\"\r\n        [pagination]=\"pagination\"\r\n        [striped]=\"striped\"\r\n        [bordered]=\"bordered\"\r\n        [hover]=\"hover\"\r\n        [small]=\"small\"\r\n        [responsive]=\"responsive\"\r\n        [itemsPerPage]=\"itemsPerPage\"\r\n        [maxPageLinks]=\"maxPageLinks\"\r\n        [pageBoundaryLinks]=\"pageBoundaryLinks\"\r\n        [totalItems]=\"data.length\"\r\n        (onPageChange)=\"onPageChange($event)\"\r\n      >\r\n        <ng-template #headerTpl>\r\n          <tr><th>Naam</th><th>Leeftijd</th></tr>\r\n        </ng-template>\r\n        <ng-template #rowTpl let-item>\r\n          <tr><td>{{ item.naam }}</td><td>{{ item.leeftijd }}</td></tr>\r\n        </ng-template>\r\n      </tm-table>\r\n    `,\r\n  }),\r\n  args: {\r\n    loading: false,\r\n    striped: true,\r\n    bordered: false,\r\n    small: false,\r\n    hover: false,\r\n    responsive: true,\r\n    data: [\r\n      { naam: 'Alice', leeftijd: 30 },\r\n      { naam: 'Bob', leeftijd: 40 },\r\n      { naam: 'Carol', leeftijd: 27 },\r\n      { naam: 'Hank', leeftijd: 33 },\r\n      { naam: 'Tom', leeftijd: 29 }\r\n    ],\r\n    pagination: true,\r\n    itemsPerPage: 5,\r\n    maxPageLinks: 5,\r\n    pageBoundaryLinks: true,\r\n    onPageChange: action('onPageChange')\r\n  },\r\n}"
+                }
+            ],
+            "projects/tm-bootstrap/src/stories/textarea.stories.ts": [
+                {
+                    "name": "Example",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/tm-bootstrap/src/stories/textarea.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [CommonModule, TmBootstrapModule]\r\n    }),\r\n  ],\r\n  args: {\r\n    name: 'bio',\r\n    label: 'Biography',\r\n    required: false,\r\n    placeholder: '',\r\n    maxLength: 50,\r\n    tooltipText: 'Write your life story',\r\n    tooltipIcon: 'bi bi-question-circle',\r\n    className: '',\r\n    showRequiredStar: false,\r\n    small: false,\r\n    textareaRows: 5,\r\n    disabled: false,\r\n    readOnly: false,\r\n    validationFn: () => null,\r\n    onChange: action('onChange'),\r\n    onInput: action('onInput'),\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/tm-bootstrap/src/stories/textarea.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TextareaComponent>",
+                    "defaultValue": "{\r\n  title: 'Library/Inputs/Textarea',\r\n  component: TextareaComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    onInput: { action: 'onInput' },\r\n    onChange: { action: 'onChange' },\r\n  },\r\n}"
                 }
             ],
             "projects/tm-bootstrap/.storybook/preview.ts": [
@@ -499,6 +711,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<CheckboxComponent>",
                     "file": "projects/tm-bootstrap/src/stories/checkbox.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/tm-bootstrap/src/stories/confirm-button.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ConfirmButtonComponent>",
+                    "file": "projects/tm-bootstrap/src/stories/confirm-button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -570,6 +795,32 @@
                     "kind": 183
                 }
             ],
+            "projects/tm-bootstrap/src/stories/select.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SelectComponent>",
+                    "file": "projects/tm-bootstrap/src/stories/select.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/tm-bootstrap/src/stories/skeleton-loader.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SkeletonLoaderComponent>",
+                    "file": "projects/tm-bootstrap/src/stories/skeleton-loader.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "projects/tm-bootstrap/src/stories/spinner-button.stories.ts": [
                 {
                     "name": "Story",
@@ -595,10 +846,27 @@
                     "description": "",
                     "kind": 183
                 }
+            ],
+            "projects/tm-bootstrap/src/stories/textarea.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<TextareaComponent>",
+                    "file": "projects/tm-bootstrap/src/stories/textarea.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
             ]
         }
     },
-    "routes": [],
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "children": []
+    },
     "coverage": {
         "count": 0,
         "status": "low",
@@ -664,6 +932,36 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/tm-bootstrap/src/stories/confirm-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Example",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/tm-bootstrap/src/stories/confirm-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/tm-bootstrap/src/stories/confirm-button.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/tm-bootstrap/src/stories/date-range-picker.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -805,6 +1103,66 @@
             },
             {
                 "filePath": "projects/tm-bootstrap/src/stories/save-button.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/tm-bootstrap/src/stories/select.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Example",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/tm-bootstrap/src/stories/select.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/tm-bootstrap/src/stories/select.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/tm-bootstrap/src/stories/skeleton-loader.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Example",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/tm-bootstrap/src/stories/skeleton-loader.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/tm-bootstrap/src/stories/skeleton-loader.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
@@ -855,6 +1213,36 @@
             },
             {
                 "filePath": "projects/tm-bootstrap/src/stories/table.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/tm-bootstrap/src/stories/textarea.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Example",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/tm-bootstrap/src/stories/textarea.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/tm-bootstrap/src/stories/textarea.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",

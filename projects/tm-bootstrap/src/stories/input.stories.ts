@@ -2,7 +2,7 @@ import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 import {TmBootstrapModule} from '../lib/tm-bootstrap.module';
 import {InputComponent} from '../lib/input/input/input.component';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 const meta: Meta<InputComponent> = {
   title: 'Library/Inputs/Input',

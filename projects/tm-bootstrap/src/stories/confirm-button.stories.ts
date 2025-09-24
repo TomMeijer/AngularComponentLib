@@ -2,7 +2,7 @@ import {Meta, moduleMetadata, StoryObj} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {TmBootstrapModule} from '../lib/tm-bootstrap.module';
 import {ConfirmButtonComponent} from '../lib/button/confirm-button/confirm-button.component';
-import {action} from '@storybook/addon-actions';
+import {action} from 'storybook/actions';
 
 const meta: Meta<ConfirmButtonComponent> = {
   title: 'Library/Buttons/ConfirmButton',

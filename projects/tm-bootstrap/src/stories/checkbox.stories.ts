@@ -1,9 +1,8 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 import {TmBootstrapModule} from '../lib/tm-bootstrap.module';
-import {ImageUploaderComponent} from '../lib/image-uploader/image-uploader.component';
 import {CheckboxComponent} from '../lib/input/checkbox/checkbox.component';
-import {action} from '@storybook/addon-actions';
+import {action} from 'storybook/actions';
 
 const meta: Meta<CheckboxComponent> = {
   title: 'Library/Inputs/Checkbox',

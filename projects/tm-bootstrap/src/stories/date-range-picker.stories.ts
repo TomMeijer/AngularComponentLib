@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {TmBootstrapModule} from '../lib/tm-bootstrap.module';
 import {DateRangePickerComponent} from '../lib/input/date-range-picker/date-range-picker.component';
 import {provideAnimations} from '@angular/platform-browser/animations';
-import {action} from '@storybook/addon-actions';
+import {action} from 'storybook/actions';
 
 const meta: Meta<DateRangePickerComponent> = {
   title: 'Library/Inputs/DateRangePicker',

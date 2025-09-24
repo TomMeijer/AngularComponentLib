@@ -2,7 +2,7 @@ import {Meta, moduleMetadata, StoryObj} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {TmBootstrapModule} from '../lib/tm-bootstrap.module';
 import {SpinnerButtonComponent} from '../lib/button/spinner-button/spinner-button.component';
-import {action} from '@storybook/addon-actions';
+import {action} from 'storybook/actions';
 
 const meta: Meta<SpinnerButtonComponent> = {
   title: 'Library/Buttons/SpinnerButton',

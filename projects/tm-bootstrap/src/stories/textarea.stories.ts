@@ -1,7 +1,7 @@
 import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 import {TmBootstrapModule} from '../lib/tm-bootstrap.module';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import {TextareaComponent} from '../lib/input/textarea/textarea.component';
 
 const meta: Meta<TextareaComponent> = {
