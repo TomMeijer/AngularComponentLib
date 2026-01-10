@@ -1,4 +1,4 @@
-import {Component, Input, TemplateRef} from '@angular/core';
+import {Component, input, TemplateRef} from '@angular/core';
 import {NgTemplateOutlet} from '@angular/common';
 
 @Component({
@@ -11,16 +11,14 @@ import {NgTemplateOutlet} from '@angular/common';
   styleUrls: ['./input-group-text.component.scss']
 })
 export class InputGroupTextComponent {
-  @Input()
-  public icon: string;
-  @Input()
-  public text: string | TemplateRef<any>;
+  public icon = input<string>();
+  public text = input<string | TemplateRef<any>>();
 
   public instanceOfTemplateRef(): boolean {
-    return this.text instanceof TemplateRef;
+    return this.text() instanceof TemplateRef;
   }
 
   get textAsTemplateRef(): TemplateRef<any> {
-    return this.text as TemplateRef<any>;
+    return this.text() as TemplateRef<any>;
   }
 }

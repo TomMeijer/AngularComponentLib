@@ -1,4 +1,4 @@
-import {Component, Input, TemplateRef} from '@angular/core';
+import {Component, input, TemplateRef} from '@angular/core';
 import {NgTemplateOutlet} from '@angular/common';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
@@ -13,22 +13,17 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
   styleUrls: ['./label.component.scss']
 })
 export class LabelComponent {
-  @Input()
-  public text: string | TemplateRef<any>;
-  @Input()
-  public required: boolean;
-  @Input()
-  public tooltipText: string;
-  @Input()
-  public tooltipIcon: string;
-  @Input()
-  public showRequiredStar: boolean;
+  public text = input<string | TemplateRef<any>>();
+  public required = input<boolean>();
+  public tooltipText = input<string>();
+  public tooltipIcon = input<string>();
+  public showRequiredStar = input<boolean>();
 
   public instanceOfTemplateRef(): boolean {
-    return this.text instanceof TemplateRef;
+    return this.text() instanceof TemplateRef;
   }
 
   get textAsTemplateRef(): TemplateRef<any> {
-    return this.text as TemplateRef<any>;
+    return this.text() as TemplateRef<any>;
   }
 }

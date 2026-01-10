@@ -1,5 +1,13 @@
-import {Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, TemplateRef} from '@angular/core';
-import {AbstractControl, ControlValueAccessor, FormsModule, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
+import {Component, effect, forwardRef, input, output, TemplateRef} from '@angular/core';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator
+} from '@angular/forms';
 import {LabelComponent} from '../label/label.component';
 import {InputGroupTextComponent} from '../input-group-text/input-group-text.component';
 
@@ -26,69 +34,46 @@ import {InputGroupTextComponent} from '../input-group-text/input-group-text.comp
     }
   ]
 })
-export class InputComponent implements OnChanges, ControlValueAccessor, Validator {
-  @Input()
-  public type: string;
-  @Input()
-  public name: string;
-  @Input()
-  public label: string | TemplateRef<any>;
-  @Input()
-  public required: boolean;
-  @Input()
-  public placeholder: string;
-  @Input()
-  public maxLength: number;
-  @Input()
-  public pattern: string;
-  @Input()
-  public tooltipText: string;
-  @Input()
-  public tooltipIcon = 'bi bi-question-circle';
-  @Input()
-  public prependText: string | TemplateRef<any>;
-  @Input()
-  public prependIcon: string;
-  @Input()
-  public appendText: string | TemplateRef<any>;
-  @Input()
-  public appendIcon: string;
-  @Input()
-  public className: string;
-  @Input()
-  public showRequiredStar: boolean;
-  @Input()
-  public small: boolean;
-  @Input()
-  public disabled: boolean;
-  @Input()
-  public readOnly: boolean;
-  @Input()
-  public step: number;
-  @Input()
-  public min: number;
-  @Input()
-  public max: number;
-  @Input()
-  public validationFn: (control: AbstractControl) => ValidationErrors | null;
+export class InputComponent implements ControlValueAccessor, Validator {
+  public type = input<string>();
+  public name = input<string>();
+  public label = input<string | TemplateRef<any>>();
+  public required = input<boolean>();
+  public placeholder = input<string>();
+  public maxLength = input<number>();
+  public pattern = input<string>();
+  public tooltipText = input<string>();
+  public tooltipIcon = input('bi bi-question-circle');
+  public prependText = input<string | TemplateRef<any>>();
+  public prependIcon = input<string>();
+  public appendText = input<string | TemplateRef<any>>();
+  public appendIcon = input<string>();
+  public className = input<string>();
+  public showRequiredStar = input<boolean>();
+  public small = input<boolean>();
+  public disabled = input<boolean>();
+  public readOnly = input<boolean>();
+  public step = input<number>();
+  public min = input<number>();
+  public max = input<number>();
+  public validationFn = input<(control: AbstractControl) => ValidationErrors | null>();
 
-  @Output()
-  public onChange: EventEmitter<Event> = new EventEmitter();
-  @Output()
-  public onInput: EventEmitter<Event> = new EventEmitter();
-  @Output()
-  public prependClick: EventEmitter<MouseEvent> = new EventEmitter();
-  @Output()
-  public appendClick: EventEmitter<MouseEvent> = new EventEmitter();
+  public onChange = output<Event>();
+  public onInput = output<Event>();
+  public prependClick = output<MouseEvent>();
+  public appendClick = output<MouseEvent>();
 
   public _value: any;
   private onChangeFn = (value: any) => {};
   private onValidatorChangeFn = () => {};
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['step'] || changes['min'] || changes['max']) {
+  constructor() {
+    effect(() => {
+      this.step();
+      this.min();
+      this.max();
       this.onValidatorChangeFn();
-    }
+    });
   }
 
   get value(): any {
@@ -116,17 +101,17 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
 
   validate(control: AbstractControl): ValidationErrors | null {
     let errors: ValidationErrors = {};
-    if (!this.isEmpty(this.step) && this.type === 'number' && !this.isEmpty(this._value) && this.mod(Number(this._value), this.step) !== 0) {
-      errors['step'] = `Value must be dividable by: ${this.step}`;
+    if (!this.isEmpty(this.step()) && this.type() === 'number' && !this.isEmpty(this._value) && this.mod(Number(this._value), this.step()) !== 0) {
+      errors['step'] = `Value must be dividable by: ${this.step()}`;
     }
-    if (!this.isEmpty(this.min) && this.type === 'number' && !this.isEmpty(this._value) && Number(this._value) < this.min) {
-      errors['min'] = `Minimum value: ${this.min}`;
+    if (!this.isEmpty(this.min()) && this.type() === 'number' && !this.isEmpty(this._value) && Number(this._value) < this.min()) {
+      errors['min'] = `Minimum value: ${this.min()}`;
     }
-    if (!this.isEmpty(this.max) && this.type === 'number' && !this.isEmpty(this._value) && Number(this._value) > this.max) {
-      errors['max'] = `Maximum value: ${this.max}`;
+    if (!this.isEmpty(this.max()) && this.type() === 'number' && !this.isEmpty(this._value) && Number(this._value) > this.max()) {
+      errors['max'] = `Maximum value: ${this.max()}`;
     }
-    if (this.validationFn) {
-      const customErrors = this.validationFn(control);
+    if (this.validationFn()) {
+      const customErrors = this.validationFn()(control);
       if (customErrors) {
         errors = {...errors, ...customErrors};
       }
@@ -156,10 +141,10 @@ export class InputComponent implements OnChanges, ControlValueAccessor, Validato
   }
 
   public hasPrepend(): boolean {
-    return (!!this.prependIcon || !!this.prependText);
+    return (!!this.prependIcon() || !!this.prependText());
   }
 
   public hasAppend(): boolean {
-    return (!!this.appendIcon || !!this.appendText);
+    return (!!this.appendIcon() || !!this.appendText());
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {AlertService} from '../alert.service';
 import {Alert} from '../alert';
 import {AlertModule} from 'ngx-bootstrap/alert';
@@ -13,12 +13,10 @@ import {AlertModule} from 'ngx-bootstrap/alert';
   styleUrls: ['./alert-output.component.scss']
 })
 export class AlertOutputComponent {
-
-  constructor(private alertService: AlertService) {
-  }
+  private alertService = inject(AlertService);
 
   get alerts(): Alert[] {
-    return this.alertService.alerts;
+    return this.alertService.alerts();
   }
 
   public handleClose(closedAlert: Alert): void {

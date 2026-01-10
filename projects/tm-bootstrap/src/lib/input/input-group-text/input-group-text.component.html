@@ -1,10 +1,10 @@
 @if (instanceOfTemplateRef()) {
   <ng-container *ngTemplateOutlet="textAsTemplateRef"></ng-container>
 } @else {
-  @if (icon) {
-    <i [class]="icon"></i>
+  @if (icon()) {
+    <i [class]="icon()"></i>
   }
-  @if (text) {
-    <span>{{text}}</span>
+  @if (text()) {
+    <span>{{text()}}</span>
   }
 }

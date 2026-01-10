@@ -1,27 +1,27 @@
 <div class="tm-confirm-dialog-container" #confirmDialogContainer>
   <ng-content></ng-content>
   <div class="tm-confirm-dialog bg-white p-3 border rounded shadow text-center"
-       [class.show]="show"
-       [class.tm-confirm-dialog-left]="left"
-       [style.width]="width"
+       [class.show]="show()"
+       [class.tm-confirm-dialog-left]="left()"
+       [style.width]="width()"
   >
-    @if (text) {
-      <h6>{{text}}</h6>
+    @if (text()) {
+      <h6>{{text()}}</h6>
     }
-    @if (subText) {
-      <p class="small">{{subText}}</p>
+    @if (subText()) {
+      <p class="small">{{subText()}}</p>
     }
-    @if (requiredUserInput) {
+    @if (requiredUserInput()) {
       <input type="text"
              [(ngModel)]="userInput"
              class="form-control form-control-sm mb-3"
-             placeholder="Type '{{requiredUserInput}}' to confirm"
+             placeholder="Type '{{requiredUserInput()}}' to confirm"
       >
     }
     <div class="d-flex">
       <button type="button"
               class="btn btn-sm btn-success me-1 flex-grow-1"
-              [disabled]="requiredUserInput && requiredUserInput !== userInput"
+              [disabled]="requiredUserInput() && requiredUserInput() !== userInput"
               (click)="onConfirm.emit()"
       >
         Confirm

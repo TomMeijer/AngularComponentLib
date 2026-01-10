@@ -2,13 +2,13 @@
   @if (instanceOfTemplateRef()) {
     <ng-container *ngTemplateOutlet="textAsTemplateRef"></ng-container>
   } @else {
-    <span>{{text}}&nbsp;</span>
-    @if (showRequiredStar && required) {
+    <span>{{text()}}&nbsp;</span>
+    @if (showRequiredStar() && required()) {
       <span class="required-star">*&nbsp;</span>
     }
-    @if (tooltipText) {
-      <i class="tooltip-icon {{tooltipIcon}}"
-         [tooltip]="tooltipText"
+    @if (tooltipText()) {
+      <i class="tooltip-icon {{tooltipIcon()}}"
+         [tooltip]="tooltipText()"
       ></i>
     }
   }

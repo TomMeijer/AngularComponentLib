@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, Input, Output, TemplateRef} from '@angular/core';
+import {Component, forwardRef, input, output, TemplateRef} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -35,47 +35,27 @@ import {InputGroupTextComponent} from '../input-group-text/input-group-text.comp
   ]
 })
 export class SelectComponent implements ControlValueAccessor, Validator {
-  @Input()
-  public name: string;
-  @Input()
-  public label: string | TemplateRef<any>;
-  @Input()
-  public required: boolean;
-  @Input()
-  public tooltipText: string;
-  @Input()
-  public tooltipIcon = 'bi bi-question-circle';
-  @Input()
-  public prependText: string | TemplateRef<any>;
-  @Input()
-  public prependIcon: string;
-  @Input()
-  public appendText: string | TemplateRef<any>;
-  @Input()
-  public appendIcon: string;
-  @Input()
-  public className: string;
-  @Input()
-  public showRequiredStar: boolean;
-  @Input()
-  public small: boolean;
-  @Input()
-  public items: any[];
-  @Input()
-  public bindLabel: string;
-  @Input()
-  public bindValue: string;
-  @Input()
-  public disabled: boolean;
-  @Input()
-  public validationFn: (control: AbstractControl) => ValidationErrors | null;
+  public name = input<string>();
+  public label = input<string | TemplateRef<any>>();
+  public required = input<boolean>();
+  public tooltipText = input<string>();
+  public tooltipIcon = input('bi bi-question-circle');
+  public prependText = input<string | TemplateRef<any>>();
+  public prependIcon = input<string>();
+  public appendText = input<string | TemplateRef<any>>();
+  public appendIcon = input<string>();
+  public className = input<string>();
+  public showRequiredStar = input<boolean>();
+  public small = input<boolean>();
+  public items = input<any[]>();
+  public bindLabel = input<string>();
+  public bindValue = input<string>();
+  public disabled = input<boolean>();
+  public validationFn = input<(control: AbstractControl) => ValidationErrors | null>();
 
-  @Output()
-  public onChange: EventEmitter<Event> = new EventEmitter();
-  @Output()
-  public prependClick: EventEmitter<MouseEvent> = new EventEmitter();
-  @Output()
-  public appendClick: EventEmitter<MouseEvent> = new EventEmitter();
+  public onChange = output<Event>();
+  public prependClick = output<MouseEvent>();
+  public appendClick = output<MouseEvent>();
 
   public _value: any;
   private onChangeFn = (value: any) => {};
@@ -105,8 +85,8 @@ export class SelectComponent implements ControlValueAccessor, Validator {
 
   validate(control: AbstractControl): ValidationErrors | null {
     let errors: ValidationErrors = {};
-    if (this.validationFn) {
-      const customErrors = this.validationFn(control);
+    if (this.validationFn()) {
+      const customErrors = this.validationFn()(control);
       if (customErrors) {
         errors = {...errors, ...customErrors};
       }
@@ -123,10 +103,10 @@ export class SelectComponent implements ControlValueAccessor, Validator {
   }
 
   public hasPrepend(): boolean {
-    return (!!this.prependIcon || !!this.prependText);
+    return (!!this.prependIcon() || !!this.prependText());
   }
 
   public hasAppend(): boolean {
-    return (!!this.appendIcon || !!this.appendText);
+    return (!!this.appendIcon() || !!this.appendText());
   }
 }

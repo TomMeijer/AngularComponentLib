@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, input, output, viewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 @Component({
@@ -11,34 +11,24 @@ import {FormsModule} from '@angular/forms';
   styleUrls: ['./confirm-dialog.component.scss']
 })
 export class ConfirmDialogComponent {
-  @ViewChild('confirmDialogContainer')
-  public confirmDialogContainer: ElementRef;
+  public confirmDialogContainer = viewChild<ElementRef>('confirmDialogContainer');
 
-  @Input()
-  public show: boolean;
-  @Input()
-  public left: boolean;
-  @Input()
-  public text = 'Are you sure?';
-  @Input()
-  public subText: string;
-  @Input()
-  public width: string;
-  @Input()
-  public requiredUserInput: string;
+  public show = input<boolean>();
+  public left = input<boolean>();
+  public text = input('Are you sure?');
+  public subText = input<string>();
+  public width = input<string>();
+  public requiredUserInput = input<string>();
 
-  @Output()
-  public onConfirm = new EventEmitter<void>();
-  @Output()
-  public onCancel = new EventEmitter<void>();
-  @Output()
-  public outsideClick = new EventEmitter<void>();
+  public onConfirm = output<void>();
+  public onCancel = output<void>();
+  public outsideClick = output<void>();
 
   public userInput: string;
 
   @HostListener('document:click', ['$event'])
   public click(event: any): void {
-    const clickedInside = this.confirmDialogContainer.nativeElement.contains(event.target);
+    const clickedInside = this.confirmDialogContainer().nativeElement.contains(event.target);
     if (!clickedInside) {
       this.outsideClick.emit();
     }

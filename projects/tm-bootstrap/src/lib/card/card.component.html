@@ -1,41 +1,41 @@
-<div class="card tm-card {{className}}">
+<div class="card tm-card {{className()}}">
   @if (hasHeader()) {
     <div class="card-header">
-      @if (headerTemplate) {
-        <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+      @if (headerTemplate()) {
+        <ng-container *ngTemplateOutlet="headerTemplate()"></ng-container>
       } @else {
-        @if (headerTitle || headerIcon) {
+        @if (headerTitle() || headerIcon()) {
           <div class="card-title">
-            @if (headerIcon) {
-              <i class="header-icon {{headerIcon}}"></i>
+            @if (headerIcon()) {
+              <i class="header-icon {{headerIcon()}}"></i>
             }
-            {{headerTitle}}
+            {{headerTitle()}}
           </div>
         }
-        @if (headerSubtitle) {
-          <div class="card-subtitle">{{headerSubtitle}}</div>
+        @if (headerSubtitle()) {
+          <div class="card-subtitle">{{headerSubtitle()}}</div>
         }
       }
     </div>
   }
-  @if (imgTopSrc) {
-    <img class="card-img-top" [src]="imgTopSrc" alt="">
+  @if (imgTopSrc()) {
+    <img class="card-img-top" [src]="imgTopSrc()" alt="">
   }
   <div class="card-body">
     <ng-content></ng-content>
   </div>
-  @if (imgBottomSrc) {
-    <img class="card-img-bottom" [src]="imgBottomSrc" alt="">
+  @if (imgBottomSrc()) {
+    <img class="card-img-bottom" [src]="imgBottomSrc()" alt="">
   }
   @if (hasFooter()) {
     <div class="card-footer">
-      @if (footerTemplate) {
-        <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
+      @if (footerTemplate()) {
+        <ng-container *ngTemplateOutlet="footerTemplate()"></ng-container>
       } @else {
-        @if (footerIcon) {
-          <i class="footer-icon {{footerIcon}}"></i>
+        @if (footerIcon()) {
+          <i class="footer-icon {{footerIcon()}}"></i>
         }
-        {{footerText}}
+        {{footerText()}}
       }
     </div>
   }

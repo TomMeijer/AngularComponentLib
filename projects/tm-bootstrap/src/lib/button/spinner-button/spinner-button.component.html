@@ -1,16 +1,16 @@
-<button [type]="btnType"
-        class="btn btn-spinner {{className}}"
-        [class.btn-spinner-icon]="displayAsIcon"
-        [class.spinning]="spin"
-        [disabled]="disabled"
+<button [type]="btnType()"
+        class="btn btn-spinner {{className()}}"
+        [class.btn-spinner-icon]="displayAsIcon()"
+        [class.spinning]="spin()"
+        [disabled]="disabled()"
         (click)="onClick.emit($event)"
 >
   <span class="btn-spinner-text">
-    @if (icon) {
-      <i class="{{icon}}" [class.me-2]="text"></i>
+    @if (icon()) {
+      <i class="{{icon()}}" [class.me-2]="text()"></i>
     }
-    @if (text) {
-      <span>{{text}}</span>
+    @if (text()) {
+      <span>{{text()}}</span>
     }
   </span>
   <div class="btn-spinner-spinner">

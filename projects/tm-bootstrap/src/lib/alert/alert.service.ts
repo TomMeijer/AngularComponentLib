@@ -1,6 +1,6 @@
 import {Alert} from './alert';
 import {AlertType} from './alert-type.enum';
-import {Injectable} from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 
 const DEFAULT_TIMEOUT = 3500;
 
@@ -8,19 +8,21 @@ const DEFAULT_TIMEOUT = 3500;
   providedIn: 'root'
 })
 export class AlertService {
-  public alerts: Alert[] = [];
+  private _alerts = signal<Alert[]>([]);
+  public alerts = this._alerts.asReadonly();
 
   constructor() { }
 
   public show(message: string, type: AlertType, timeout?: number): void {
-    this.alerts.push({message: message, type: type, timeout: timeout});
-    if (this.alerts.length > 1) {
+    this._alerts.update(alerts => [...alerts, {message: message, type: type, timeout: timeout}]);
+    if (this._alerts().length > 1) {
       this.dismissPrevious();
     }
   }
 
   private dismissPrevious(): void {
-    const previousAlert = this.alerts[this.alerts.length - 2];
+    const alerts = this._alerts();
+    const previousAlert = alerts[alerts.length - 2];
     setTimeout(() => this.dismiss(previousAlert), DEFAULT_TIMEOUT);
   }
 
@@ -41,10 +43,10 @@ export class AlertService {
   }
 
   public dismiss(dismissedAlert: Alert): void {
-    this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
+    this._alerts.update(alerts => alerts.filter(alert => alert !== dismissedAlert));
   }
 
   public clear(): void {
-    this.alerts = [];
+    this._alerts.set([]);
   }
 }

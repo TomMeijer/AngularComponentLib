@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, forwardRef, input, OnInit, output, viewChild} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {NgStyle} from '@angular/common';
 import {SkeletonLoaderComponent} from '../skeleton-loader/skeleton-loader.component';
@@ -19,34 +19,21 @@ import {SkeletonLoaderComponent} from '../skeleton-loader/skeleton-loader.compon
   }]
 })
 export class ImageUploaderComponent implements ControlValueAccessor, OnInit {
-  @ViewChild('imageInput')
-  public imageInputElement: ElementRef;
+  public imageInputElement = viewChild<ElementRef>('imageInput');
 
-  @Input()
-  public name: string;
-  @Input()
-  public width = '170px';
-  @Input()
-  public height = '170px';
-  @Input()
-  public loading: boolean;
-  @Input()
-  public loaderAnimation: 'progress' | 'progress-dark' | 'pulse' | 'false' = 'progress';
-  @Input()
-  public defaultImageSrc: string;
-  @Input()
-  public required: boolean;
-  @Input()
-  public clearable: boolean;
-  @Input()
-  public rounded: boolean;
-  @Input()
-  public uploadIcon = 'bi bi-pencil';
-  @Input()
-  public clearIcon = 'bi bi-trash';
+  public name = input<string>();
+  public width = input('170px');
+  public height = input('170px');
+  public loading = input<boolean>();
+  public loaderAnimation = input<'progress' | 'progress-dark' | 'pulse' | 'false'>('progress');
+  public defaultImageSrc = input<string>();
+  public required = input<boolean>();
+  public clearable = input<boolean>();
+  public rounded = input<boolean>();
+  public uploadIcon = input('bi bi-pencil');
+  public clearIcon = input('bi bi-trash');
 
-  @Output()
-  public onClear: EventEmitter<MouseEvent> = new EventEmitter();
+  public onClear = output<MouseEvent>();
 
   public imageSrc: string;
 
@@ -54,7 +41,7 @@ export class ImageUploaderComponent implements ControlValueAccessor, OnInit {
   private onChangeFn = (value: File) => {};
 
   ngOnInit(): void {
-    this.imageSrc = this.defaultImageSrc;
+    this.imageSrc = this.defaultImageSrc();
   }
 
   get value(): File {
@@ -75,13 +62,13 @@ export class ImageUploaderComponent implements ControlValueAccessor, OnInit {
         this.imageSrc = reader.result as string;
       };
     } else {
-      this.imageSrc = this.defaultImageSrc;
+      this.imageSrc = this.defaultImageSrc();
     }
   }
 
   public clearImage(event: MouseEvent): void {
     this.value = null;
-    this.imageInputElement.nativeElement.value = '';
+    this.imageInputElement().nativeElement.value = '';
     this.onClear.emit(event);
   }
 

@@ -1,57 +1,57 @@
 <div>
-  @if (label) {
-    <tm-label [text]="label"
-              [required]="required"
-              [showRequiredStar]="showRequiredStar"
-              [tooltipText]="tooltipText"
-              [tooltipIcon]="tooltipIcon"
+  @if (label()) {
+    <tm-label [text]="label()"
+              [required]="required()"
+              [showRequiredStar]="showRequiredStar()"
+              [tooltipText]="tooltipText()"
+              [tooltipIcon]="tooltipIcon()"
     ></tm-label>
   }
   <div [class.input-group]="isInputGroup()"
-       [class.input-group-sm]="isInputGroup() && small"
+       [class.input-group-sm]="isInputGroup() && small()"
        [class.ng-select-input-group]="isInputGroup()"
        [class.ng-select-input-group-prepend]="hasPrepend()"
        [class.ng-select-input-group-append]="hasAppend()"
   >
     @if (hasPrepend()) {
       <tm-input-group-text class="input-group-text"
-                        [icon]="prependIcon"
-                        [text]="prependText"
+                        [icon]="prependIcon()"
+                        [text]="prependText()"
                         (click)="prependClick.emit($event)"
       ></tm-input-group-text>
     }
-    <ng-select [name]="name"
-               class="tm-ng-select {{className}}"
-               [required]="required"
-               [class.tm-ng-select-sm]="small"
+    <ng-select [name]="name()"
+               class="tm-ng-select {{className()}}"
+               [required]="required()"
+               [class.tm-ng-select-sm]="small()"
                [items]="getSelectItems() | async"
                [(ngModel)]="value"
-               [bindLabel]="bindLabel"
-               [bindValue]="bindValue"
+               [bindLabel]="bindLabel()"
+               [bindValue]="bindValue()"
                (change)="onChange.emit($event)"
-               [searchable]="searchable"
-               [clearable]="clearable"
-               [placeholder]="placeholder"
-               [searchFn]="searchFn"
-               [typeahead]="typeAhead"
-               [minTermLength]="minTermLength"
-               [disabled]="disabled"
+               [searchable]="searchable()"
+               [clearable]="clearable()"
+               [placeholder]="placeholder()"
+               [searchFn]="searchFn()"
+               [typeahead]="typeAhead()"
+               [minTermLength]="minTermLength()"
+               [disabled]="disabled()"
     >
-      @if (labelTemplate) {
+      @if (labelTemplate()) {
         <ng-template ng-label-tmp let-item="item">
-          <ng-container *ngTemplateOutlet="labelTemplate; context: {$implicit: item}"></ng-container>
+          <ng-container *ngTemplateOutlet="labelTemplate(); context: {$implicit: item}"></ng-container>
         </ng-template>
       }
-      @if (optionTemplate) {
+      @if (optionTemplate()) {
         <ng-template ng-option-tmp let-item="item">
-          <ng-container *ngTemplateOutlet="optionTemplate; context: {$implicit: item}"></ng-container>
+          <ng-container *ngTemplateOutlet="optionTemplate(); context: {$implicit: item}"></ng-container>
         </ng-template>
       }
     </ng-select>
     @if (hasAppend()) {
       <tm-input-group-text class="input-group-text"
-                        [icon]="appendIcon"
-                        [text]="appendText"
+                        [icon]="appendIcon()"
+                        [text]="appendText()"
                         (click)="appendClick.emit($event)"
       ></tm-input-group-text>
     }

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, Input, Output, TemplateRef} from '@angular/core';
+import {Component, forwardRef, input, output, TemplateRef} from '@angular/core';
 import {Observable, of, Subject} from 'rxjs';
 import {
   AbstractControl,
@@ -41,63 +41,35 @@ import {NgSelectModule} from '@ng-select/ng-select';
   ]
 })
 export class NgSelectComponent implements ControlValueAccessor, Validator {
-  @Input()
-  public label: string | TemplateRef<any>;
-  @Input()
-  public name: string;
-  @Input()
-  public required: boolean;
-  @Input()
-  public placeholder: string;
-  @Input()
-  public tooltipText: string;
-  @Input()
-  public tooltipIcon = 'bi bi-question-circle';
-  @Input()
-  public prependText: string | TemplateRef<any>;
-  @Input()
-  public prependIcon: string;
-  @Input()
-  public appendText: string | TemplateRef<any>;
-  @Input()
-  public appendIcon: string;
-  @Input()
-  public className: string;
-  @Input()
-  public showRequiredStar: boolean;
-  @Input()
-  public small: boolean;
-  @Input()
-  public items: any[] | Observable<any[]>;
-  @Input()
-  public bindLabel: string;
-  @Input()
-  public bindValue: string;
-  @Input()
-  public clearable: boolean;
-  @Input()
-  public searchable: boolean;
-  @Input()
-  public optionTemplate: TemplateRef<any>;
-  @Input()
-  public labelTemplate: TemplateRef<any>;
-  @Input()
-  public searchFn: (term: string, item: any) => boolean;
-  @Input()
-  public typeAhead: Subject<string>;
-  @Input()
-  public minTermLength = 2;
-  @Input()
-  public disabled: boolean;
-  @Input()
-  public validationFn: (control: AbstractControl) => ValidationErrors | null;
+  public label = input<string | TemplateRef<any>>();
+  public name = input<string>();
+  public required = input<boolean>();
+  public placeholder = input<string>();
+  public tooltipText = input<string>();
+  public tooltipIcon = input('bi bi-question-circle');
+  public prependText = input<string | TemplateRef<any>>();
+  public prependIcon = input<string>();
+  public appendText = input<string | TemplateRef<any>>();
+  public appendIcon = input<string>();
+  public className = input<string>();
+  public showRequiredStar = input<boolean>();
+  public small = input<boolean>();
+  public items = input<any[] | Observable<any[]>>();
+  public bindLabel = input<string>();
+  public bindValue = input<string>();
+  public clearable = input<boolean>();
+  public searchable = input<boolean>();
+  public optionTemplate = input<TemplateRef<any>>();
+  public labelTemplate = input<TemplateRef<any>>();
+  public searchFn = input<(term: string, item: any) => boolean>();
+  public typeAhead = input<Subject<string>>();
+  public minTermLength = input(2);
+  public disabled = input<boolean>();
+  public validationFn = input<(control: AbstractControl) => ValidationErrors | null>();
 
-  @Output()
-  public onChange: EventEmitter<any> = new EventEmitter();
-  @Output()
-  public prependClick: EventEmitter<MouseEvent> = new EventEmitter();
-  @Output()
-  public appendClick: EventEmitter<MouseEvent> = new EventEmitter();
+  public onChange = output<any>();
+  public prependClick = output<MouseEvent>();
+  public appendClick = output<MouseEvent>();
 
   public _value: any;
   private onChangeFn = (value: any) => {};
@@ -128,8 +100,8 @@ export class NgSelectComponent implements ControlValueAccessor, Validator {
 
   validate(control: AbstractControl): ValidationErrors | null {
     let errors: ValidationErrors = {};
-    if (this.validationFn) {
-      const customErrors = this.validationFn(control);
+    if (this.validationFn()) {
+      const customErrors = this.validationFn()(control);
       if (customErrors) {
         errors = {...errors, ...customErrors};
       }
@@ -142,7 +114,7 @@ export class NgSelectComponent implements ControlValueAccessor, Validator {
   }
 
   public getSelectItems(): Observable<any[]> {
-    return Array.isArray(this.items) ? of(this.items) : this.items;
+    return Array.isArray(this.items()) ? of(this.items() as any[]) : (this.items() as Observable<any[]>);
   }
 
   public isInputGroup(): boolean {
@@ -150,10 +122,10 @@ export class NgSelectComponent implements ControlValueAccessor, Validator {
   }
 
   public hasPrepend(): boolean {
-    return (!!this.prependIcon || !!this.prependText);
+    return (!!this.prependIcon() || !!this.prependText());
   }
 
   public hasAppend(): boolean {
-    return (!!this.appendIcon || !!this.appendText);
+    return (!!this.appendIcon() || !!this.appendText());
   }
 }

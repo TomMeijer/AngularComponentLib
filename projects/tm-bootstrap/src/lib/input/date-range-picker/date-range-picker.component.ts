@@ -1,6 +1,14 @@
-import {Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, TemplateRef, ViewChild} from '@angular/core';
+import {Component, effect, forwardRef, input, output, TemplateRef, viewChild} from '@angular/core';
 import {BsDatepickerModule, BsDaterangepickerConfig, BsDaterangepickerDirective} from 'ngx-bootstrap/datepicker';
-import {AbstractControl, ControlValueAccessor, FormsModule, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator
+} from '@angular/forms';
 import {DatePipe} from '@angular/common';
 import {LabelComponent} from '../label/label.component';
 import {InputGroupTextComponent} from '../input-group-text/input-group-text.component';
@@ -29,59 +37,34 @@ import {InputGroupTextComponent} from '../input-group-text/input-group-text.comp
     }
   ]
 })
-export class DateRangePickerComponent implements OnChanges, ControlValueAccessor, Validator {
-  @ViewChild('dateRangePicker', {static: false})
-  public dateRangePicker: BsDaterangepickerDirective;
+export class DateRangePickerComponent implements ControlValueAccessor, Validator {
+  public dateRangePicker = viewChild<BsDaterangepickerDirective>('dateRangePicker');
 
-  @Input()
-  public label: string | TemplateRef<any>;
-  @Input()
-  public name: string;
-  @Input()
-  public required: boolean;
-  @Input()
-  public showRequiredStar: boolean;
-  @Input()
-  public placeholder: string;
-  @Input()
-  public className: string;
-  @Input()
-  public tooltipText: string;
-  @Input()
-  public tooltipIcon = 'bi bi-question-circle';
-  @Input()
-  public prependText: string | TemplateRef<any>;
-  @Input()
-  public prependIcon: string;
-  @Input()
-  public appendText: string | TemplateRef<any>;
-  @Input()
-  public appendIcon: string;
-  @Input()
-  public small: boolean;
-  @Input()
-  public disabled: boolean;
-  @Input()
-  public readOnly: boolean;
-  @Input()
-  public minDate: Date;
-  @Input()
-  public maxDate: Date;
-  @Input()
-  public maxDays: number;
-  @Input()
-  public ranges: {label: string, value: Date | Date[]}[];
-  @Input()
-  public containerClass: string;
-  @Input()
-  public validationFn: (control: AbstractControl) => ValidationErrors | null;
+  public label = input<string | TemplateRef<any>>();
+  public name = input<string>();
+  public required = input<boolean>();
+  public showRequiredStar = input<boolean>();
+  public placeholder = input<string>();
+  public className = input<string>();
+  public tooltipText = input<string>();
+  public tooltipIcon = input('bi bi-question-circle');
+  public prependText = input<string | TemplateRef<any>>();
+  public prependIcon = input<string>();
+  public appendText = input<string | TemplateRef<any>>();
+  public appendIcon = input<string>();
+  public small = input<boolean>();
+  public disabled = input<boolean>();
+  public readOnly = input<boolean>();
+  public minDate = input<Date>();
+  public maxDate = input<Date>();
+  public maxDays = input<number>();
+  public ranges = input<{label: string, value: Date | Date[]}[]>();
+  public containerClass = input<string>();
+  public validationFn = input<(control: AbstractControl) => ValidationErrors | null>();
 
-  @Output()
-  public onChange: EventEmitter<Date[]> = new EventEmitter();
-  @Output()
-  public prependClick: EventEmitter<MouseEvent> = new EventEmitter();
-  @Output()
-  public appendClick: EventEmitter<MouseEvent> = new EventEmitter();
+  public onChange = output<Date[]>();
+  public prependClick = output<MouseEvent>();
+  public appendClick = output<MouseEvent>();
 
   private datePipe = new DatePipe('en-US');
   public config: Partial<BsDaterangepickerConfig> = {
@@ -94,27 +77,37 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
   private onChangeFn = (value: Date[]) => {};
   private onValidatorChangeFn = () => {};
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['maxDays']?.currentValue) {
-      this.config.maxDateRange = this.maxDays;
-      this.updateConfig();
-    }
-    if (changes['ranges']?.currentValue) {
-      this.config.ranges = this.ranges;
-      this.updateConfig();
-    }
-    if (changes['containerClass']?.currentValue) {
-      this.config.containerClass = this.containerClass;
-      this.updateConfig();
-    }
-    if (changes['required'] || changes['minDate'] || changes['maxDate'] || changes['maxDays']) {
+  constructor() {
+    effect(() => {
+      if (this.maxDays()) {
+        this.config.maxDateRange = this.maxDays();
+        this.updateConfig();
+      }
+    });
+    effect(() => {
+      if (this.ranges()) {
+        this.config.ranges = this.ranges();
+        this.updateConfig();
+      }
+    });
+    effect(() => {
+      if (this.containerClass()) {
+        this.config.containerClass = this.containerClass();
+        this.updateConfig();
+      }
+    });
+    effect(() => {
+      this.required();
+      this.minDate();
+      this.maxDate();
+      this.maxDays();
       this.onValidatorChangeFn();
-    }
+    });
   }
 
   private updateConfig(): void {
-    if (this.dateRangePicker) {
-      this.dateRangePicker.setConfig();
+    if (this.dateRangePicker()) {
+      this.dateRangePicker().setConfig();
     }
   }
 
@@ -147,16 +140,16 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
       errors['required'] = 'Required';
     }
     if (!this.isMinDateValid()) {
-      errors['minDate'] = `Minimum date: ${this.datePipe.transform(this.minDate, 'dd-MM-yyyy')}`;
+      errors['minDate'] = `Minimum date: ${this.datePipe.transform(this.minDate(), 'dd-MM-yyyy')}`;
     }
     if (!this.isMaxDateValid()) {
-      errors['maxDate'] = `Maximum date: ${this.datePipe.transform(this.maxDate, 'dd-MM-yyyy')}`;
+      errors['maxDate'] = `Maximum date: ${this.datePipe.transform(this.maxDate(), 'dd-MM-yyyy')}`;
     }
     if (!this.isMaxDaysValid()) {
-      errors['maxDays'] = `Maximum days: ${this.maxDays}`;
+      errors['maxDays'] = `Maximum days: ${this.maxDays()}`;
     }
-    if (this.validationFn) {
-      const customErrors = this.validationFn(control);
+    if (this.validationFn()) {
+      const customErrors = this.validationFn()(control);
       if (customErrors) {
         errors = {...errors, ...customErrors};
       }
@@ -165,29 +158,29 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
   }
 
   private isValid(): boolean {
-    return !this.required || (this._value && this._value.length > 1);
+    return !this.required() || (this._value && this._value.length > 1);
   }
 
   private isMinDateValid(): boolean {
-    if (!this.minDate || !this._value || this._value.length < 2) {
+    if (!this.minDate() || !this._value || this._value.length < 2) {
       return true;
     }
-    return this._value[0] >= this.minDate;
+    return this._value[0] >= this.minDate();
   }
 
   private isMaxDateValid(): boolean {
-    if (!this.maxDate || !this._value || this._value.length < 2) {
+    if (!this.maxDate() || !this._value || this._value.length < 2) {
       return true;
     }
-    return this._value[1] <= this.maxDate;
+    return this._value[1] <= this.maxDate();
   }
 
   private isMaxDaysValid(): boolean {
-    if (!this.maxDays || !this._value || this._value.length < 2) {
+    if (!this.maxDays() || !this._value || this._value.length < 2) {
       return true;
     }
     const days = (this._value[1].getTime() - this._value[0].getTime()) / 86400000;
-    return days <= this.maxDays;
+    return days <= this.maxDays();
   }
 
   registerOnValidatorChange?(fn: () => void): void {
@@ -199,10 +192,10 @@ export class DateRangePickerComponent implements OnChanges, ControlValueAccessor
   }
 
   public hasPrepend(): boolean {
-    return (!!this.prependIcon || !!this.prependText);
+    return (!!this.prependIcon() || !!this.prependText());
   }
 
   public hasAppend(): boolean {
-    return (!!this.appendIcon || !!this.appendText);
+    return (!!this.appendIcon() || !!this.appendText());
   }
 }

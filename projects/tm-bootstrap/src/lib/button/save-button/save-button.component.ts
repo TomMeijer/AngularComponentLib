@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {SpinnerButtonComponent} from '../spinner-button/spinner-button.component';
 
 @Component({
@@ -11,8 +11,6 @@ import {SpinnerButtonComponent} from '../spinner-button/spinner-button.component
   styleUrls: ['./save-button.component.scss']
 })
 export class SaveButtonComponent {
-  @Input()
-  public submitting: boolean;
-  @Input()
-  public changed: boolean;
+  public submitting = input<boolean>();
+  public changed = input<boolean>();
 }

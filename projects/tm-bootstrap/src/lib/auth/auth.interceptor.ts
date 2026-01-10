@@ -1,33 +1,27 @@
-import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {inject} from '@angular/core';
+import {HttpEvent, HttpHandlerFn, HttpInterceptorFn, HttpRequest} from '@angular/common/http';
 import {Observable, switchMap} from 'rxjs';
 import {AuthService} from './auth.service';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthInterceptor implements HttpInterceptor {
+export const AuthInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> => {
+  const authService = inject(AuthService);
 
-  public constructor(private authService: AuthService) { }
-
-  public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req.url !== this.authService.refreshAccessTokenUrl && this.authService.isAuthenticated()) {
-      let accessToken = this.authService.getAccessToken();
-      if (this.authService.isTokenExpired(accessToken)) {
-        return this.authService.refreshAccessToken().pipe(
-          switchMap(response => {
-            this.authService.saveNewAuth(response.accessToken, response.refreshToken);
-            req = this.setAuthorization(req, response.accessToken);
-            return next.handle(req);
-          })
-        );
-      }
-      req = this.setAuthorization(req, accessToken);
+  if (req.url !== authService.refreshAccessTokenUrl && authService.isAuthenticated()) {
+    const accessToken = authService.getAccessToken();
+    if (authService.isTokenExpired(accessToken)) {
+      return authService.refreshAccessToken().pipe(
+        switchMap(response => {
+          authService.saveNewAuth(response.accessToken, response.refreshToken);
+          const authorizedReq = setAuthorization(req, response.accessToken);
+          return next(authorizedReq);
+        })
+      );
     }
-    return next.handle(req);
+    req = setAuthorization(req, accessToken);
   }
+  return next(req);
+};
 
-  private setAuthorization(req: HttpRequest<any>, accessToken: string): HttpRequest<any> {
-    return req.clone({headers: req.headers.set('Authorization', 'Bearer ' + accessToken)});
-  }
+function setAuthorization(req: HttpRequest<any>, accessToken: string): HttpRequest<any> {
+  return req.clone({headers: req.headers.set('Authorization', 'Bearer ' + accessToken)});
 }

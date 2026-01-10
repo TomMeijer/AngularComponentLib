@@ -1,35 +1,35 @@
-<div [class.table-responsive]="responsive">
+<div [class.table-responsive]="responsive()">
   <table class="table tm-table"
-         [class.table-striped]="striped"
-         [class.table-bordered]="bordered"
-         [class.table-sm]="small"
-         [class.table-hover]="hover"
+         [class.table-striped]="striped()"
+         [class.table-bordered]="bordered()"
+         [class.table-sm]="small()"
+         [class.table-hover]="hover()"
   >
     <thead>
-      <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+      <ng-container *ngTemplateOutlet="headerTemplate()"></ng-container>
     </thead>
     <tbody>
-      @for (rec of data; track rec) {
-        <ng-container *ngTemplateOutlet="rowTemplate; context: {$implicit: rec}"></ng-container>
+      @for (rec of data(); track rec) {
+        <ng-container *ngTemplateOutlet="rowTemplate(); context: {$implicit: rec}"></ng-container>
       }
     </tbody>
   </table>
-  @if (loading) {
+  @if (loading()) {
     <div class="table-spinner"><div class="spinner-border"></div></div>
   }
-  @if (!loading && (!data || data.length === 0)) {
+  @if (!loading() && (!data() || data().length === 0)) {
     <div class="table-no-results d-flex justify-content-center align-items-center">No results...</div>
   }
-  @if (!loading && pagination && data && data.length > 0) {
+  @if (!loading() && pagination() && data() && data().length > 0) {
     <div class="pagination-container d-flex justify-content-between">
-      <div class="results-count align-self-center">Total results: {{totalItems}}</div>
+      <div class="results-count align-self-center">Total results: {{totalItems()}}</div>
       <div class="align-self-center">
-        <pagination [totalItems]="totalItems"
-                    [itemsPerPage]="itemsPerPage"
-                    [maxSize]="maxPageLinks"
-                    [boundaryLinks]="pageBoundaryLinks"
+        <pagination [totalItems]="totalItems()"
+                    [itemsPerPage]="itemsPerPage()"
+                    [maxSize]="maxPageLinks()"
+                    [boundaryLinks]="pageBoundaryLinks()"
                     (pageChanged)="onPageChange.emit($event.page)"
-                    [(ngModel)]="currentPage"
+                    [ngModel]="currentPage()"
         ></pagination>
       </div>
     </div>

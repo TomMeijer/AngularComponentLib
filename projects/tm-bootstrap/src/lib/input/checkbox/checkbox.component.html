@@ -1,24 +1,24 @@
 <div class="form-check">
   <label class="form-check-label">
     <input type="checkbox"
-           [name]="name"
-           class="form-check-input {{className}}"
+           [name]="name()"
+           class="form-check-input {{className()}}"
            [(ngModel)]="value"
-           [required]="required"
+           [required]="required()"
            [checked]="value"
-           [disabled]="disabled"
+           [disabled]="disabled()"
            (change)="onChange.emit($event)"
     >
     @if (labelInstanceOfTemplateRef()) {
       <ng-container *ngTemplateOutlet="labelAsTemplateRef"></ng-container>
     } @else {
-      <span>{{label}}&nbsp;</span>
-      @if (showRequiredStar && required) {
+      <span>{{label()}}&nbsp;</span>
+      @if (showRequiredStar() && required()) {
         <span>*&nbsp;</span>
       }
-      @if (tooltipText) {
-        <i class="tooltip-icon {{tooltipIcon}}"
-           [tooltip]="tooltipText"
+      @if (tooltipText()) {
+        <i class="tooltip-icon {{tooltipIcon()}}"
+           [tooltip]="tooltipText()"
         ></i>
       }
     }

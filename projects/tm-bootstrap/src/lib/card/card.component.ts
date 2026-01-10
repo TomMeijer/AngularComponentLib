@@ -1,4 +1,4 @@
-import {Component, Input, TemplateRef} from '@angular/core';
+import {Component, input, TemplateRef} from '@angular/core';
 import {NgTemplateOutlet} from '@angular/common';
 
 @Component({
@@ -11,32 +11,22 @@ import {NgTemplateOutlet} from '@angular/common';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-  @Input()
-  public headerTitle: string;
-  @Input()
-  public headerIcon: string;
-  @Input()
-  public headerSubtitle: string;
-  @Input()
-  public headerTemplate: TemplateRef<any>;
-  @Input()
-  public footerText: string;
-  @Input()
-  public footerIcon: string;
-  @Input()
-  public imgTopSrc: string;
-  @Input()
-  public imgBottomSrc: string;
-  @Input()
-  public footerTemplate: TemplateRef<any>;
-  @Input()
-  public className: string;
+  public headerTitle = input<string>();
+  public headerIcon = input<string>();
+  public headerSubtitle = input<string>();
+  public headerTemplate = input<TemplateRef<any>>();
+  public footerText = input<string>();
+  public footerIcon = input<string>();
+  public imgTopSrc = input<string>();
+  public imgBottomSrc = input<string>();
+  public footerTemplate = input<TemplateRef<any>>();
+  public className = input<string>();
 
   public hasHeader(): boolean {
-    return !!this.headerTemplate || !!this.headerTitle || !!this.headerIcon;
+    return !!this.headerTemplate() || !!this.headerTitle() || !!this.headerIcon();
   }
 
   public hasFooter(): boolean {
-    return !!this.footerTemplate || !!this.footerText || !!this.footerIcon;
+    return !!this.footerTemplate() || !!this.footerText() || !!this.footerIcon();
   }
 }

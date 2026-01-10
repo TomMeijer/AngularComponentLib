@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, input, output} from '@angular/core';
+
 @Component({
   selector: 'tm-spinner-button',
   standalone: true,
@@ -7,21 +8,13 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrls: ['./spinner-button.component.scss']
 })
 export class SpinnerButtonComponent {
-  @Input()
-  public spin: boolean;
-  @Input()
-  public btnType: 'submit' | 'button' = 'button';
-  @Input()
-  public className: string;
-  @Input()
-  public text: string;
-  @Input()
-  public icon: string;
-  @Input()
-  public displayAsIcon: boolean;
-  @Input()
-  public disabled: boolean;
+  public spin = input<boolean>();
+  public btnType = input<'submit' | 'button'>('button');
+  public className = input<string>();
+  public text = input<string>();
+  public icon = input<string>();
+  public displayAsIcon = input<boolean>();
+  public disabled = input<boolean>();
 
-  @Output()
-  public onClick = new EventEmitter<Event>();
+  public onClick = output<Event>();
 }

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, input, output} from '@angular/core';
 import {ConfirmDialogComponent} from '../../confirm-dialog/confirm-dialog.component';
 import {SpinnerButtonComponent} from '../spinner-button/spinner-button.component';
 
@@ -13,36 +13,24 @@ import {SpinnerButtonComponent} from '../spinner-button/spinner-button.component
   styleUrls: ['./confirm-button.component.scss']
 })
 export class ConfirmButtonComponent {
-  @Input()
-  public spin: boolean;
-  @Input()
-  public className: string;
-  @Input()
-  public text: string;
-  @Input()
-  public icon: string;
-  @Input()
-  public displayAsIcon: boolean;
-  @Input()
-  public leftDialog: boolean;
-  @Input()
-  public confirmText = 'Are you sure?';
-  @Input()
-  public subText: string;
-  @Input()
-  public dialogWidth: string;
-  @Input()
-  public requiredUserInput: string;
+  public spin = input<boolean>();
+  public className = input<string>();
+  public text = input<string>();
+  public icon = input<string>();
+  public displayAsIcon = input<boolean>();
+  public leftDialog = input<boolean>();
+  public confirmText = input('Are you sure?');
+  public subText = input<string>();
+  public dialogWidth = input<string>();
+  public requiredUserInput = input<string>();
 
-  @Output()
-  public onConfirm = new EventEmitter<void>();
-  @Output()
-  public onCancel = new EventEmitter<void>();
+  public onConfirm = output<void>();
+  public onCancel = output<void>();
 
   public showConfirmDialog = false;
 
   public toggleConfirmDialog(): void {
-    if (this.spin) {
+    if (this.spin()) {
       return;
     }
     this.showConfirmDialog = !this.showConfirmDialog;

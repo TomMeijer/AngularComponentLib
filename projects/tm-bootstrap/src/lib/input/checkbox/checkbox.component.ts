@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, Input, Output, TemplateRef} from '@angular/core';
+import {Component, forwardRef, input, output, TemplateRef} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -35,27 +35,17 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
   ]
 })
 export class CheckboxComponent implements ControlValueAccessor, Validator {
-  @Input()
-  public name: string;
-  @Input()
-  public label: string | TemplateRef<any>;
-  @Input()
-  public required: boolean;
-  @Input()
-  public tooltipText: string;
-  @Input()
-  public className: string;
-  @Input()
-  public showRequiredStar: boolean;
-  @Input()
-  public tooltipIcon = 'bi bi-question-circle';
-  @Input()
-  public disabled: boolean;
-  @Input()
-  public validationFn: (control: AbstractControl) => ValidationErrors | null;
+  public name = input<string>();
+  public label = input<string | TemplateRef<any>>();
+  public required = input<boolean>();
+  public tooltipText = input<string>();
+  public className = input<string>();
+  public showRequiredStar = input<boolean>();
+  public tooltipIcon = input('bi bi-question-circle');
+  public disabled = input<boolean>();
+  public validationFn = input<(control: AbstractControl) => ValidationErrors | null>();
 
-  @Output()
-  public onChange: EventEmitter<Event> = new EventEmitter();
+  public onChange = output<Event>();
 
   public _value: any;
   private onChangeFn = (value: any) => {};
@@ -86,8 +76,8 @@ export class CheckboxComponent implements ControlValueAccessor, Validator {
 
   validate(control: AbstractControl): ValidationErrors | null {
     let errors: ValidationErrors = {};
-    if (this.validationFn) {
-      const customErrors = this.validationFn(control);
+    if (this.validationFn()) {
+      const customErrors = this.validationFn()(control);
       if (customErrors) {
         errors = {...errors, ...customErrors};
       }
@@ -100,10 +90,10 @@ export class CheckboxComponent implements ControlValueAccessor, Validator {
   }
 
   public labelInstanceOfTemplateRef(): boolean {
-    return this.label instanceof TemplateRef;
+    return this.label() instanceof TemplateRef;
   }
 
   get labelAsTemplateRef(): TemplateRef<any> {
-    return this.label as TemplateRef<any>;
+    return this.label() as TemplateRef<any>;
   }
 }

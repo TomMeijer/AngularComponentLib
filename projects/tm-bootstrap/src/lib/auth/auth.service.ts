@@ -1,4 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
@@ -13,9 +13,8 @@ const REFRESH_TOKEN_KEY = 'tm-refresh-token';
 })
 export class AuthService {
   private jwtService = new JwtHelperService();
-
-  public constructor(private http: HttpClient,
-                     @Inject('apiUrl') private apiUrl: string) { }
+  private http = inject(HttpClient);
+  private apiUrl = inject<string>('apiUrl' as any);
 
   public login(email: string, password: string): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/auth`, {email, password});
