@@ -1,8 +1,14 @@
 import {Component, Input, TemplateRef} from '@angular/core';
+import {NgTemplateOutlet} from '@angular/common';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
 @Component({
   selector: 'tm-label',
-  standalone: false,
+  standalone: true,
+  imports: [
+    NgTemplateOutlet,
+    TooltipModule
+  ],
   templateUrl: './label.component.html',
   styleUrls: ['./label.component.scss']
 })

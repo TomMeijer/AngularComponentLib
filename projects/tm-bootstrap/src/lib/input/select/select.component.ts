@@ -2,15 +2,23 @@ import {Component, EventEmitter, forwardRef, Input, Output, TemplateRef} from '@
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
   Validator
 } from '@angular/forms';
+import {LabelComponent} from '../label/label.component';
+import {InputGroupTextComponent} from '../input-group-text/input-group-text.component';
 
 @Component({
   selector: 'tm-select',
-  standalone: false,
+  standalone: true,
+  imports: [
+    FormsModule,
+    LabelComponent,
+    InputGroupTextComponent
+  ],
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
   providers: [

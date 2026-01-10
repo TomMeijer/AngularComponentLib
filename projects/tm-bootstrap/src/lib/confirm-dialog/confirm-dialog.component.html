@@ -5,14 +5,19 @@
        [class.tm-confirm-dialog-left]="left"
        [style.width]="width"
   >
-    <h6 *ngIf="text">{{text}}</h6>
-    <p *ngIf="subText" class="small">{{subText}}</p>
-    <input *ngIf="requiredUserInput"
-           type="text"
-           [(ngModel)]="userInput"
-           class="form-control form-control-sm mb-3"
-           placeholder="Type '{{requiredUserInput}}' to confirm"
-    >
+    @if (text) {
+      <h6>{{text}}</h6>
+    }
+    @if (subText) {
+      <p class="small">{{subText}}</p>
+    }
+    @if (requiredUserInput) {
+      <input type="text"
+             [(ngModel)]="userInput"
+             class="form-control form-control-sm mb-3"
+             placeholder="Type '{{requiredUserInput}}' to confirm"
+      >
+    }
     <div class="d-flex">
       <button type="button"
               class="btn btn-sm btn-success me-1 flex-grow-1"

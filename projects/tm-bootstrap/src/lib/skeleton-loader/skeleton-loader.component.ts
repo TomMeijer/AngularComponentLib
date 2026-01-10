@@ -1,8 +1,12 @@
 import {Component, Input} from '@angular/core';
+import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 
 @Component({
   selector: 'tm-skeleton-loader',
-  standalone: false,
+  standalone: true,
+  imports: [
+    NgxSkeletonLoaderModule
+  ],
   templateUrl: './skeleton-loader.component.html',
   styleUrls: ['./skeleton-loader.component.scss']
 })

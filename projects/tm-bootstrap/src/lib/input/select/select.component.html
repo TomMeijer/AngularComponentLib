@@ -1,18 +1,20 @@
 <div>
-  <tm-label *ngIf="label"
-            [text]="label"
-            [required]="required"
-            [showRequiredStar]="showRequiredStar"
-            [tooltipText]="tooltipText"
-            [tooltipIcon]="tooltipIcon"
-  ></tm-label>
+  @if (label) {
+    <tm-label [text]="label"
+              [required]="required"
+              [showRequiredStar]="showRequiredStar"
+              [tooltipText]="tooltipText"
+              [tooltipIcon]="tooltipIcon"
+    ></tm-label>
+  }
   <div [class.input-group]="isInputGroup()" [class.input-group-sm]="isInputGroup() && small">
-    <tm-input-group-text *ngIf="hasPrepend()"
-                      class="input-group-text"
-                      [icon]="prependIcon"
-                      [text]="prependText"
-                      (click)="prependClick.emit($event)"
-    ></tm-input-group-text>
+    @if (hasPrepend()) {
+      <tm-input-group-text class="input-group-text"
+                        [icon]="prependIcon"
+                        [text]="prependText"
+                        (click)="prependClick.emit($event)"
+      ></tm-input-group-text>
+    }
     <select [name]="name"
             class="form-control {{className}}"
             [(ngModel)]="value"
@@ -22,17 +24,18 @@
             (change)="onChange.emit($event)"
     >
       <option></option>
-      <option *ngFor="let item of items"
-              [value]="bindValue ? item[bindValue] : item"
-      >
-        {{bindLabel ? item[bindLabel] : item}}
-      </option>
+      @for (item of items; track item) {
+        <option [value]="bindValue ? item[bindValue] : item">
+          {{bindLabel ? item[bindLabel] : item}}
+        </option>
+      }
     </select>
-    <tm-input-group-text *ngIf="hasAppend()"
-                      class="input-group-text"
-                      [icon]="appendIcon"
-                      [text]="appendText"
-                      (click)="appendClick.emit($event)"
-    ></tm-input-group-text>
+    @if (hasAppend()) {
+      <tm-input-group-text class="input-group-text"
+                        [icon]="appendIcon"
+                        [text]="appendText"
+                        (click)="appendClick.emit($event)"
+      ></tm-input-group-text>
+    }
   </div>
 </div>

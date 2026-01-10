@@ -1,8 +1,12 @@
 import {Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'tm-confirm-dialog',
-  standalone: false,
+  standalone: true,
+  imports: [
+    FormsModule
+  ],
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss']
 })

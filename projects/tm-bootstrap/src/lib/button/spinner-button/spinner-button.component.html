@@ -6,8 +6,12 @@
         (click)="onClick.emit($event)"
 >
   <span class="btn-spinner-text">
-    <i *ngIf="icon" class="{{icon}}" [class.me-2]="text"></i>
-    <span *ngIf="text">{{text}}</span>
+    @if (icon) {
+      <i class="{{icon}}" [class.me-2]="text"></i>
+    }
+    @if (text) {
+      <span>{{text}}</span>
+    }
   </span>
   <div class="btn-spinner-spinner">
     <div class="spinner-border spinner-border-sm"></div>

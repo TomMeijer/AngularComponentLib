@@ -1,8 +1,12 @@
 import {Component, Input, TemplateRef} from '@angular/core';
+import {NgTemplateOutlet} from '@angular/common';
 
 @Component({
   selector: 'tm-card',
-  standalone: false,
+  standalone: true,
+  imports: [
+    NgTemplateOutlet
+  ],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })

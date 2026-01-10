@@ -1,26 +1,42 @@
 <div class="card tm-card {{className}}">
-  <div *ngIf="hasHeader()" class="card-header">
-    <ng-container *ngIf="headerTemplate; else headerContent">
-      <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
-    </ng-container>
-    <ng-template #headerContent>
-      <div *ngIf="headerTitle || headerIcon" class="card-title">
-        <i *ngIf="headerIcon" class="header-icon {{headerIcon}}"></i>{{headerTitle}}
-      </div>
-      <div *ngIf="headerSubtitle" class="card-subtitle">{{headerSubtitle}}</div>
-    </ng-template>
-  </div>
-  <img *ngIf="imgTopSrc" class="card-img-top" [src]="imgTopSrc" alt="">
+  @if (hasHeader()) {
+    <div class="card-header">
+      @if (headerTemplate) {
+        <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+      } @else {
+        @if (headerTitle || headerIcon) {
+          <div class="card-title">
+            @if (headerIcon) {
+              <i class="header-icon {{headerIcon}}"></i>
+            }
+            {{headerTitle}}
+          </div>
+        }
+        @if (headerSubtitle) {
+          <div class="card-subtitle">{{headerSubtitle}}</div>
+        }
+      }
+    </div>
+  }
+  @if (imgTopSrc) {
+    <img class="card-img-top" [src]="imgTopSrc" alt="">
+  }
   <div class="card-body">
     <ng-content></ng-content>
   </div>
-  <img *ngIf="imgBottomSrc" class="card-img-bottom" [src]="imgBottomSrc" alt="">
-  <div *ngIf="hasFooter()" class="card-footer">
-    <ng-container *ngIf="footerTemplate; else footerContent">
-      <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
-    </ng-container>
-    <ng-template #footerContent>
-      <i *ngIf="footerIcon" class="footer-icon {{footerIcon}}"></i>{{footerText}}
-    </ng-template>
-  </div>
+  @if (imgBottomSrc) {
+    <img class="card-img-bottom" [src]="imgBottomSrc" alt="">
+  }
+  @if (hasFooter()) {
+    <div class="card-footer">
+      @if (footerTemplate) {
+        <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
+      } @else {
+        @if (footerIcon) {
+          <i class="footer-icon {{footerIcon}}"></i>
+        }
+        {{footerText}}
+      }
+    </div>
+  }
 </div>

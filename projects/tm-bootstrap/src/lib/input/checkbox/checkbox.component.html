@@ -9,16 +9,18 @@
            [disabled]="disabled"
            (change)="onChange.emit($event)"
     >
-    <ng-container *ngIf="labelInstanceOfTemplateRef(); else stringContent">
+    @if (labelInstanceOfTemplateRef()) {
       <ng-container *ngTemplateOutlet="labelAsTemplateRef"></ng-container>
-    </ng-container>
-    <ng-template #stringContent>
+    } @else {
       <span>{{label}}&nbsp;</span>
-      <span *ngIf="showRequiredStar && required">*&nbsp;</span>
-      <i *ngIf="tooltipText"
-         class="tooltip-icon {{tooltipIcon}}"
-         [tooltip]="tooltipText"
-      ></i>
-    </ng-template>
+      @if (showRequiredStar && required) {
+        <span>*&nbsp;</span>
+      }
+      @if (tooltipText) {
+        <i class="tooltip-icon {{tooltipIcon}}"
+           [tooltip]="tooltipText"
+        ></i>
+      }
+    }
   </label>
 </div>

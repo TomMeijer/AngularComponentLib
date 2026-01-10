@@ -1,8 +1,12 @@
 import {Component, Input, TemplateRef} from '@angular/core';
+import {NgTemplateOutlet} from '@angular/common';
 
 @Component({
   selector: 'tm-input-group-text',
-  standalone: false,
+  standalone: true,
+  imports: [
+    NgTemplateOutlet
+  ],
   templateUrl: './input-group-text.component.html',
   styleUrls: ['./input-group-text.component.scss']
 })

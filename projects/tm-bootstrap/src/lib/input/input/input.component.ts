@@ -1,9 +1,16 @@
 import {Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, TemplateRef} from '@angular/core';
-import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
+import {AbstractControl, ControlValueAccessor, FormsModule, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
+import {LabelComponent} from '../label/label.component';
+import {InputGroupTextComponent} from '../input-group-text/input-group-text.component';
 
 @Component({
   selector: 'tm-input',
-  standalone: false,
+  standalone: true,
+  imports: [
+    FormsModule,
+    LabelComponent,
+    InputGroupTextComponent
+  ],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   providers: [

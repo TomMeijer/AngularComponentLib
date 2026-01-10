@@ -1,38 +1,32 @@
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpEvent, HttpHandlerFn, HttpInterceptorFn, HttpRequest} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {Injectable} from '@angular/core';
+import {inject} from '@angular/core';
 import {AlertService} from '../alert/alert.service';
 
 const DEFAULT_ERROR_MSG = 'Something went wrong. Please try again later or contact support.'
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ErrorInterceptor implements HttpInterceptor {
+export const ErrorInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> => {
+  const alertService = inject(AlertService);
 
-  public constructor(private alertService: AlertService) { }
+  return next(req).pipe(
+    catchError(response => {
+      const msg = getErrorMsg(response);
+      alertService.showDanger(msg);
+      return throwError(() => response);
+    })
+  );
+};
 
-  public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(
-      catchError(response => {
-        const msg = this.getErrorMsg(response);
-        this.alertService.showDanger(msg);
-        return throwError(response);
-      })
-    );
-  }
-
-  private getErrorMsg(response: any): string {
-    if (response.error) {
-      const error = response.error;
-      if (error.detail) {
-        return error.detail;
-      }
-      if (error.message) {
-        return error.message;
-      }
+function getErrorMsg(response: any): string {
+  if (response.error) {
+    const error = response.error;
+    if (error.detail) {
+      return error.detail;
     }
-    return DEFAULT_ERROR_MSG;
+    if (error.message) {
+      return error.message;
+    }
   }
+  return DEFAULT_ERROR_MSG;
 }

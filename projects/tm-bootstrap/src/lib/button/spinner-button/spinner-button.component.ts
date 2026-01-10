@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-
 @Component({
   selector: 'tm-spinner-button',
-  standalone: false,
+  standalone: true,
+  imports: [],
   templateUrl: './spinner-button.component.html',
   styleUrls: ['./spinner-button.component.scss']
 })

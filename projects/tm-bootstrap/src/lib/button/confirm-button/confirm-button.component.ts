@@ -1,8 +1,14 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ConfirmDialogComponent} from '../../confirm-dialog/confirm-dialog.component';
+import {SpinnerButtonComponent} from '../spinner-button/spinner-button.component';
 
 @Component({
   selector: 'tm-confirm-button',
-  standalone: false,
+  standalone: true,
+  imports: [
+    ConfirmDialogComponent,
+    SpinnerButtonComponent
+  ],
   templateUrl: './confirm-button.component.html',
   styleUrls: ['./confirm-button.component.scss']
 })

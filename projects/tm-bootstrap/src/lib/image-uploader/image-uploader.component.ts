@@ -1,9 +1,15 @@
 import {Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {NgStyle} from '@angular/common';
+import {SkeletonLoaderComponent} from '../skeleton-loader/skeleton-loader.component';
 
 @Component({
   selector: 'tm-image-uploader',
-  standalone: false,
+  standalone: true,
+  imports: [
+    NgStyle,
+    SkeletonLoaderComponent
+  ],
   templateUrl: './image-uploader.component.html',
   styleUrls: ['./image-uploader.component.scss'],
   providers: [{

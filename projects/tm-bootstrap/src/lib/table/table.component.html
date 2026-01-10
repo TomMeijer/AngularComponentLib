@@ -9,23 +9,29 @@
       <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
     </thead>
     <tbody>
-      <ng-container *ngFor="let rec of data">
+      @for (rec of data; track rec) {
         <ng-container *ngTemplateOutlet="rowTemplate; context: {$implicit: rec}"></ng-container>
-      </ng-container>
+      }
     </tbody>
   </table>
-  <div *ngIf="loading" class="table-spinner"><div class="spinner-border"></div></div>
-  <div *ngIf="!loading && (!data || data.length === 0)" class="table-no-results d-flex justify-content-center align-items-center">No results...</div>
-  <div *ngIf="!loading && pagination && data && data.length > 0" class="pagination-container d-flex justify-content-between">
-    <div class="results-count align-self-center">Total results: {{totalItems}}</div>
-    <div class="align-self-center">
-      <pagination [totalItems]="totalItems"
-                  [itemsPerPage]="itemsPerPage"
-                  [maxSize]="maxPageLinks"
-                  [boundaryLinks]="pageBoundaryLinks"
-                  (pageChanged)="onPageChange.emit($event.page)"
-                  [(ngModel)]="currentPage"
-      ></pagination>
+  @if (loading) {
+    <div class="table-spinner"><div class="spinner-border"></div></div>
+  }
+  @if (!loading && (!data || data.length === 0)) {
+    <div class="table-no-results d-flex justify-content-center align-items-center">No results...</div>
+  }
+  @if (!loading && pagination && data && data.length > 0) {
+    <div class="pagination-container d-flex justify-content-between">
+      <div class="results-count align-self-center">Total results: {{totalItems}}</div>
+      <div class="align-self-center">
+        <pagination [totalItems]="totalItems"
+                    [itemsPerPage]="itemsPerPage"
+                    [maxSize]="maxPageLinks"
+                    [boundaryLinks]="pageBoundaryLinks"
+                    (pageChanged)="onPageChange.emit($event.page)"
+                    [(ngModel)]="currentPage"
+        ></pagination>
+      </div>
     </div>
-  </div>
+  }
 </div>

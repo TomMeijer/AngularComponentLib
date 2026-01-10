@@ -1,11 +1,19 @@
 import {Component, EventEmitter, forwardRef, Input, OnChanges, Output, SimpleChanges, TemplateRef, ViewChild} from '@angular/core';
-import {BsDaterangepickerConfig, BsDaterangepickerDirective} from 'ngx-bootstrap/datepicker';
-import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
+import {BsDatepickerModule, BsDaterangepickerConfig, BsDaterangepickerDirective} from 'ngx-bootstrap/datepicker';
+import {AbstractControl, ControlValueAccessor, FormsModule, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator} from '@angular/forms';
 import {DatePipe} from '@angular/common';
+import {LabelComponent} from '../label/label.component';
+import {InputGroupTextComponent} from '../input-group-text/input-group-text.component';
 
 @Component({
   selector: 'tm-date-range-picker',
-  standalone: false,
+  standalone: true,
+  imports: [
+    FormsModule,
+    BsDatepickerModule,
+    LabelComponent,
+    InputGroupTextComponent
+  ],
   templateUrl: './date-range-picker.component.html',
   styleUrls: ['./date-range-picker.component.scss'],
   providers: [

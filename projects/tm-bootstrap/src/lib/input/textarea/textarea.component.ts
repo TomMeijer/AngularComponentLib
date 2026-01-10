@@ -2,15 +2,21 @@ import {Component, EventEmitter, forwardRef, Input, Output, TemplateRef} from '@
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
   Validator
 } from '@angular/forms';
+import {LabelComponent} from '../label/label.component';
 
 @Component({
   selector: 'tm-textarea',
-  standalone: false,
+  standalone: true,
+  imports: [
+    FormsModule,
+    LabelComponent
+  ],
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss'],
   providers: [

@@ -3,15 +3,28 @@ import {Observable, of, Subject} from 'rxjs';
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
   Validator
 } from '@angular/forms';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {LabelComponent} from '../label/label.component';
+import {InputGroupTextComponent} from '../input-group-text/input-group-text.component';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 @Component({
   selector: 'tm-ng-select',
-  standalone: false,
+  standalone: true,
+  imports: [
+    AsyncPipe,
+    NgTemplateOutlet,
+    FormsModule,
+    LabelComponent,
+    InputGroupTextComponent,
+    NgSelectModule
+  ],
   templateUrl: './ng-select.component.html',
   styleUrls: ['./ng-select.component.scss'],
   providers: [

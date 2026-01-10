@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import {AlertService} from '../alert.service';
 import {Alert} from '../alert';
+import {AlertModule} from 'ngx-bootstrap/alert';
 
 @Component({
   selector: 'tm-alert-output',
-  standalone: false,
+  standalone: true,
+  imports: [
+    AlertModule
+  ],
   templateUrl: './alert-output.component.html',
   styleUrls: ['./alert-output.component.scss']
 })

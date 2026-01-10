@@ -1,11 +1,12 @@
 <div>
-  <tm-label *ngIf="label"
-            [text]="label"
-            [required]="required"
-            [showRequiredStar]="showRequiredStar"
-            [tooltipText]="tooltipText"
-            [tooltipIcon]="tooltipIcon"
-  ></tm-label>
+  @if (label) {
+    <tm-label [text]="label"
+              [required]="required"
+              [showRequiredStar]="showRequiredStar"
+              [tooltipText]="tooltipText"
+              [tooltipIcon]="tooltipIcon"
+    ></tm-label>
+  }
   <textarea [name]="name"
             class="form-control {{className}}"
             [rows]="textareaRows"

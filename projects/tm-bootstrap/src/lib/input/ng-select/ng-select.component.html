@@ -1,23 +1,25 @@
 <div>
-  <tm-label *ngIf="label"
-            [text]="label"
-            [required]="required"
-            [showRequiredStar]="showRequiredStar"
-            [tooltipText]="tooltipText"
-            [tooltipIcon]="tooltipIcon"
-  ></tm-label>
+  @if (label) {
+    <tm-label [text]="label"
+              [required]="required"
+              [showRequiredStar]="showRequiredStar"
+              [tooltipText]="tooltipText"
+              [tooltipIcon]="tooltipIcon"
+    ></tm-label>
+  }
   <div [class.input-group]="isInputGroup()"
        [class.input-group-sm]="isInputGroup() && small"
        [class.ng-select-input-group]="isInputGroup()"
        [class.ng-select-input-group-prepend]="hasPrepend()"
        [class.ng-select-input-group-append]="hasAppend()"
   >
-    <tm-input-group-text *ngIf="hasPrepend()"
-                      class="input-group-text"
-                      [icon]="prependIcon"
-                      [text]="prependText"
-                      (click)="prependClick.emit($event)"
-    ></tm-input-group-text>
+    @if (hasPrepend()) {
+      <tm-input-group-text class="input-group-text"
+                        [icon]="prependIcon"
+                        [text]="prependText"
+                        (click)="prependClick.emit($event)"
+      ></tm-input-group-text>
+    }
     <ng-select [name]="name"
                class="tm-ng-select {{className}}"
                [required]="required"
@@ -35,18 +37,23 @@
                [minTermLength]="minTermLength"
                [disabled]="disabled"
     >
-      <ng-template *ngIf="labelTemplate" ng-label-tmp let-item="item">
-        <ng-container *ngTemplateOutlet="labelTemplate; context: {$implicit: item}"></ng-container>
-      </ng-template>
-      <ng-template *ngIf="optionTemplate" ng-option-tmp let-item="item">
-        <ng-container *ngTemplateOutlet="optionTemplate; context: {$implicit: item}"></ng-container>
-      </ng-template>
+      @if (labelTemplate) {
+        <ng-template ng-label-tmp let-item="item">
+          <ng-container *ngTemplateOutlet="labelTemplate; context: {$implicit: item}"></ng-container>
+        </ng-template>
+      }
+      @if (optionTemplate) {
+        <ng-template ng-option-tmp let-item="item">
+          <ng-container *ngTemplateOutlet="optionTemplate; context: {$implicit: item}"></ng-container>
+        </ng-template>
+      }
     </ng-select>
-    <tm-input-group-text *ngIf="hasAppend()"
-                      class="input-group-text"
-                      [icon]="appendIcon"
-                      [text]="appendText"
-                      (click)="appendClick.emit($event)"
-    ></tm-input-group-text>
+    @if (hasAppend()) {
+      <tm-input-group-text class="input-group-text"
+                        [icon]="appendIcon"
+                        [text]="appendText"
+                        (click)="appendClick.emit($event)"
+      ></tm-input-group-text>
+    }
   </div>
 </div>

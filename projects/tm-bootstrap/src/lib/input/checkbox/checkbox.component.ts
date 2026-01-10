@@ -2,15 +2,23 @@ import {Component, EventEmitter, forwardRef, Input, Output, TemplateRef} from '@
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
   Validator
 } from '@angular/forms';
+import {NgTemplateOutlet} from '@angular/common';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
 @Component({
   selector: 'tm-checkbox',
-  standalone: false,
+  standalone: true,
+  imports: [
+    NgTemplateOutlet,
+    FormsModule,
+    TooltipModule
+  ],
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
   providers: [

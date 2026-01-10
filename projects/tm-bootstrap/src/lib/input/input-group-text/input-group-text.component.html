@@ -1,7 +1,10 @@
-<ng-container *ngIf="instanceOfTemplateRef(); else stringContent">
+@if (instanceOfTemplateRef()) {
   <ng-container *ngTemplateOutlet="textAsTemplateRef"></ng-container>
-</ng-container>
-<ng-template #stringContent>
-  <i *ngIf="icon" [class]="icon"></i>
-  <span *ngIf="text">{{text}}</span>
-</ng-template>
+} @else {
+  @if (icon) {
+    <i [class]="icon"></i>
+  }
+  @if (text) {
+    <span>{{text}}</span>
+  }
+}

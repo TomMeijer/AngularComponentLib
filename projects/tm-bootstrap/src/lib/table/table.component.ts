@@ -1,8 +1,16 @@
 import {Component, EventEmitter, Input, Output, TemplateRef} from '@angular/core';
+import {NgTemplateOutlet} from '@angular/common';
+import {PaginationModule} from 'ngx-bootstrap/pagination';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'tm-table',
-  standalone: false,
+  standalone: true,
+  imports: [
+    NgTemplateOutlet,
+    PaginationModule,
+    FormsModule
+  ],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
