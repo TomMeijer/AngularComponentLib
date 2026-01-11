@@ -1,4 +1,4 @@
-import {Component, ElementRef, forwardRef, input, OnInit, output, viewChild} from '@angular/core';
+import {Component, ElementRef, forwardRef, input, OnInit, output, viewChild, signal, effect} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {NgStyle} from '@angular/common';
 import {SkeletonLoaderComponent} from '../skeleton-loader/skeleton-loader.component';
@@ -35,13 +35,20 @@ export class ImageUploaderComponent implements ControlValueAccessor, OnInit {
 
   public onClear = output<MouseEvent>();
 
-  public imageSrc: string;
+  public imageSrc = signal<string>(undefined);
 
   public _value: File;
   private onChangeFn = (value: File) => {};
 
+  constructor() {
+    effect(() => {
+      if (!this._value) {
+        this.imageSrc.set(this.defaultImageSrc());
+      }
+    });
+  }
+
   ngOnInit(): void {
-    this.imageSrc = this.defaultImageSrc();
   }
 
   get value(): File {
@@ -59,10 +66,10 @@ export class ImageUploaderComponent implements ControlValueAccessor, OnInit {
       const reader = new FileReader();
       reader.readAsDataURL(this._value);
       reader.onload = () => {
-        this.imageSrc = reader.result as string;
+        this.imageSrc.set(reader.result as string);
       };
     } else {
-      this.imageSrc = this.defaultImageSrc();
+      this.imageSrc.set(this.defaultImageSrc());
     }
   }
 
