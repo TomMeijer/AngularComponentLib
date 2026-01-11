@@ -1,7 +1,7 @@
 {
   "name": "@tommeijer/tm-bootstrap",
   "repository": "git://github.com/TomMeijer/AngularComponentLib.git",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "scripts": {
     "build": "ng build tm-bootstrap --configuration production",
     "publish": "cd ../../dist/tm-bootstrap && npm publish"
