@@ -7,12 +7,12 @@
     "publish": "cd ../../dist/tm-bootstrap && npm publish"
   },
   "peerDependencies": {
-    "@angular/common": "^21.0.0",
-    "@angular/core": "^21.0.0",
-    "ngx-bootstrap": "^20.0.2",
-    "@ng-select/ng-select": "^21.0.0",
-    "ngx-skeleton-loader": "^11.3.0",
-    "@auth0/angular-jwt": "^5.2.0"
+    "@angular/common": ">=21.0.0",
+    "@angular/core": ">=21.0.0",
+    "ngx-bootstrap": ">=20.0.0",
+    "@ng-select/ng-select": ">=21.0.0",
+    "ngx-skeleton-loader": ">=11.0.0",
+    "@auth0/angular-jwt": ">=5.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
