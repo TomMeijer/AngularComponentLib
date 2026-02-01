@@ -38,6 +38,8 @@
             "browserTarget": "tm-bootstrap:build",
             "compodoc": true,
             "compodocArgs": [
+              "-p",
+              "projects/tm-bootstrap/tsconfig.lib.json",
               "-e",
               "json",
               "-d",
@@ -53,6 +55,8 @@
             "browserTarget": "tm-bootstrap:build",
             "compodoc": true,
             "compodocArgs": [
+              "-p",
+              "projects/tm-bootstrap/tsconfig.lib.json",
               "-e",
               "json",
               "-d",

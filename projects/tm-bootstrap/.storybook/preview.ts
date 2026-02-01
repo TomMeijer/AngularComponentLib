@@ -12,6 +12,11 @@ const preview: Preview = {
     })
   ],
   parameters: {
+    docs: {
+      source: {
+        type: 'dynamic',
+      },
+    },
     controls: {
       matchers: {
        color: /(background|color)$/i,
